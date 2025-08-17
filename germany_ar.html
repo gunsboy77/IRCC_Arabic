@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الحصول على تأشيرة زيارة كندية للمقيمين السوريين في ألمانيا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            line-height: 1.8;
+            text-align: right;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #c00, #fff, #c00);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #c00;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: #1a2a6c;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .intro-box {
+            background: #e6f2ff;
+            border-right: 5px solid #1a2a6c;
+            padding: 25px;
+            border-radius: 10px 0 0 10px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            color: #c00;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #1a2a6c;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        
+        .section-title i {
+            margin-left: 15px;
+            background: #1a2a6c;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .step-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
+            text-align: right;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: #1a2a6c;
+        }
+        
+        .step-number {
+            background: #1a2a6c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            margin-left: auto;
+        }
+        
+        .step-title {
+            color: #c00;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .document-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: right;
+        }
+        
+        .document-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .document-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .document-list li i {
+            color: #1a2a6c;
+            margin-left: 12px;
+            margin-top: 5px;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            position: relative;
+            margin-right: 20px;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -20px;
+            height: 100%;
+            width: 4px;
+            background: #1a2a6c;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-right: 40px;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            right: -28px;
+            width: 20px;
+            height: 20px;
+            background: #c00;
+            border-radius: 50%;
+            border: 4px solid #1a2a6c;
+        }
+        
+        .timeline-title {
+            font-weight: bold;
+            color: #1a2a6c;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #e6f7ff, #fff);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid #b3e0ff;
+            position: relative;
+            text-align: right;
+        }
+        
+        .tip-box::before {
+            content: "\f06a";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #1a2a6c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .resource-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            text-align: right;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #1a2a6c;
+        }
+        
+        .resource-title {
+            color: #1a2a6c;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        
+        .resource-title i {
+            margin-left: 12px;
+            color: #c00;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #1a2a6c;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid #1a2a6c;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: #1a2a6c;
+            transform: translateY(-3px);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .flag-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+        
+        .flag {
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flag::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1));
+        }
+        
+        .flag-syria {
+            background: linear-gradient(to bottom, #ce1126 33%, white 33%, white 66%, #000000 66%);
+        }
+        
+        .flag-germany {
+            background: linear-gradient(to bottom, #000000 33%, #dd0000 33%, #dd0000 66%, #ffcc00 66%);
+        }
+        
+        .flag-canada {
+            background: linear-gradient(to right, #ff0000 25%, white 25%, white 75%, #ff0000 75%);
+            position: relative;
+        }
+        
+        .flag-canada::after {
+            content: "❋";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: #ff0000;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #ffec99, #ffec99);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .important-note {
+            background: #fff8e6;
+            border-right: 5px solid #ff9800;
+            padding: 20px;
+            border-radius: 10px 0 0 10px;
+            margin: 25px 0;
+            text-align: right;
+        }
+        
+        @media (max-width: 768px) {
+            .steps-container, .resources {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .flag-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="flag-container">
+                <div class="flag flag-syria"></div>
+                <div class="flag flag-germany"></div>
+                <div class="flag flag-canada"></div>
+            </div>
+            <h1>دليل الحصول على تأشيرة زيارة كندية</h1>
+            <p class="subtitle">للمقيمين الدائمين السوريين في ألمانيا مع أطفالهم</p>
+            <p>دليل شامل للحصول على تأشيرة مقيم مؤقت (TRV) لكندا</p>
+        </header>
+        
+        <div class="intro-box">
+            <h2><i class="fas fa-info-circle"></i> مقدمة</h2>
+            <p>يقدم هذا الدليل إرشادات خطوة بخطوة للمواطنين السوريين الحاصلين على إقامة دائمة في ألمانيا والراغبين في التقدم بطلب للحصول على تأشيرة زيارة كندية (تأشيرة مقيم مؤقت - TRV) لأنفسهم وأطفالهم الثلاثة. تتضمن العملية إعدادًا دقيقًا للمستندات والتقديم عبر الإنترنت وإثبات روابط قوية بألمانيا لضمان العودة بعد الزيارة.</p>
+            <p><strong>ملاحظة حول مدة المعالجة:</strong> تبلغ مدة معالجة تأشيرات الزائر من ألمانيا حاليًا حوالي <span class="highlight">30-45 يومًا</span>، ولكن يفضل التقديم قبل 3 أشهر على الأقل من تاريخ السفر المخطط.</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-passport"></i> متطلبات الأهلية</h2>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">وثائق سفر سارية المفعول</h3>
+                    <p>يجب أن يكون لدى جميع المتقدمين جوازات سفر سارية. يجب أن تكون جوازات السفر السورية سارية لمدة 6 أشهر على الأقل بعد الإقامة المخطط لها في كندا.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">إثبات الإقامة في ألمانيا</h3>
+                    <p>يجب تقديم إثبات على وضع الإقامة الدائمة في ألمانيا (Aufenthaltserlaubnis أو Niederlassungserlaubnis).</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">الدعم المالي</h3>
+                    <p>إثبات وجود أموال كافية لتغطية الإقامة في كندا (1000 دولار كندي على الأقل شهريًا للمتقدم الرئيسي بالإضافة إلى 500 دولار كندي لكل طفل).</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">روابط بألمانيا</h3>
+                    <p>أدلة تثبت أنك ستعود إلى ألمانيا بعد الزيارة (عمل، ممتلكات، روابط عائلية، إلخ).</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">عدم وجود سجل جنائي</h3>
+                    <p>يجب ألا يكون لديك سجل جنائي وقد تحتاج إلى تقديم شهادات من الشرطة.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <h3 class="step-title">فحص طبي</h3>
+                    <p>قد تكون هناك حاجة إلى فحص طبي حسب مدة الإقامة والأنشطة المخطط لها.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-list-check"></i> قائمة المستندات المطلوبة</h2>
+            
+            <div class="important-note">
+                <h3><i class="fas fa-exclamation-triangle"></i> ملاحظة هامة:</h3>
+                <p>يجب ترجمة جميع المستندات غير الإنجليزية أو الفرنسية ترجمة معتمدة. يحتاج الأطفال دون 18 سنة إلى مستندات خاصة.</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step-card">
+                    <h3 class="step-title">لجميع المتقدمين</h3>
+                    <ul class="document-list">
+                        <li><i class="fas fa-check-circle"></i> جواز سفر ساري (لكل شخص)</li>
+                        <li><i class="fas fa-check-circle"></i> صورتان حديثتان بحجم صورة جواز السفر</li>
+                        <li><i class="fas fa-check-circle"></i> إثبات الإقامة الدائمة في ألمانيا</li>
+                        <li><i class="fas fa-check-circle"></i> نموذج الطلب المكتمل IMM 5257</li>
+                        <li><i class="fas fa-check-circle"></i> نموذج معلومات العائلة (IMM 5707)</li>
+                    </ul>
+                </div>
+                
+                <div class="step-card">
+                    <h3 class="step-title">المستندات المالية</h3>
+                    <ul class="document-list">
+                        <li><i class="fas fa-check-circle"></i> كشوف الحسابات البنكية (آخر 4 أشهر)</li>
+                        <li><i class="fas fa-check-circle"></i> خطاب عمل (مع الراتب وموافقة الإجازة)</li>
+                        <li><i class="fas fa-check-circle"></i> سندات ملكية أو عقود إيجار</li>
+                        <li><i class="fas fa-check-circle"></i> إثبات الاستثمارات أو الأصول الأخرى</li>
+                    </ul>
+                </div>
+                
+                <div class="step-card">
+                    <h3 class="step-title">للأطفال</h3>
+                    <ul class="document-list">
+                        <li><i class="fas fa-check-circle"></i> شهادات ميلاد لجميع الأطفال</li>
+                        <li><i class="fas fa-check-circle"></i> خطاب موافقة من الوالد غير المرافق (إن وجد)</li>
+                        <li><i class="fas fa-check-circle"></i> شهادات تسجيل في المدرسة</li>
+                        <li><i class="fas fa-check-circle"></i> مستندات الحضانة (إن وجدت)</li>
+                    </ul>
+                </div>
+                
+                <div class="step-card">
+                    <h3 class="step-title">خطة السفر</h3>
+                    <ul class="document-list">
+                        <li><i class="fas fa-check-circle"></i> حجوزات طيران (غير مدفوعة)</li>
+                        <li><i class="fas fa-check-circle"></i> تفاصيل الإقامة في كندا</li>
+                        <li><i class="fas fa-check-circle"></i> إثبات تأمين السفر</li>
+                        <li><i class="fas fa-check-circle"></i> شرح لغرض الزيارة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-road"></i> عملية التقديم</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3 class="timeline-title">1. إنشاء حساب عبر الإنترنت</h3>
+                    <p>سجل على موقع الهجرة واللاجئين والمواطنة الكندية (IRCC). اختر "التقدم للقدوم إلى كندا" وأنشئ حساب GCKey.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="timeline-title">2. استكمال الاستبيان</h3>
+                    <p>أجب على أسئلة الأهلية للحصول على قائمة المستندات المخصصة. اختر "تأشيرة زائر" كنوع الطلب.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="timeline-title">3. تعبئة نماذج الطلب</h3>
+                    <p>أكمل جميع النماذج المطلوبة بما في ذلك IMM 5257 لكل متقدم وIMM 5707 لمعلومات العائلة.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="timeline-title">4. تحميل المستندات</h3>
+                    <p>قم بمسح المستندات المطلوبة ضوئيًا وتحميلها وفقًا لقائمة المستندات المخصصة. تأكد من أن الملفات تفي بمتطلبات الحجم والصيغة.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="timeline-title">5. دفع الرسوم</h3>
+                    <p>ادفع رسوم الطلب عبر الإنترنت: 100 دولار كندي لكل شخص. رسوم القياسات الحيوية: 85 دولارًا كنديًا لكل شخص (إذا لزم الأمر). الإجمالي لعائلة مكونة من أربعة أفراد: 740 دولارًا كنديًا.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="timeline-title">6. تقديم الطلب</h3>
+                    <p>راجع كل شيء بعناية وقم بتقديم طلبك. سوف تتلقى تأكيدًا ورقم طلب على الفور.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="timeline-title">7. موعد القياسات الحيوية</h3>
+                    <p>بعد التقديم، سوف تتلقى خطاب تعليمات القياسات الحيوية (BIL). حدد موعدًا في مركز طلبات التأشيرة (VAC) في برلين، دوسلدورف، فرانكفورت، هامبورغ، أو ميونيخ.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="timeline-title">8. قرار التأشيرة</h3>
+                    <p>تستغرق المعالجة عادةً 30-45 يومًا. إذا تمت الموافقة، سوف تتلقى خطاب طلب جواز السفر. قدّم جوازات السفر إلى مركز طلبات التأشيرة (VAC) لختم التأشيرة.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i> نصائح وإرشادات هامة</h2>
+            
+            <div class="tip-box">
+                <h3>إثبات الروابط بألمانيا</h3>
+                <p>كمواطن سوري، يعد إثبات روابط قوية بألمانيا أمرًا بالغ الأهمية. قم بتضمين:</p>
+                <ul class="document-list">
+                    <li><i class="fas fa-briefcase"></i> عقد عمل يوضح وظيفة دائمة</li>
+                    <li><i class="fas fa-home"></i> ملكية عقارية أو عقد إيجار طويل الأجل</li>
+                    <li><i class="fas fa-graduation-cap"></i> شهادات تسجيل الأطفال في المدرسة</li>
+                    <li><i class="fas fa-file-invoice"></i> إقرارات ضريبية واشتراكات الضمان الاجتماعي</li>
+                    <li><i class="fas fa-users"></i> أدلة على وجود أفراد الأسرة المقيمين في ألمانيا</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>السفر مع الأطفال</h3>
+                <p>متطلبات خاصة عند التقدم بطلب للأطفال:</p>
+                <ul class="document-list">
+                    <li><i class="fas fa-passport"></i> يجب أن يكون لكل طفل طلب منفصل</li>
+                    <li><i class="fas fa-file-signature"></i> خطاب موافقة مصدق من الوالد(ين) غير المسافر(ين)</li>
+                    <li><i class="fas fa-certificate"></i> شهادات ميلاد توضح أسماء كلا الوالدين</li>
+                    <li><i class="fas fa-user-shield"></i> مستندات الحضانة إذا كان الوالدان منفصلين/مطلقين</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>استراتيجيات تقوية الطلب</h3>
+                <ul class="document-list">
+                    <li><i class="fas fa-comment"></i> اكتب خطابًا مفصلًا يوضح الغرض من الزيارة وخط سير الرحلة</li>
+                    <li><i class="fas fa-plane"></i> أظهر حجوزات عودة طيران (يمكن أن تكون مؤقتة)</li>
+                    <li><i class="fas fa-euro-sign"></i> أثبت القدرة المالية بمصادر متعددة</li>
+                    <li><i class="fas fa-history"></i> أدرج تاريخ السفر السابق لإظهار الامتثال للتأشيرات</li>
+                    <li><i class="fas fa-hotel"></i> قدم حجوزات فنادق أو خطاب دعوة من مضيف كندي</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-link"></i> موارد أساسية</h2>
+            
+            <div class="resources">
+                <div class="resource-card">
+                    <h3 class="resource-title"><i class="fas fa-globe"></i> بوابة التقديم الرسمية</h3>
+                    <p>أنشئ حسابًا وتقدم عبر الإنترنت من خلال البوابة الآمنة لـ IRCC</p>
+                    <a href="https://www.canada.ca/ar/services/هجرة/زيارة-كندا.html" class="btn" target="_blank">زيارة موقع IRCC</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3 class="resource-title"><i class="fas fa-map-marker-alt"></i> مراكز طلبات التأشيرة</h3>
+                    <p>مواقع في ألمانيا للقياسات الحيوية وتقديم جوازات السفر</p>
+                    <a href="https://www.vfsglobal.ca/canada/germany/" class="btn" target="_blank">البحث عن مواقع VAC</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3 class="resource-title"><i class="fas fa-file-alt"></i> نماذج الطلب</h3>
+                    <p>قم بتنزيل جميع النماذج المطلوبة لتأشيرة الزائر</p>
+                    <a href="https://www.canada.ca/ar/خدمات/هجرة/تقديم-طلب/نماذج-طلب-وأدلة.html" class="btn" target="_blank">تنزيل النماذج</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h3 class="resource-title"><i class="fas fa-question-circle"></i> دعم الطلبات</h3>
+                    <p>احصل على مساعدة في طلبك من خلال مركز دعم IRCC</p>
+                    <a href="https://www.cic.gc.ca/ar/اتصل-بنا/نموذج-ويب.html" class="btn" target="_blank">الاتصال بالدعم</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3>ملاحظة هامة</h3>
+            <p>هذا الدليل لأغراض إعلامية فقط. قد تتغير متطلبات التأشيرة وإجراءاتها. راجع دائمًا موقع الهجرة واللاجئين والمواطنة الكندية (IRCC) الرسمي للحصول على أحدث المعلومات.</p>
+            <p>رسوم الطلب غير قابلة للاسترداد، حتى في حالة رفض التأشيرة. تأكد من دقة واكتمال جميع المعلومات قبل التقديم.</p>
+            <p>© 2023 دليل تأشيرة زيارة كندية | تم إنشاؤه للمقيمين الدائمين السوريين في ألمانيا</p>
+        </div>
+    </div>
+</body>
+</html>
