@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IMM 0008 - Generic Application Form for Canada (Styled HTML)</title>
+  <style>
+    :root{
+      --bg:#f7f7fb;
+      --card:#ffffff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --brand:#2563eb;
+      --brand-2:#1d4ed8;
+      --ring:#93c5fd;
+      --danger:#dc2626;
+      --ok:#059669;
+      --soft:#eef2ff;
+      --border:#e5e7eb;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}
+    header{max-width:1100px;margin:20px auto 0;padding:0 16px}
+    header .title{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 8px 24px rgba(0,0,0,.06);
+      padding:22px;
+      border:1px solid var(--border);
+    }
+    h1{margin:0 0 6px;font-size:28px}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+    form{max-width:1100px;margin:16px auto 48px;padding:0 16px}
+    section{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:0 8px 24px rgba(0,0,0,.06);
+      padding:22px;
+      margin:18px 0;
+    }
+    section>h2{margin:0 0 12px;font-size:22px}
+    .desc{color:var(--muted);font-size:14px;margin-bottom:16px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width:720px){.row{grid-template-columns:1fr}}
+    .field{display:flex;flex-direction:column;gap:6px}
+    label{font-weight:600;font-size:14px}
+    .hint{color:var(--muted);font-size:12px}
+    input[type="text"],input[type="date"],input[type="number"],input[type="email"],input[type="tel"],select,textarea{
+      padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:14px;outline:none;
+    }
+    textarea{min-height:96px;resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color:var(--ring);box-shadow:0 0 0 4px rgba(147,197,253,.35)}
+    .inline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .chip{padding:6px 10px;border:1px solid var(--border);border-radius:999px;font-size:12px;color:var(--muted)}
+    .muted{color:var(--muted)}
+    .divider{height:1px;background:var(--border);margin:16px 0}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    button{
+      appearance:none;border:none;border-radius:10px;background:var(--brand);color:white;padding:12px 16px;font-weight:600;
+      cursor:pointer;box-shadow:0 6px 16px rgba(37,99,235,.25)
+    }
+    button.secondary{background:#fff;color:var(--brand);border:1px solid var(--ring);box-shadow:none}
+    button.ghost{background:transparent;color:var(--brand)}
+    button:disabled{opacity:.6;cursor:not-allowed}
+    .danger{background:var(--danger)}
+    .ok{background:var(--ok)}
+    .card{border:1px dashed var(--border);border-radius:12px;padding:14px}
+    .subsection{font-weight:700;margin:6px 0 0}
+    .hidden{display:none !important}
+    .badge{display:inline-flex;align-items:center;gap:6px;background:var(--soft);border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:12px;color:#4f46e5}
+    small.required{color:var(--danger);font-weight:700}
+    .right{display:flex;justify-content:flex-end}
+    .note{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:12px;padding:12px;font-size:13px}
+    .footer{max-width:1100px;margin:0 auto 40px;padding:0 16px;color:var(--muted);font-size:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">
+      <h1>IMM 0008 — Generic Application Form for Canada</h1>
+      <p class="lead">Styled, mobile‑friendly HTML version that captures all fields in the official PDF (including dependants). This does <b>not</b> generate 2D barcodes.</p>
+      <div class="inline" style="margin-top:8px">
+        <span class="badge">Principal Applicant</span>
+        <span class="badge">Dependants (up to 5 in-form)</span>
+        <span class="badge">Repeating sections &amp; smart show/hide</span>
+      </div>
+    </div>
+  </header>
+
+  <form id="imm0008">
+    <!-- APPLICATION DETAILS -->
+    <section id="application-details">
+      <h2>Section 1 — Application Details</h2>
+      <p class="desc">Program/category, family size, language preference, and destination in Canada.</p>
+      <div class="grid">
+        <div class="field">
+          <label for="program">1. Program <small class="required">*</small></label>
+          <select id="program" name="program" required>
+            <option value="">— Select —</option>
+            <option>Family</option>
+            <option>Economic</option>
+            <option>Refugee</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="category">2. Category <small class="required">*</small></label>
+          <select id="category" name="category" required>
+            <option value="">— Select program first —</option>
+          </select>
+          <div class="hint">Choices depend on selected program.</div>
+        </div>
+        <div class="field">
+          <label for="family_count">3. Total number of family members (incl. you) <small class="required">*</small></label>
+          <input type="number" id="family_count" name="family_count" min="1" required />
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid">
+        <div class="field">
+          <label>4. Language preference</label>
+          <div class="grid">
+            <div class="field">
+              <label for="lang_corr">a) Correspondence</label>
+              <select id="lang_corr" name="lang_corr">
+                <option value="">— Select —</option>
+                <option>English</option>
+                <option>French</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="lang_interview">b) Interview language</label>
+              <select id="lang_interview" name="lang_interview">
+                <option value="">— Select —</option>
+                <option>English</option>
+                <option>French</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="interpreter_req">c) Interpreter requested?</label>
+              <select id="interpreter_req" name="interpreter_req">
+                <option value="">— Select —</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="dest_province">5. Province/Territory of destination</label>
+          <input id="dest_province" name="dest_province" type="text" list="provinces" />
+          <datalist id="provinces">
+            <option>Alberta</option><option>British Columbia</option><option>Manitoba</option>
+            <option>New Brunswick</option><option>Newfoundland and Labrador</option><option>Nova Scotia</option>
+            <option>Ontario</option><option>Prince Edward Island</option><option>Quebec</option>
+            <option>Saskatchewan</option><option>Northwest Territories</option><option>Nunavut</option><option>Yukon</option>
+          </datalist>
+        </div>
+        <div class="field">
+          <label for="dest_city">City/Town</label>
+          <input id="dest_city" name="dest_city" type="text" />
+        </div>
+      </div>
+
+      <div id="qc-block" class="note hidden">
+        If you plan to live in Quebec and are applying under a Quebec economic program, you generally need a CSQ.
+        <div class="grid" style="margin-top:10px">
+          <div class="field">
+            <label for="csq_have">Do you have a CSQ?</label>
+            <select id="csq_have" name="csq_have">
+              <option value="">— Select —</option>
+              <option>Yes</option><option>No</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="csq_number">CSQ number (if applicable)</label>
+            <input id="csq_number" name="csq_number" type="text" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRINCIPAL APPLICANT -->
+    <section id="principal">
+      <h2>Section 2 — Principal Applicant</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="uci">UCI (client ID, 8 or 10 digits)</label>
+          <input id="uci" name="uci" type="text" inputmode="numeric" pattern="[0-9]{8,10}" />
+          <div class="hint">Leave blank if you don't know or don't have one.</div>
+        </div>
+        <div class="field">
+          <label for="surname">Family name (surname) <small class="required">*</small></label>
+          <input id="surname" name="surname" type="text" required />
+        </div>
+        <div class="field">
+          <label for="given">Given name(s) <small class="required">*</small></label>
+          <input id="given" name="given" type="text" required />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="other_names">Have you ever used another name?</label>
+          <select id="other_names" name="other_names">
+            <option value="">— Select —</option>
+            <option>No</option><option>Yes</option>
+          </select>
+        </div>
+        <div class="field hidden" id="other_names_block">
+          <label>Other name(s) used</label>
+          <div class="grid">
+            <input type="text" name="other_family" placeholder="Family name(s)"/>
+            <input type="text" name="other_given" placeholder="Given name(s)"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="">— Select —</option>
+            <option value="F">F — Female</option>
+            <option value="M">M — Male</option>
+            <option value="X">X — Another gender</option>
+            <option value="U">U — Unknown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Height</label>
+          <div class="grid">
+            <input type="number" name="height_cm" placeholder="cm" min="0" />
+            <div class="inline"><span class="muted">or</span></div>
+            <input type="number" name="height_ft" placeholder="ft" min="0" />
+            <input type="number" name="height_in" placeholder="in" min="0" max="11" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="eyes">Eye colour</label>
+          <select id="eyes" name="eyes">
+            <option value="">— Select —</option>
+            <option>Black</option><option>Blue</option><option>Brown</option><option>Green</option>
+            <option>Hazel</option><option>Grey</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="dob">Date of birth <small class="required">*</small></label>
+          <input id="dob" name="dob" type="date" required />
+        </div>
+        <div class="field">
+          <label for="pob_city">Place of birth — City/Town</label>
+          <input id="pob_city" name="pob_city" type="text" />
+        </div>
+        <div class="field">
+          <label for="pob_country">Country of birth</label>
+          <input id="pob_country" name="pob_country" type="text" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="cit1">Citizenship(s) — primary</label>
+          <input id="cit1" name="cit1" type="text" />
+        </div>
+        <div class="field">
+          <label for="cit2">Citizenship(s) — other (if any)</label>
+          <input id="cit2" name="cit2" type="text" />
+        </div>
+      </div>
+
+      <div class="subsection">Current country of residence</div>
+      <div class="grid card">
+        <div class="field">
+          <label for="res_country">Country</label>
+          <input id="res_country" name="res_country" type="text" />
+        </div>
+        <div class="field">
+          <label for="res_status">Status</label>
+          <select id="res_status" name="res_status">
+            <option value="">— Select —</option>
+            <option>Citizen</option><option>Permanent resident</option><option>Visitor</option>
+            <option>Worker</option><option>Student</option><option>Other</option>
+            <option>Protected Person</option><option>Refugee Claimant</option><option>Foreign National</option>
+          </select>
+        </div>
+        <div class="field hidden" id="res_status_other_block">
+          <label for="res_status_other">If Other, specify</label>
+          <input id="res_status_other" name="res_status_other" type="text" />
+        </div>
+        <div class="field">
+          <label for="res_from">From</label>
+          <input id="res_from" name="res_from" type="date" />
+        </div>
+        <div class="field">
+          <label for="res_to">To</label>
+          <input id="res_to" name="res_to" type="date" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="last_entry_ca">Date of last entry to Canada (if applicable)</label>
+          <input id="last_entry_ca" name="last_entry_ca" type="date" />
+        </div>
+      </div>
+
+      <div class="subsection">Previous countries of residence (if applicable)</div>
+      <div id="prev-residences"></div>
+      <div class="actions">
+        <button type="button" class="secondary" id="add-prev-res">+ Add previous country</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="marital">Current marital status</label>
+          <select id="marital" name="marital">
+            <option value="">— Select —</option>
+            <option>Annulled Marriage</option><option>Common-Law</option><option>Divorced</option>
+            <option>Legally Separated</option><option>Married</option><option>Single</option><option>Widowed</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="marriage_date">Date of marriage/common-law</label>
+          <input id="marriage_date" name="marriage_date" type="date" />
+        </div>
+      </div>
+      <div class="grid">
+        <div class="field">
+          <label for="spouse_family">Current spouse/partner — Family name</label>
+          <input id="spouse_family" name="spouse_family" type="text" />
+        </div>
+        <div class="field">
+          <label for="spouse_given">Current spouse/partner — Given name(s)</label>
+          <input id="spouse_given" name="spouse_given" type="text" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="prev_union">Have you previously been married or in a common-law relationship?</label>
+          <select id="prev_union" name="prev_union">
+            <option value="">— Select —</option>
+            <option>No</option><option>Yes</option>
+          </select>
+        </div>
+      </div>
+      <div id="prev-partners" class="hidden">
+        <div class="subsection">Previous spouse/common-law partner</div>
+        <div class="grid card">
+          <div class="field"><label>Family name</label><input type="text" name="prev_family"></div>
+          <div class="field"><label>Given name(s)</label><input type="text" name="prev_given"></div>
+          <div class="field"><label>Type of relationship</label>
+            <select name="prev_rel_type">
+              <option value="">— Select —</option><option>Common-law</option><option>Married</option>
+            </select>
+          </div>
+          <div class="field"><label>From</label><input type="date" name="prev_from"></div>
+          <div class="field"><label>To</label><input type="date" name="prev_to"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT INFO -->
+    <section id="contact">
+      <h2>Section 3 — Contact Information</h2>
+      <div class="subsection">Mailing Address</div>
+      <div class="grid card">
+        <div class="field"><label>P.O. box</label><input type="text" name="mail_po"/></div>
+        <div class="field"><label>Apt/Unit</label><input type="text" name="mail_apt"/></div>
+        <div class="field"><label>Street no.</label><input type="text" name="mail_street_no"/></div>
+        <div class="field"><label>Street name</label><input type="text" name="mail_street_name"/></div>
+        <div class="field"><label>City/Town</label><input type="text" name="mail_city"/></div>
+        <div class="field"><label>Country</label><input type="text" name="mail_country"/></div>
+        <div class="field"><label>Province/State</label><input type="text" name="mail_prov"/></div>
+        <div class="field"><label>Postal/ZIP code</label><input type="text" name="mail_postal"/></div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="res_same">Is residential address same as mailing?</label>
+          <select id="res_same" name="res_same">
+            <option value="">— Select —</option><option>Yes</option><option>No</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="res-addr" class="hidden">
+        <div class="subsection">Residential Address</div>
+        <div class="grid card">
+          <div class="field"><label>Apt/Unit</label><input type="text" name="res_apt"/></div>
+          <div class="field"><label>Street no.</label><input type="text" name="res_street_no"/></div>
+          <div class="field"><label>Street name</label><input type="text" name="res_street_name"/></div>
+          <div class="field"><label>City/Town</label><input type="text" name="res_city"/></div>
+          <div class="field"><label>Country</label><input type="text" name="res_country2"/></div>
+          <div class="field"><label>Province/State</label><input type="text" name="res_prov"/></div>
+          <div class="field"><label>Postal/ZIP code</label><input type="text" name="res_postal"/></div>
+        </div>
+      </div>
+
+      <div class="subsection">Telephone / Email</div>
+      <div class="grid card">
+        <div class="field">
+          <label>Primary phone — Region</label>
+          <select name="tel1_region">
+            <option>Canada/US</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Primary phone — Type</label>
+          <select name="tel1_type"><option>Residence</option><option>Cellular</option><option>Business</option></select>
+        </div>
+        <div class="field"><label>Primary phone — Number</label><input type="tel" name="tel1"/></div>
+        <div class="field"><label>Ext.</label><input type="text" name="tel1_ext"/></div>
+        <div class="field">
+          <label>Second phone — Region</label>
+          <select name="tel2_region"><option>Canada/US</option><option>Other</option></select>
+        </div>
+        <div class="field">
+          <label>Second phone — Type</label>
+          <select name="tel2_type"><option>Residence</option><option>Cellular</option><option>Business</option></select>
+        </div>
+        <div class="field"><label>Second phone — Number</label><input type="tel" name="tel2"/></div>
+        <div class="field"><label>Ext.</label><input type="text" name="tel2_ext"/></div>
+        <div class="field"><label>Fax</label><input type="tel" name="fax"/></div>
+        <div class="field"><label>Email</label><input type="email" name="email"/></div>
+      </div>
+    </section>
+
+    <!-- PASSPORT & NID -->
+    <section id="travel-docs">
+      <h2>Section 4 — Passport & National Identity Document</h2>
+      <div class="subsection">Passport / Travel Document</div>
+      <div class="grid card">
+        <div class="field"><label>Do you have a valid passport/travel document?</label>
+          <select id="has_passport" name="has_passport"><option value="">— Select —</option><option>Yes</option><option>No</option></select>
+        </div>
+        <div id="passport_block" class="grid hidden">
+          <div class="field"><label>Number</label><input type="text" name="passport_no"/></div>
+          <div class="field"><label>Country of issue</label><input type="text" name="passport_country"/></div>
+          <div class="field"><label>Issue date</label><input type="date" name="passport_issue"/></div>
+          <div class="field"><label>Expiry date</label><input type="date" name="passport_expiry"/></div>
+          <div class="field"><label>Using Taiwan MoFA passport with personal ID?</label>
+            <select name="taiwan_mofa"><option value="">— Select —</option><option>Yes</option><option>No</option></select>
+          </div>
+          <div class="field"><label>Using National Israeli passport?</label>
+            <select name="israeli_passport"><option value="">— Select —</option><option>Yes</option><option>No</option></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">National Identity Document</div>
+      <div class="grid card">
+        <div class="field"><label>Do you have a valid national identity document?</label>
+          <select id="has_nid" name="has_nid"><option value="">— Select —</option><option>Yes</option><option>No</option></select>
+        </div>
+        <div id="nid_block" class="grid hidden">
+          <div class="field"><label>Number</label><input type="text" name="nid_no"/></div>
+          <div class="field"><label>Country of issue</label><input type="text" name="nid_country"/></div>
+          <div class="field"><label>Issue date</label><input type="date" name="nid_issue"/></div>
+          <div class="field"><label>Expiry date</label><input type="date" name="nid_expiry"/></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION / OCCUPATION -->
+    <section id="education">
+      <h2>Section 5 — Education & Occupation</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="edu_level">Highest level of education</label>
+          <select id="edu_level" name="edu_level">
+            <option value="">— Select —</option>
+            <option>None</option>
+            <option>Secondary or less</option>
+            <option>Trade/Apprenticeship Certificate/Diploma</option>
+            <option>Non-University Certificate/Diploma</option>
+            <option>Post-Secondary — No Degree</option>
+            <option>Bachelor’s Degree</option>
+            <option>Post Graduate — No Degree</option>
+            <option>Master’s Degree</option>
+            <option>Doctorate/PhD</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="edu_years">Total years of formal education</label>
+          <input id="edu_years" name="edu_years" type="number" min="0" />
+        </div>
+        <div class="field">
+          <label for="occ_current">Current occupation</label>
+          <input id="occ_current" name="occ_current" type="text" />
+        </div>
+        <div class="field">
+          <label for="occ_intended">Intended occupation in Canada</label>
+          <input id="occ_intended" name="occ_intended" type="text" />
+        </div>
+      </div>
+    </section>
+
+    <!-- LANGUAGE -->
+    <section id="language">
+      <h2>Section 6 — Language Details</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="first_lang">First (native) language</label>
+          <input id="first_lang" name="first_lang" type="text" list="langs" />
+          <datalist id="langs">
+            <option>Arabic</option><option>Bengali</option><option>Chinese</option><option>English</option>
+            <option>French</option><option>Hindi</option><option>Persian</option><option>Portuguese</option>
+            <option>Punjabi</option><option>Russian</option><option>Spanish</option><option>Tagalog</option>
+            <option>Urdu</option><option>Vietnamese</option><option>Other</option>
+          </datalist>
+        </div>
+        <div class="field">
+          <label for="eng_fr_ability">Able to communicate in English and/or French?</label>
+          <select id="eng_fr_ability" name="eng_fr_ability">
+            <option value="">— Select —</option><option>English</option><option>French</option><option>Both</option><option>Neither</option>
+          </select>
+        </div>
+        <div class="field hidden" id="most_at_ease_block">
+          <label for="most_at_ease">If both, most at ease in</label>
+          <select id="most_at_ease" name="most_at_ease"><option>English</option><option>French</option></select>
+        </div>
+        <div class="field">
+          <label for="lang_test">Taken an approved language test?</label>
+          <select id="lang_test" name="lang_test">
+            <option value="">— Select —</option><option>Yes</option><option>No</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPENDANTS -->
+    <section id="dependants">
+      <h2>Section 7 — Dependants</h2>
+      <p class="desc">Add each dependant who is included in your application (accompanying or not). You can add up to 5 here; use additional forms if more.</p>
+      <div id="dependant-list"></div>
+      <div class="actions">
+        <button type="button" id="add-dependant" class="secondary">+ Add dependant</button>
+      </div>
+    </section>
+
+    <!-- DECLARATION -->
+    <section id="declaration">
+      <h2>Section 8 — Declaration</h2>
+      <div class="note">By typing your full name below, you certify that the information is complete and accurate, and you understand it may be verified. This HTML version does not generate IRCC 2D barcodes.</div>
+      <div class="grid">
+        <div class="field"><label for="sign_name">Full name (signature)</label><input id="sign_name" name="sign_name" type="text" /></div>
+        <div class="field"><label for="sign_date">Date</label><input id="sign_date" name="sign_date" type="date" /></div>
+      </div>
+      <div class="right actions">
+        <button type="submit" class="ok">Save</button>
+        <button type="reset" class="secondary">Reset</button>
+      </div>
+    </section>
+  </form>
+
+  <footer class="footer">
+    <p><strong>Important:</strong> IMM 0008 must be completed in IRCC’s official PDF and validated to generate 2D barcodes for submission. This HTML helps collect the same information but is not a replacement for the official form.</p>
+  </footer>
+
+  <template id="prev-res-template">
+    <div class="grid card prev-res">
+      <div class="field"><label>Country</label><input type="text" name="prev_country[]"></div>
+      <div class="field"><label>Status</label>
+        <select name="prev_status[]">
+          <option value="">— Select —</option>
+          <option>Citizen</option><option>Permanent resident</option><option>Visitor</option>
+          <option>Worker</option><option>Student</option><option>Other</option>
+          <option>Protected Person</option><option>Refugee Claimant</option><option>Foreign National</option>
+        </select>
+      </div>
+      <div class="field"><label>If Other, specify</label><input type="text" name="prev_status_other[]"></div>
+      <div class="field"><label>From</label><input type="date" name="prev_from[]"></div>
+      <div class="field"><label>To</label><input type="date" name="prev_to[]"></div>
+      <div class="actions"><button type="button" class="danger remove-prev">Remove</button></div>
+    </div>
+  </template>
+
+  <template id="dependant-template">
+    <div class="card dep">
+      <div class="inline" style="justify-content:space-between;margin-bottom:8px">
+        <div class="badge">Dependant</div>
+        <button type="button" class="danger remove-dep">Remove dependant</button>
+      </div>
+      <div class="grid">
+        <div class="field"><label>UCI (if known)</label><input type="text" name="dep_uci[]"></div>
+        <div class="field"><label>Family name</label><input type="text" name="dep_family[]"></div>
+        <div class="field"><label>Given name(s)</label><input type="text" name="dep_given[]"></div>
+        <div class="field"><label>Date of birth</label><input type="date" name="dep_dob[]"></div>
+        <div class="field"><label>Relationship to principal applicant</label>
+          <select name="dep_relationship[]">
+            <option value="">— Select —</option>
+            <option>Adopted Child</option><option>Adoptive Parent</option><option>Child</option>
+            <option>Common-Law Partner</option><option>Grandchild</option><option>Parent</option>
+            <option>Spouse</option><option>Step-Child</option><option>Step-Grandchild</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label>If Other, specify</label><input type="text" name="dep_rel_other[]"></div>
+        <div class="field"><label>Will this dependant accompany you to Canada?</label>
+          <select name="dep_accompany[]"><option value="">— Select —</option><option>Yes</option><option>No</option></select>
+        </div>
+        <div class="field"><label>If No, explain</label><input type="text" name="dep_non_accompany_reason[]"></div>
+        <div class="field">
+          <label>Type of dependant</label>
+          <select name="dep_type[]">
+            <option value="">— Select —</option>
+            <option>Type A — under 22 and single</option>
+            <option>Type B — student, lock-in before Aug 1, 2014</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="subsection">Current country of residence</div>
+      <div class="grid card">
+        <div class="field"><label>Country</label><input type="text" name="dep_res_country[]"></div>
+        <div class="field"><label>Status</label>
+          <select name="dep_res_status[]">
+            <option value="">— Select —</option>
+            <option>Citizen</option><option>Permanent resident</option><option>Visitor</option>
+            <option>Worker</option><option>Student</option><option>Other</option>
+            <option>Protected Person</option><option>Refugee Claimant</option><option>Foreign National</option>
+          </select>
+        </div>
+        <div class="field"><label>If Other, specify</label><input type="text" name="dep_res_status_other[]"></div>
+        <div class="field"><label>From</label><input type="date" name="dep_res_from[]"></div>
+        <div class="field"><label>To</label><input type="date" name="dep_res_to[]"></div>
+      </div>
+
+      <div class="subsection">Previous countries of residence (if applicable)</div>
+      <div class="dep-prev-list"></div>
+      <div class="actions"><button type="button" class="secondary add-dep-prev">+ Add previous country</button></div>
+
+      <div class="subsection">Marital history</div>
+      <div class="grid">
+        <div class="field">
+          <label>Current marital status</label>
+          <select name="dep_marital[]">
+            <option value="">— Select —</option>
+            <option>Annulled Marriage</option><option>Common-Law</option><option>Divorced</option>
+            <option>Legally Separated</option><option>Married</option><option>Single</option><option>Widowed</option>
+          </select>
+        </div>
+        <div class="field"><label>Date of marriage/common-law</label><input type="date" name="dep_marriage_date[]"></div>
+        <div class="field"><label>Spouse/partner family name</label><input type="text" name="dep_spouse_family[]"></div>
+        <div class="field"><label>Spouse/partner given name(s)</label><input type="text" name="dep_spouse_given[]"></div>
+      </div>
+      <div class="grid">
+        <div class="field"><label>Previously married or in common-law?</label>
+          <select name="dep_prev_union[]"><option value="">— Select —</option><option>No</option><option>Yes</option></select>
+        </div>
+      </div>
+      <div class="grid card">
+        <div class="field"><label>Previous spouse/common-law — family name</label><input type="text" name="dep_prev_family[]"></div>
+        <div class="field"><label>Previous spouse/common-law — given name(s)</label><input type="text" name="dep_prev_given[]"></div>
+        <div class="field"><label>Relationship type</label><select name="dep_prev_type[]"><option>Common-law</option><option>Married</option></select></div>
+        <div class="field"><label>From</label><input type="date" name="dep_prev_from[]"></div>
+        <div class="field"><label>To</label><input type="date" name="dep_prev_to[]"></div>
+      </div>
+
+      <div class="subsection">Passport & National ID</div>
+      <div class="grid card">
+        <div class="field"><label>Has valid passport/travel document?</label>
+          <select name="dep_has_passport[]"><option value="">— Select —</option><option>Yes</option><option>No</option></select></div>
+        <div class="field"><label>Passport number</label><input type="text" name="dep_passport_no[]"></div>
+        <div class="field"><label>Country of issue</label><input type="text" name="dep_passport_country[]"></div>
+        <div class="field"><label>Issue date</label><input type="date" name="dep_passport_issue[]"></div>
+        <div class="field"><label>Expiry date</label><input type="date" name="dep_passport_expiry[]"></div>
+        <div class="field"><label>Taiwan MoFA passport with personal ID?</label>
+          <select name="dep_taiwan_mofa[]"><option value="">— Select —</option><option>Yes</option><option>No</option></select></div>
+        <div class="field"><label>National Israeli passport?</label>
+          <select name="dep_israeli_passport[]"><option value="">— Select —</option><option>Yes</option><option>No</option></select></div>
+      </div>
+
+      <div class="grid card">
+        <div class="field"><label>Has valid national identity document?</label>
+          <select name="dep_has_nid[]"><option value="">— Select —</option><option>Yes</option><option>No</option></select></div>
+        <div class="field"><label>NID number</label><input type="text" name="dep_nid_no[]"></div>
+        <div class="field"><label>Country of issue</label><input type="text" name="dep_nid_country[]"></div>
+        <div class="field"><label>Issue date</label><input type="date" name="dep_nid_issue[]"></div>
+        <div class="field"><label>Expiry date</label><input type="date" name="dep_nid_expiry[]"></div>
+      </div>
+
+      <div class="subsection">Education & Occupation</div>
+      <div class="grid">
+        <div class="field"><label>Highest level of education</label>
+          <select name="dep_edu_level[]">
+            <option value="">— Select —</option>
+            <option>None</option>
+            <option>Secondary or less</option>
+            <option>Trade/Apprenticeship Certificate/Diploma</option>
+            <option>Non-University Certificate/Diploma</option>
+            <option>Post-Secondary — No Degree</option>
+            <option>Bachelor’s Degree</option>
+            <option>Post Graduate — No Degree</option>
+            <option>Master’s Degree</option>
+            <option>Doctorate/PhD</option>
+          </select>
+        </div>
+        <div class="field"><label>Current occupation</label><input type="text" name="dep_occ_current[]"></div>
+        <div class="field"><label>Intended occupation in Canada</label><input type="text" name="dep_occ_intended[]"></div>
+      </div>
+
+      <div class="subsection">Language details</div>
+      <div class="grid">
+        <div class="field"><label>First (native) language</label><input type="text" name="dep_first_lang[]"></div>
+        <div class="field"><label>Able to communicate in English and/or French?</label>
+          <select name="dep_eng_fr_ability[]">
+            <option value="">— Select —</option><option>English</option><option>French</option><option>Both</option><option>Neither</option>
+          </select>
+        </div>
+        <div class="field"><label>If both, most at ease</label><select name="dep_most_at_ease[]"><option>English</option><option>French</option></select></div>
+        <div class="field"><label>Taken an approved language test?</label><select name="dep_lang_test[]"><option value="">— Select —</option><option>Yes</option><option>No</option></select></div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    // Program -> Category options
+    const categoryOptions = {
+      "Family": ["Spouse","Common-law partner","Conjugal partner","Dependent child/adopted child","Child to be adopted in Canada","Parents/grandparents","Orphaned sibling/nephew/niece/grandchild","Other relative"],
+      "Economic": ["Agri-Food Pilot","Atlantic Immigration Program","Home Child Care Provider Pilot","Home Support Worker Pilot","Immigrant Investor Venture Capital Pilot Program","TR to PR pathway","Other"],
+      "Refugee": ["In Canada — Refugee Claim","In Canada — Protected Person","Outside Canada — Refugee"],
+      "Other": ["Other"]
+    };
+
+    const programEl = document.getElementById('program');
+    const categoryEl = document.getElementById('category');
+    programEl.addEventListener('change', () => {
+      categoryEl.innerHTML = '<option value=\"\">— Select —</option>';
+      const list = categoryOptions[programEl.value] || [];
+      list.forEach(opt => {
+        const o = document.createElement('option'); o.textContent = opt; categoryEl.appendChild(o);
+      });
+    });
+
+    // Quebec CSQ show/hide
+    const destProv = document.getElementById('dest_province');
+    const qcBlock = document.getElementById('qc-block');
+    destProv.addEventListener('input', () => {
+      const v = (destProv.value||'').toLowerCase();
+      qcBlock.classList.toggle('hidden', v !== 'quebec');
+    });
+
+    // Other names
+    const otherNames = document.getElementById('other_names');
+    const otherNamesBlock = document.getElementById('other_names_block');
+    otherNames.addEventListener('change',()=>{
+      otherNamesBlock.classList.toggle('hidden', otherNames.value !== 'Yes');
+    });
+
+    // Current residence status other
+    const resStatus = document.getElementById('res_status');
+    const resStatusOtherBlock = document.getElementById('res_status_other_block');
+    resStatus.addEventListener('change',()=>{
+      resStatusOtherBlock.classList.toggle('hidden', resStatus.value !== 'Other');
+    });
+
+    // Residential same toggle
+    const resSame = document.getElementById('res_same');
+    const resAddr = document.getElementById('res-addr');
+    resSame.addEventListener('change',()=>{
+      resAddr.classList.toggle('hidden', resSame.value !== 'No');
+    });
+
+    // Passport & NID show/hide
+    const hasPassport = document.getElementById('has_passport');
+    const passportBlock = document.getElementById('passport_block');
+    hasPassport.addEventListener('change',()=>{
+      passportBlock.classList.toggle('hidden', hasPassport.value !== 'Yes');
+    });
+
+    const hasNid = document.getElementById('has_nid');
+    const nidBlock = document.getElementById('nid_block');
+    hasNid.addEventListener('change',()=>{
+      nidBlock.classList.toggle('hidden', hasNid.value !== 'Yes');
+    });
+
+    // Language: both -> most at ease
+    const ability = document.getElementById('eng_fr_ability');
+    const atEaseBlock = document.getElementById('most_at_ease_block');
+    ability.addEventListener('change',()=>{
+      atEaseBlock.classList.toggle('hidden', ability.value !== 'Both');
+    });
+
+    // Previous union section
+    const prevUnion = document.getElementById('prev_union');
+    const prevPartners = document.getElementById('prev-partners');
+    prevUnion.addEventListener('change',()=>{
+      prevPartners.classList.toggle('hidden', prevUnion.value !== 'Yes');
+    });
+
+    // Previous residences repeater (principal)
+    const prevResWrap = document.getElementById('prev-residences');
+    const prevResTpl = document.getElementById('prev-res-template');
+    document.getElementById('add-prev-res').addEventListener('click', ()=>{
+      const node = prevResTpl.content.cloneNode(true);
+      prevResWrap.appendChild(node);
+    });
+    prevResWrap.addEventListener('click', (e)=>{
+      if(e.target.classList.contains('remove-prev')){
+        e.target.closest('.prev-res').remove();
+      }
+    });
+
+    // Dependants repeater
+    const depList = document.getElementById('dependant-list');
+    const depTpl = document.getElementById('dependant-template');
+    document.getElementById('add-dependant').addEventListener('click', ()=>{
+      const count = depList.querySelectorAll('.dep').length;
+      if(count >= 5){ alert('You can add up to 5 dependants in this form.'); return; }
+      const node = depTpl.content.cloneNode(true);
+      depList.appendChild(node);
+    });
+    depList.addEventListener('click', (e)=>{
+      if(e.target.classList.contains('remove-dep')){
+        e.target.closest('.dep').remove();
+      }
+      if(e.target.classList.contains('add-dep-prev')){
+        const block = e.target.closest('.dep').querySelector('.dep-prev-list');
+        const clone = prevResTpl.content.cloneNode(true);
+        block.appendChild(clone);
+      }
+      if(e.target.classList.contains('remove-prev')){
+        e.target.closest('.prev-res').remove();
+      }
+    });
+
+    // Submission handler (demo)
+    document.getElementById('imm0008').addEventListener('submit',(e)=>{
+      e.preventDefault();
+      alert('Form captured. Connect to your backend to save/submit.');
+    });
+  </script>
+</body>
+</html>
