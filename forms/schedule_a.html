@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة المستندات المطلوبة - الزوج (بما في ذلك الأطفال المعالين)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+        .main-content {
+            flex: 3;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .saved-sessions {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: right;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"], 
+        input[type="date"], 
+        input[type="email"], 
+        textarea, 
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .checkbox-item {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .checkbox-item label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .checkbox-item .subtext {
+            font-size: 0.9em;
+            color: #666;
+            margin: 5px 0;
+        }
+        .required {
+            color: red;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        .btn-success {
+            background-color: #2ecc71;
+        }
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+        .save-section {
+            background-color: #e7f4fe;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .instructions {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffc107;
+        }
+        .session-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .session-item {
+            padding: 10px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .session-item:hover {
+            background: #e9ecef;
+        }
+        .session-name {
+            cursor: pointer;
+            flex-grow: 1;
+        }
+        .session-actions {
+            display: flex;
+            gap: 5px;
+        }
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        @media print {
+            .save-section, .instructions, button, .saved-sessions {
+                display: none;
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <h1>قائمة المستندات المطلوبة - الزوج (بما في ذلك الأطفال المعالين)</h1>
+            
+            <div class="instructions">
+                <h3>تعليمات هامة:</h3>
+                <p>1. يجب على مقدم الطلب والكفيل تعبئة النموذج بالمعلومات المطلوبة.</p>
+                <p>2. لحفظ البيانات، املأ الحقول ثم اضغط على زر "حفظ البيانات".</p>
+                <p>3. لاسترجاع البيانات المحفوظة سابقاً، اكتب اسم الجلسة ثم اضغط على زر "تحميل البيانات" أو انقر على الجلسة من القائمة.</p>
+                <p>4. يمكنك طباعة النموذج بعد تعبئته باستخدام أمر الطباعة في متصفحك.</p>
+            </div>
+
+            <form id="documentChecklistForm">
+                <!-- المعلومات الأساسية -->
+                <div class="section">
+                    <h2>معلومات حول الفحص السابق (ليتم تعبئتها من قبل الكفيل)</h2>
+                    <p>الشخص الذي أقوم بكفالته تم الإعلان عنه كزوج أو شريك وكان قد تم فحصه كمعال غير مرافق عندما تقدمت بطلب للحصول على تأشيرة الإقامة الدائمة، ولم يحصل على تأشيرة مهاجر.</p>
+                    <div>
+                        <input type="radio" id="previousExaminationNo" name="previousExamination" value="no" checked>
+                        <label for="previousExaminationNo">لا</label>
+                        <input type="radio" id="previousExaminationYes" name="previousExamination" value="yes">
+                        <label for="previousExaminationYes">نعم</label>
+                    </div>
+                </div>
+
+                <!-- الجزء أ: النماذج المطلوبة -->
+                <div class="section">
+                    <h2>الجزء أ: النماذج المطلوبة</h2>
+                    
+                    <h3>قائمة المستندات للكفيل ومقدم الطلب الرئيسي</h3>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="checklist" name="checklist">
+                        <label for="checklist">1. قائمة المستندات - الزوج (بما في ذلك الأطفال المعالين) (IMM 5533)</label>
+                        <div class="subtext">يجب تحميل هذه القائمة مع طلبك.</div>
+                    </div>
+                    
+                    <h3>الكفيل</h3>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="imm1344" name="imm1344">
+                        <label for="imm1344">2. طلب الكفالة، اتفاقية الكفالة والالتزام (IMM 1344)</label>
+                        <div class="subtext">يجب تعبئتها وتوقيعها من قبلك (الكفيل) والشخص الذي تكفله.</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="fees" name="fees">
+                        <label for="fees">3. رسوم الطلب</label>
+                        <div class="subtext">إرفاق إيصال واحد برسوم الكفالة ورسوم الطلب ورسوم القياسات الحيوية.</div>
+                        
+                        <div>
+                            <input type="checkbox" id="rprf" name="rprf">
+                            <label for="rprf">رسوم الحق في الإقامة الدائمة (RPRF):</label>
+                            <div class="subtext">حدد هذا المربع إذا كنت تدفع هذه الرسوم الآن.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="imm1283" name="imm1283">
+                        <label for="imm1283">4. التقييم المالي (IMM 1283)</label>
+                        <div class="subtext">فقط إذا كان الشخص الذي تكفله (زوجك) لديه طفل معال واحد أو أكثر.</div>
+                    </div>
+                    
+                    <h3>الأشخاص المكفولين (مقدم الطلب الرئيسي وأفراد الأسرة)</h3>
+                    
+                    <div class="checkbox-item">
+                        <h4>5. فئة الطلب</h4>
+                        <div>
+                            <input type="radio" id="inCanadaClass" name="applicationClass" value="inCanada">
+                            <label for="inCanadaClass">أنا أعيش حالياً في كندا مع كفيلي، وأتقدم بطلب تحت فئة الزوج أو الشريك العادي في كندا.</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="familyClassOutside" name="applicationClass" value="familyOutside">
+                            <label for="familyClassOutside">أنا أعيش حالياً خارج كندا، وأتقدم بطلب تحت فئة الأسرة.</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="familyClassInside" name="applicationClass" value="familyInside">
+                            <label for="familyClassInside">أنا أعيش حالياً في كندا، وأتقدم بطلب تحت فئة الأسرة (وليس تحت فئة الزوج أو الشريك العادي في كندا).</label>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="imm0008" name="imm0008">
+                        <label for="imm0008">6. النموذج العام للطلب لكندا (IMM 0008)</label>
+                        <div class="subtext">يجب على مقدم الطلب الرئيسي تعبئة هذا النموذج لنفسه ولمعاليه.</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="countryRequirements" name="countryRequirements">
+                        <label for="countryRequirements">7. متطلبات خاصة بالبلد</label>
+                        <div class="subtext">يجب التحقق من المتطلبات الخاصة بالبلد لتأكيد ما إذا كانت هناك نماذج إضافية مطلوبة.</div>
+                        <textarea id="additionalForms" name="additionalForms" placeholder="اذكر أي نماذج إضافية تقدمها هنا (ابدأ برقم النموذج IMM)، أو اكتب N/A إذا لم يكن لديك نماذج إضافية"></textarea>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="imm5406" name="imm5406">
+                        <label for="imm5406">8. معلومات عائلية إضافية (IMM 5406)</label>
+                        <div class="subtext">يجب على مقدم الطلب الرئيسي وأي من أفراد أسرته الذين تبلغ أعمارهم 18 سنة أو أكثر تعبئة هذا النموذج.</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="imm5669" name="imm5669">
+                        <label for="imm5669">9. الجدول الزمني أ - الخلفية / الإقرار (IMM 5669)</label>
+                        <div class="subtext">يجب على مقدم الطلب الرئيسي وأي من أفراد أسرته الذين تبلغ أعمارهم 18 سنة أو أكثر تعبئة هذا النموذج.</div>
+                    </div>
+                    
+                    <h3>كلا الكفيل ومقدم الطلب الرئيسي</h3>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="imm5532" name="imm5532">
+                        <label for="imm5532">10. معلومات العلاقة وتقييم الكفالة (IMM 5532)</label>
+                        <div class="subtext">يجب على الكفيل ومقدم الطلب الرئيسي تعبئة النموذج والتوقيع حيثما هو مبين.</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <h4>11. استخدام الممثل (IMM 5476)</h4>
+                        <div>
+                            <input type="radio" id="noRepresentative" name="representative" value="no" checked>
+                            <label for="noRepresentative">أنا لا أعين ممثلاً.</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="withRepresentative" name="representative" value="yes">
+                            <label for="withRepresentative">أنا أعين ممثلاً. يجب تعبئة نموذج IMM 5476 - استخدام الممثل</label>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <h4>12. التفويض بالإفصاح عن المعلومات الشخصية إلى فرد معين (IMM 5475)</h4>
+                        <div>
+                            <input type="radio" id="noReleaseAuth" name="releaseAuth" value="no" checked>
+                            <label for="noReleaseAuth">لا ينطبق. الانتقال إلى الجزء ب من القائمة.</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="withReleaseAuth" name="releaseAuth" value="yes">
+                            <label for="withReleaseAuth">أريد تفويض IRCC بالإفصاح عن المعلومات الشخصية إلى فرد معين. يجب تعبئة نموذج IMM 5475</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الجزء ب: المستندات الداعمة المطلوبة -->
+                <div class="section">
+                    <h2>الجزء ب: المستندات الداعمة المطلوبة</h2>
+                    
+                    <h3>مستندات داعمة للكفيل</h3>
+                    
+                    <div class="checkbox-item">
+                        <h4>1. الوضع في كندا</h4>
+                        <div>
+                            <input type="radio" id="prStatus" name="canadaStatus" value="pr">
+                            <label for="prStatus">أنا مقيم دائم في كندا:</label>
+                            <div class="subtext">يجب تقديم صورة عن بطاقة الإقامة الدائمة (كلا الجانبين) أو تأكيد الإقامة الدائمة.</div>
+                        </div>
+                        <div>
+                            <input type="radio" id="citizenStatus" name="canadaStatus" value="citizen">
+                            <label for="citizenStatus">أنا مواطن كندي:</label>
+                            <div class="subtext">تقديم صورة عن واحدة من الوثائق الأربعة التالية.</div>
+                        </div>
+                        <div>
+                            <input type="radio" id="indianStatus" name="canadaStatus" value="indian">
+                            <label for="indianStatus">أنا من الهنود:</label>
+                            <div class="subtext">تقديم نسخة من بطاقة وضع الهندي.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="livingOutsideCanada" name="livingOutsideCanada">
+                        <label for="livingOutsideCanada">2. هل أنت (الكفيل) مواطن كندي تعيش خارج كندا؟</label>
+                        <div class="subtext">إذا أجبت بنعم، قدم دليلاً على أنك ستعيش في كندا مع زوجك.</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="canadianChild" name="canadianChild">
+                        <label for="canadianChild">3. هل لديك أنت (الكفيل) والشخص الذي تكفله طفل(أطفال) معاً قد يكون لهم حق في الجنسية الكندية؟</label>
+                        <div class="subtext">إذا أجبت بنعم، يرجى إرفاق نسخة من إحدى الوثائق التالية لكل طفل.</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <h4>4. العلاقات السابقة</h4>
+                        <div>
+                            <input type="checkbox" id="currentlyMarried" name="currentlyMarried">
+                            <label for="currentlyMarried">هل أنت (الكفيل) متزوج حالياً من أي شخص آخر غير الشخص الذي تكفله؟</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="previouslySponsored" name="previouslySponsored">
+                            <label for="previouslySponsored">هل سبق أن تمت كفالتك بنفسك للحصول على الإقامة الدائمة؟</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="previouslyMarried" name="previouslyMarried">
+                            <label for="previouslyMarried">هل سبق أن تزوجت من قبل؟</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="previouslyCommonLaw" name="previouslyCommonLaw">
+                            <label for="previouslyCommonLaw">هل سبق أن كنت في علاقة شائعة القانون؟</label>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="employment" name="employment">
+                        <label for="employment">5. التوظيف/مصدر الدخل</label>
+                        <div class="subtext">لا تكمل هذا القسم إذا كنت مقيمًا في كيبيك.</div>
+                    </div>
+                    
+                    <h3>مستندات داعمة للأشخاص المكفولين (مقدم الطلب الرئيسي وجميع أفراد الأسرة)</h3>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="identityDocs" name="identityDocs">
+                        <label for="identityDocs">1. وثائق الهوية، وثائق السفر وجوازات السفر</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="civilStatus" name="civilStatus">
+                        <label for="civilStatus">2. وثائق الحالة المدنية</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="childrenInfo" name="childrenInfo">
+                        <label for="childrenInfo">3. معلومات إضافية عن الطفل(الأطفال)</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="policeCerts" name="policeCerts">
+                        <label for="policeCerts">4. شهادات الشرطة والتخليص</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="photos" name="photos">
+                        <label for="photos">5. الصور</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="medical" name="medical">
+                        <label for="medical">6. الفحص الطبي</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="relationshipProof" name="relationshipProof">
+                        <label for="relationshipProof">7. إثبات العلاقة مع الكفيل</label>
+                    </div>
+                </div>
+
+                <!-- التوقيعات -->
+                <div class="section">
+                    <h2>التوقيعات</h2>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="signature1" name="signature1">
+                        <label for="signature1">1. طلب الكفالة، اتفاقية الكفالة والالتزام (IMM 1344)</label>
+                        <div class="subtext">يجب التوقيع من قبل: الكفيل ومقدم الطلب الرئيسي</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="signature2" name="signature2">
+                        <label for="signature2">2. النموذج العام للطلب لكندا (IMM 0008)</label>
+                        <div class="subtext">يجب التوقيع من قبل: مقدم الطلب الرئيسي</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="signature3" name="signature3">
+                        <label for="signature3">3. معلومات العلاقة وتقييم الكفالة (IMM 5532)</label>
+                        <div class="subtext">يجب التوقيع من قبل: الكفيل ومقدم الطلب الرئيسي</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="signature4" name="signature4">
+                        <label for="signature4">4. معلومات عائلية إضافية (IMM 5406)</label>
+                        <div class="subtext">يجب التوقيع من قبل: مقدم الطلب الرئيسي وجميع أفراد الأسرة الآخرين</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="signature5" name="signature5">
+                        <label for="signature5">5. الجدول الزمني أ - الخلفية / الإقرار (IMM 5669)</label>
+                        <div class="subtext">يجب التوقيع من قبل: مقدم الطلب الرئيسي وجميع أفراد الأسرة الذين تبلغ أعمارهم 18 سنة أو أكثر</div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="signature6" name="signature6">
+                        <label for="signature6">6. نموذج استخدام الممثل (IMM 5476) - إذا كان ينطبق</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="signature7" name="signature7">
+                        <label for="signature7">7. التفويض بالإفصاح عن المعلومات الشخصية إلى فرد معين (IMM 5475) - إذا كان ينطبق</label>
+                    </div>
+                </div>
+
+                <!-- حفظ البيانات -->
+                <div class="save-section">
+                    <h2>حفظ البيانات واسترجاعها</h2>
+                    <p>لحفظ البيانات، املأ الحقول ثم اضغط على زر "حفظ البيانات".</p>
+                    <p>لاسترجاع البيانات المحفوظة سابقاً، اكتب اسم الجلسة ثم اضغط على زر "تحميل البيانات" أو انقر على الجلسة من القائمة.</p>
+                    
+                    <div>
+                        <input type="text" id="saveHandle" placeholder="اسم الجلسة للحفظ/التحميل">
+                        <button type="button" class="btn btn-success" onclick="saveData()">حفظ البيانات</button>
+                        <button type="button" class="btn" onclick="loadData()">تحميل البيانات</button>
+                    </div>
+                    
+                    <p id="saveMessage" style="color: green; margin-top: 10px;"></p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="button" class="btn" onclick="window.print()">طباعة النموذج</button>
+                    <button type="reset" class="btn btn-danger">مسح النموذج</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- قسم الجلسات المحفوظة -->
+        <div class="saved-sessions">
+            <div class="session-header">
+                <h2>الجلسات المحفوظة</h2>
+                <button type="button" class="btn" onclick="refreshSessions()">🔄 تحديث</button>
+            </div>
+            <p>انقر على أي جلسة لتحميلها:</p>
+            <ul id="sessionsList" class="session-list">
+                <!-- سيتم ملء هذا القسم بالجلسات المحفوظة -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // حفظ البيانات في localStorage
+        function saveData() {
+            const handle = document.getElementById('saveHandle').value.trim();
+            if (!handle) {
+                alert('يرجى إدخال اسم للحفظ');
+                return;
+            }
+            
+            const formData = {};
+            const formElements = document.getElementById('documentChecklistForm').elements;
+            
+            for (let i = 0; i < formElements.length; i++) {
+                const element = formElements[i];
+                if (element.name) {
+                    if (element.type === 'radio' || element.type === 'checkbox') {
+                        formData[element.name] = element.checked ? element.value : '';
+                    } else {
+                        formData[element.name] = element.value;
+                    }
+                }
+            }
+            
+            // إضافة معلومات إضافية عن الجلسة
+            const sessionInfo = {
+                data: formData,
+                timestamp: new Date().toISOString(),
+                name: handle
+            };
+            
+            localStorage.setItem(`documentChecklist_${handle}`, JSON.stringify(sessionInfo));
+            document.getElementById('saveMessage').textContent = 'تم حفظ البيانات بنجاح!';
+            
+            // تحديث قائمة الجلسات
+            refreshSessions();
+            
+            setTimeout(() => {
+                document.getElementById('saveMessage').textContent = '';
+            }, 3000);
+        }
+        
+        // تحميل البيانات من localStorage
+        function loadData(handle = null) {
+            const handleToLoad = handle || document.getElementById('saveHandle').value.trim();
+            if (!handleToLoad) {
+                alert('يرجى إدخال اسم للتحميل');
+                return;
+            }
+            
+            const savedData = localStorage.getItem(`documentChecklist_${handleToLoad}`);
+            if (!savedData) {
+                alert('لا توجد بيانات محفوظة بهذا الاسم');
+                return;
+            }
+            
+            const sessionInfo = JSON.parse(savedData);
+            const formData = sessionInfo.data;
+            const formElements = document.getElementById('documentChecklistForm').elements;
+            
+            for (let i = 0; i < formElements.length; i++) {
+                const element = formElements[i];
+                if (element.name && formData[element.name] !== undefined) {
+                    if (element.type === 'radio') {
+                        if (element.value === formData[element.name]) {
+                            element.checked = true;
+                        }
+                    } else if (element.type === 'checkbox') {
+                        element.checked = !!formData[element.name];
+                    } else {
+                        element.value = formData[element.name];
+                    }
+                }
+            }
+            
+            document.getElementById('saveMessage').textContent = 'تم تحميل البيانات بنجاح!';
+            
+            setTimeout(() => {
+                document.getElementById('saveMessage').textContent = '';
+            }, 3000);
+        }
+        
+        // عرض الجلسات المحفوظة
+        function refreshSessions() {
+            const sessionsList = document.getElementById('sessionsList');
+            sessionsList.innerHTML = '';
+            
+            let hasSessions = false;
+            
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('documentChecklist_')) {
+                    hasSessions = true;
+                    const sessionInfo = JSON.parse(localStorage.getItem(key));
+                    const handle = key.replace('documentChecklist_', '');
+                    
+                    const li = document.createElement('li');
+                    li.className = 'session-item';
+                    
+                    const sessionDate = new Date(sessionInfo.timestamp).toLocaleString('ar-EG');
+                    
+                    li.innerHTML = `
+                        <span class="session-name" onclick="loadData('${handle}')">
+                            ${handle} (${sessionDate})
+                        </span>
+                        <div class="session-actions">
+                            <button class="btn btn-danger" onclick="deleteSession('${handle}')">×</button>
+                        </div>
+                    `;
+                    
+                    sessionsList.appendChild(li);
+                }
+            }
+            
+            if (!hasSessions) {
+                sessionsList.innerHTML = '<li>لا توجد جلسات محفوظة</li>';
+            }
+        }
+        
+        // حذف جلسة
+        function deleteSession(handle) {
+            if (confirm(`هل أنت متأكد من أنك تريد حذف الجلسة "${handle}"؟`)) {
+                localStorage.removeItem(`documentChecklist_${handle}`);
+                refreshSessions();
+            }
+        }
+        
+        // تحديث قائمة الجلسات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshSessions();
+        });
+    </script>
+</body>
+</html>
