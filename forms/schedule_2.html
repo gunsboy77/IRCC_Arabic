@@ -9,17 +9,31 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f9f9f9;
+            background-color: #f5f7fa;
             margin: 0;
             padding: 20px;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+        .main-content {
+            flex: 3;
             background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .saved-sessions {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-height: 600px;
+            overflow-y: auto;
         }
         h1, h2, h3 {
             color: #2c3e50;
@@ -78,9 +92,22 @@
             cursor: pointer;
             font-size: 16px;
             margin: 5px;
+            transition: background-color 0.3s;
         }
         .btn:hover {
             background-color: #2980b9;
+        }
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        .btn-success {
+            background-color: #2ecc71;
+        }
+        .btn-success:hover {
+            background-color: #27ae60;
         }
         .save-section {
             background-color: #e7f4fe;
@@ -105,420 +132,470 @@
         .language-table th, .language-table td {
             text-align: center;
         }
+        .session-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .session-item {
+            padding: 10px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .session-item:hover {
+            background: #e9ecef;
+        }
+        .session-name {
+            cursor: pointer;
+            flex-grow: 1;
+        }
+        .session-actions {
+            display: flex;
+            gap: 5px;
+        }
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
         @media print {
-            .save-section, .instructions, button {
+            .save-section, .instructions, button, .saved-sessions {
                 display: none;
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>نموذج الجدول 2 - اللاجئون خارج كندا</h1>
-        
-        <div class="instructions">
-            <h3>تعليمات هامة:</h3>
-            <p>1. يجب على مقدم الطلب الرئيسي وكل فرد من أفراد الأسرة الذين تبلغ أعمارهم 18 سنة فأكثر تعبئة نسخة خاصة بهم من هذا النموذج.</p>
-            <p>2. لحفظ البيانات، املأ الحقول ثم اضغط على زر "حفظ البيانات".</p>
-            <p>3. لاسترجاع البيانات المحفوظة سابقاً، اكتب الاسم الأول ثم اضغط على زر "تحميل البيانات".</p>
-            <p>4. يمكنك طباعة النموذج بعد تعبئته باستخدام أمر الطباعة في متصفحك.</p>
+        <div class="main-content">
+            <h1>نموذج الجدول 2 - اللاجئون خارج كندا</h1>
+            
+            <div class="instructions">
+                <h3>تعليمات هامة:</h3>
+                <p>1. يجب على مقدم الطلب الرئيسي وكل فرد من أفراد الأسرة الذين تبلغ أعمارهم 18 سنة فأكثر تعبئة نسخة خاصة بهم من هذا النموذج.</p>
+                <p>2. لحفظ البيانات، املأ الحقول ثم اضغط على زر "حفظ البيانات".</p>
+                <p>3. لاسترجاع البيانات المحفوظة سابقاً، اكتب الاسم الأول ثم اضغط على زر "تحميل البيانات" أو انقر على الجلسة من القائمة.</p>
+                <p>4. يمكنك طباعة النموذج بعد تعبئته باستخدام أمر الطباعة في متصفحك.</p>
+            </div>
+
+            <form id="schedule2Form">
+                <!-- المعلومات الأساسية -->
+                <div class="section">
+                    <h2>المعلومات الأساسية</h2>
+                    <table>
+                        <tr>
+                            <th>أنا</th>
+                            <td>
+                                <select id="applicantType" name="applicantType" required>
+                                    <option value="principal">مقدم الطلب الرئيسي</option>
+                                    <option value="family">فرد من العائلة</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>الاسم الأخير (العائلة)</th>
+                            <td><input type="text" id="familyName" name="familyName" required></td>
+                        </tr>
+                        <tr>
+                            <th>الاسم الأول</th>
+                            <td><input type="text" id="givenNames" name="givenNames" required></td>
+                        </tr>
+                        <tr>
+                            <th>تاريخ الميلاد (YYYY-MM-DD)</th>
+                            <td><input type="date" id="dateOfBirth" name="dateOfBirth" required></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- الجزء أ: الرواية -->
+                <div class="section">
+                    <h2>الجزء أ: الرواية</h2>
+                    
+                    <h3>1. وصف الأحداث</h3>
+                    <p>يرجى وصف الأحداث المحددة التي أدت إلى فرارك من بلدك الأصلي بأكبر قدر ممكن من التفاصيل.</p>
+                    <textarea id="caseNarrative" name="caseNarrative" required></textarea>
+                    
+                    <h3>2. تفاصيل المغادرة</h3>
+                    <p>أ) صف بالترتيب الزمني متى غادرت أنت وأفراد عائلتك منزلك وما هي الطريق التي سلكتموها.</p>
+                    <textarea id="departureDetails" name="departureDetails" required></textarea>
+                    
+                    <p>ب) هل يمكنك العودة إلى بلدك الأصلي؟ إذا لا، فلماذا؟</p>
+                    <textarea id="returnPossibility" name="returnPossibility" required></textarea>
+                    
+                    <p>ج) منذ وصولك إلى البلد الذي تعيش فيه الآن، هل عدت إلى بلدك الأصلي، حتى لو لفترة وجيزة؟</p>
+                    <textarea id="returnHistory" name="returnHistory" required></textarea>
+                    
+                    <h3>3. الوضع الحالي</h3>
+                    <p>أ) في البلد الذي تعيش فيه الآن، هل لديك الحق في العمل أو الذهاب إلى المدرسة أو التحرك بحرية؟</p>
+                    <textarea id="currentRights" name="currentRights" required></textarea>
+                    
+                    <p>ب) منذ وصولك إلى البلد الذي تعيش فيه الآن، كيف قمت بإعالة نفسك وعائلتك (إذا كان ذلك ينطبق)؟</p>
+                    <textarea id="supportMeans" name="supportMeans" required></textarea>
+                    
+                    <h3>4. معلومات أخرى</h3>
+                    <p>إذا كان هناك أي معلومات أخرى تعتقد أنها قد تكون ذات صلة بقضيتك، يرجى ذكرها هنا.</p>
+                    <textarea id="additionalInfo" name="additionalInfo"></textarea>
+                </div>
+
+                <!-- الجزء ب: وضع الهجرة وقدرات التوطين -->
+                <div class="section">
+                    <h2>الجزء ب: وضع الهجرة وقدرات التوطين</h2>
+                    
+                    <h3>5. طلبات إعادة التوطين السابقة</h3>
+                    <p>أ) هل تقدمت مسبقًا بطلب لإعادة التوطين بموجب برنامج إعادة توطين اللاجئين والإغاثة الإنسانية الكندي؟</p>
+                    <div class="checkbox-group">
+                        <input type="radio" id="prevApplicationYes" name="prevApplication" value="yes">
+                        <label for="prevApplicationYes">نعم</label>
+                        <input type="radio" id="prevApplicationNo" name="prevApplication" value="no" checked>
+                        <label for="prevApplicationNo">لا</label>
+                    </div>
+                    
+                    <div id="prevApplicationDetails" style="display:none;">
+                        <p>ب) متى وأين تقدمت بالطلب؟ وما كانت النتيجة؟</p>
+                        <textarea id="prevApplicationWhenWhere" name="prevApplicationWhenWhere"></textarea>
+                        
+                        <p>ج) هل تغيرت ظروفك منذ تقديمك السابق؟ إذا كان الأمر كذلك، يرجى وصف كيف.</p>
+                        <textarea id="prevApplicationChanges" name="prevApplicationChanges"></textarea>
+                    </div>
+                    
+                    <h3>6. طلبات اللجوء</h3>
+                    <p>أ) هل سبق أن تم رفض منحك وضع اللاجئ من قبل أي دولة بما في ذلك البلد الذي تعيش فيه حالياً؟</p>
+                    <div class="checkbox-group">
+                        <input type="radio" id="refusedStatusYes" name="refusedStatus" value="yes">
+                        <label for="refusedStatusYes">نعم</label>
+                        <input type="radio" id="refusedStatusNo" name="refusedStatus" value="no" checked>
+                        <label for="refusedStatusNo">لا</label>
+                    </div>
+                    
+                    <p>ب) بخلاف هذا الطلب، هل لديك حالياً طلب لجوء قيد المعالجة في أي بلد آخر بما في ذلك البلد الذي تعيش فيه حالياً؟</p>
+                    <div class="checkbox-group">
+                        <input type="radio" id="currentApplicationYes" name="currentApplication" value="yes">
+                        <label for="currentApplicationYes">نعم</label>
+                        <input type="radio" id="currentApplicationNo" name="currentApplication" value="no" checked>
+                        <label for="currentApplicationNo">لا</label>
+                    </div>
+                    
+                    <div id="refugeeDetails" style="display:none;">
+                        <p>يرجى تقديم أكبر قدر ممكن من التفاصيل، بما في ذلك التواريخ والأماكن ووصف الظروف:</p>
+                        <textarea id="refugeeDetailsText" name="refugeeDetailsText"></textarea>
+                    </div>
+                    
+                    <p>ج) هل سبق أن تقدمت بطلب للحصول على وضع اللاجئ إلى مفوضية الأمم المتحدة السامية لشؤون اللاجئين (UNHCR) في أي بلد؟</p>
+                    <div class="checkbox-group">
+                        <input type="radio" id="unhcrApplicationYes" name="unhcrApplication" value="yes">
+                        <input type="radio" id="unhcrApplicationNo" name="unhcrApplication" value="no" checked>
+                        <label for="unhcrApplicationNo">لا</label>
+                    </div>
+                    
+                    <p>د) هل لديك حالياً طلب هجرة قيد المعالجة إلى أي بلد (مثال: لم الشمل العائلي أو الفئات الاقتصادية)؟</p>
+                    <textarea id="otherImmigration" name="otherImmigration"></textarea>
+                    
+                    <h3>7. المعلومات الشخصية</h3>
+                    <p>أ) ما هو وضع الهجرة الخاص بك وأفراد عائلتك في بلد إقامتك الحالي؟</p>
+                    <textarea id="currentStatus" name="currentStatus" required></textarea>
+                    
+                    <p>ب) هل تتحدث أو تقرأ أو تكتب أو تفهم الإنجليزية أو الفرنسية؟</p>
+                    
+                    <h4>الإنجليزية</h4>
+                    <table class="language-table">
+                        <tr>
+                            <th></th>
+                            <th>مرتفع</th>
+                            <th>متوسط</th>
+                            <th>منخفض</th>
+                            <th>لا شيء</th>
+                        </tr>
+                        <tr>
+                            <td>التحدث</td>
+                            <td><input type="radio" name="englishSpeak" value="high"></td>
+                            <td><input type="radio" name="englishSpeak" value="moderate"></td>
+                            <td><input type="radio" name="englishSpeak" value="low"></td>
+                            <td><input type="radio" name="englishSpeak" value="none" checked></td>
+                        </tr>
+                        <tr>
+                            <td>القراءة</td>
+                            <td><input type="radio" name="englishRead" value="high"></td>
+                            <td><input type="radio" name="englishRead" value="moderate"></td>
+                            <td><input type="radio" name="englishRead" value="low"></td>
+                            <td><input type="radio" name="englishRead" value="none" checked></td>
+                        </tr>
+                        <tr>
+                            <td>الكتابة</td>
+                            <td><input type="radio" name="englishWrite" value="high"></td>
+                            <td><input type="radio" name="englishWrite" value="moderate"></td>
+                            <td><input type="radio" name="englishWrite" value="low"></td>
+                            <td><input type="radio" name="englishWrite" value="none" checked></td>
+                        </tr>
+                        <tr>
+                            <td>الفهم</td>
+                            <td><input type="radio" name="englishUnderstand" value="high"></td>
+                            <td><input type="radio" name="englishUnderstand" value="moderate"></td>
+                            <td><input type="radio" name="englishUnderstand" value="low"></td>
+                            <td><input type="radio" name="englishUnderstand" value="none" checked></td>
+                        </tr>
+                    </table>
+                    
+                    <h4>الفرنسية</h4>
+                    <table class="language-table">
+                        <tr>
+                            <th></th>
+                            <th>مرتفع</th>
+                            <th>متوسط</th>
+                            <th>منخفض</th>
+                            <th>لا شيء</th>
+                        </tr>
+                        <tr>
+                            <td>التحدث</td>
+                            <td><input type="radio" name="frenchSpeak" value="high"></td>
+                            <td><input type="radio" name="frenchSpeak" value="moderate"></td>
+                            <td><input type="radio" name="frenchSpeak" value="low"></td>
+                            <td><input type="radio" name="frenchSpeak" value="none" checked></td>
+                        </tr>
+                        <tr>
+                            <td>القراءة</td>
+                            <td><input type="radio" name="frenchRead" value="high"></td>
+                            <td><input type="radio" name="frenchRead" value="moderate"></td>
+                            <td><input type="radio" name="frenchRead" value="low"></td>
+                            <td><input type="radio" name="frenchRead" value="none" checked></td>
+                        </tr>
+                        <tr>
+                            <td>الكتابة</td>
+                            <td><input type="radio" name="frenchWrite" value="high"></td>
+                            <td><input type="radio" name="frenchWrite" value="moderate"></td>
+                            <td><input type="radio" name="frenchWrite" value="low"></td>
+                            <td><input type="radio" name="frenchWrite" value="none" checked></td>
+                        </tr>
+                        <tr>
+                            <td>الفهم</td>
+                            <td><input type="radio" name="frenchUnderstand" value="high"></td>
+                            <td><input type="radio" name="frenchUnderstand" value="moderate"></td>
+                            <td><input type="radio" name="frenchUnderstand" value="low"></td>
+                            <td><input type="radio" name="frenchUnderstand" value="none" checked></td>
+                        </tr>
+                    </table>
+                    
+                    <p>ج) يرجى الإشارة إلى جميع اللغات التي يمكنك التحدث بها بشكل معتدل أو أفضل.</p>
+                    <textarea id="otherLanguages" name="otherLanguages"></textarea>
+                    
+                    <p>د) اذكر أمثلة على أي خبرة عمل أو مهارات و/أو صفات شخصية من شأنها مساعدتك في التوطين بنجاح في كندا.</p>
+                    <textarea id="skills" name="skills"></textarea>
+                </div>
+
+                <!-- الجزء ج: معلومات عائلية إضافية -->
+                <div class="section">
+                    <h2>الجزء ج: معلومات عائلية إضافية</h2>
+                    
+                    <h3>8. المعلومات الشخصية الأساسية</h3>
+                    <table>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>العلاقة</th>
+                            <th>تاريخ الميلاد (YYYY-MM-DD)</th>
+                            <th>مدينة وبلد الميلاد</th>
+                            <th>الحالة الاجتماعية</th>
+                            <th>تاريخ الوفاة (إذا متوفي)</th>
+                            <th>العنوان الحالي</th>
+                            <th>البريد الإلكتروني</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="yourselfName"></td>
+                            <td>نفسك</td>
+                            <td><input type="date" name="yourselfDOB"></td>
+                            <td><input type="text" name="yourselfBirthPlace"></td>
+                            <td><input type="text" name="yourselfMaritalStatus"></td>
+                            <td><input type="date" name="yourselfDeathDate"></td>
+                            <td><input type="text" name="yourselfAddress"></td>
+                            <td><input type="email" name="yourselfEmail"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="spouseName"></td>
+                            <td>زوجك/شريكك</td>
+                            <td><input type="date" name="spouseDOB"></td>
+                            <td><input type="text" name="spouseBirthPlace"></td>
+                            <td><input type="text" name="spouseMaritalStatus"></td>
+                            <td><input type="date" name="spouseDeathDate"></td>
+                            <td><input type="text" name="spouseAddress"></td>
+                            <td><input type="email" name="spouseEmail"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="motherName"></td>
+                            <td>الأم</td>
+                            <td><input type="date" name="motherDOB"></td>
+                            <td><input type="text" name="motherBirthPlace"></td>
+                            <td><input type="text" name="motherMaritalStatus"></td>
+                            <td><input type="date" name="motherDeathDate"></td>
+                            <td><input type="text" name="motherAddress"></td>
+                            <td><input type="email" name="motherEmail"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="fatherName"></td>
+                            <td>الأب</td>
+                            <td><input type="date" name="fatherDOB"></td>
+                            <td><input type="text" name="fatherBirthPlace"></td>
+                            <td><input type="text" name="fatherMaritalStatus"></td>
+                            <td><input type="date" name="fatherDeathDate"></td>
+                            <td><input type="text" name="fatherAddress"></td>
+                            <td><input type="email" name="fatherEmail"></td>
+                        </tr>
+                    </table>
+                    
+                    <h3>9. الأطفال</h3>
+                    <table id="childrenTable">
+                        <tr>
+                            <th>الاسم</th>
+                            <th>العلاقة</th>
+                            <th>تاريخ الميلاد (YYYY-MM-DD)</th>
+                            <th>مدينة وبلد الميلاد</th>
+                            <th>الحالة الاجتماعية</th>
+                            <th>تاريخ الوفاة (إذا متوفي)</th>
+                            <th>العنوان الحالي</th>
+                            <th>البريد الإلكتروني</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="child1Name"></td>
+                            <td><input type="text" name="child1Relationship"></td>
+                            <td><input type="date" name="child1DOB"></td>
+                            <td><input type="text" name="child1BirthPlace"></td>
+                            <td><input type="text" name="child1MaritalStatus"></td>
+                            <td><input type="date" name="child1DeathDate"></td>
+                            <td><input type="text" name="child1Address"></td>
+                            <td><input type="email" name="child1Email"></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn" onclick="addRow('childrenTable')">+ إضافة طفل</button>
+                    
+                    <h3>10. الإخوة والأخوات</h3>
+                    <table id="siblingsTable">
+                        <tr>
+                            <th>الاسم</th>
+                            <th>العلاقة</th>
+                            <th>تاريخ الميلاد (YYYY-MM-DD)</th>
+                            <th>مدينة وبلد الميلاد</th>
+                            <th>الحالة الاجتماعية</th>
+                            <th>تاريخ الوفاة (إذا متوفي)</th>
+                            <th>العنوان الحالي</th>
+                            <th>البريد الإلكتروني</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="sibling1Name"></td>
+                            <td><input type="text" name="sibling1Relationship"></td>
+                            <td><input type="date" name="sibling1DOB"></td>
+                            <td><input type="text" name="sibling1BirthPlace"></td>
+                            <td><input type="text" name="sibling1MaritalStatus"></td>
+                            <td><input type="date" name="sibling1DeathDate"></td>
+                            <td><input type="text" name="sibling1Address"></td>
+                            <td><input type="email" name="sibling1Email"></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn" onclick="addRow('siblingsTable')">+ إضافة أخ/أخت</button>
+                    
+                    <h3>11. الأقارب في كندا</h3>
+                    <table id="relativesTable">
+                        <tr>
+                            <th>الاسم</th>
+                            <th>العلاقة</th>
+                            <th>رقم الهاتف</th>
+                            <th>المدينة والمقاطعة الحالية</th>
+                            <th>البريد الإلكتروني</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="relative1Name"></td>
+                            <td><input type="text" name="relative1Relationship"></td>
+                            <td><input type="text" name="relative1Phone"></td>
+                            <td><input type="text" name="relative1Address"></td>
+                            <td><input type="email" name="relative1Email"></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn" onclick="addRelativeRow()">+ إضافة قريب</button>
+                </div>
+
+                <!-- الجزء د: الموافقة والإقرار -->
+                <div class="section">
+                    <h2>الجزء د: الموافقة والإقرار</h2>
+                    
+                    <h3>12. الموافقة على مشاركة المعلومات</h3>
+                    <p>أقر بأن جميع المعلومات الشخصية المقدمة في هذا الطلب سيتم جمعها من قبل الهجرة واللاجئين والمواطنة الكندية (IRCC) بموجب سلطة قانون الهجرة وحماية اللاجئين وستستخدم لغرض تقييم واتخاذ قرار بشأن طلبك للإقامة الدائمة في كندا وفقًا لمتطلبات القانون، وتسهيل توطينك في كندا إذا تم اختيارك.</p>
+                    
+                    <h3>13. المساعدة في إكمال الطلب</h3>
+                    <p>أ) هل تلقيت مساعدة في ملء استمارات الطلب؟</p>
+                    <div class="checkbox-group">
+                        <input type="radio" id="assistanceYes" name="assistance" value="yes">
+                        <label for="assistanceYes">نعم</label>
+                        <input type="radio" id="assistanceNo" name="assistance" value="no" checked>
+                        <label for="assistanceNo">لا</label>
+                    </div>
+                    
+                    <div id="assistanceDetails" style="display:none;">
+                        <p>ما هو اسم الشخص أو المنظمة التي ساعدتك؟</p>
+                        <input type="text" id="assistorName" name="assistorName">
+                        
+                        <p>ب) هل دفعت للشخص/المنظمة؟</p>
+                        <div class="checkbox-group">
+                            <input type="radio" id="paidYes" name="paid" value="yes">
+                            <label for="paidYes">نعم</label>
+                            <input type="radio" id="paidNo" name="paid" value="no" checked>
+                            <label for="paidNo">لا</label>
+                        </div>
+                    </div>
+                    
+                    <h3>14. إقرار مقدم الطلب</h3>
+                    <p>أقر بأن المعلومات التي قدمتها صحيحة وكاملة وصحيحة.</p>
+                    
+                    <table>
+                        <tr>
+                            <th>توقيع مقدم الطلب</th>
+                            <td><input type="text" id="signature" name="signature" required></td>
+                        </tr>
+                        <tr>
+                            <th>التاريخ (YYYY-MM-DD)</th>
+                            <td><input type="date" id="signatureDate" name="signatureDate" required></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- حفظ البيانات -->
+                <div class="save-section">
+                    <h2>حفظ البيانات واسترجاعها</h2>
+                    <p>لحفظ البيانات، املأ الحقول ثم اضغط على زر "حفظ البيانات".</p>
+                    <p>لاسترجاع البيانات المحفوظة سابقاً، اكتب الاسم الأول ثم اضغط على زر "تحميل البيانات" أو انقر على الجلسة من القائمة.</p>
+                    
+                    <div>
+                        <input type="text" id="saveHandle" placeholder="الاسم الأول للحفظ/التحميل">
+                        <button type="button" class="btn btn-success" onclick="saveData()">حفظ البيانات</button>
+                        <button type="button" class="btn" onclick="loadData()">تحميل البيانات</button>
+                    </div>
+                    
+                    <p id="saveMessage" style="color: green; margin-top: 10px;"></p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="button" class="btn" onclick="window.print()">طباعة النموذج</button>
+                    <button type="reset" class="btn btn-danger">مسح النموذج</button>
+                </div>
+            </form>
         </div>
 
-        <form id="schedule2Form">
-            <!-- المعلومات الأساسية -->
-            <div class="section">
-                <h2>المعلومات الأساسية</h2>
-                <table>
-                    <tr>
-                        <th>أنا</th>
-                        <td>
-                            <select id="applicantType" name="applicantType" required>
-                                <option value="principal">مقدم الطلب الرئيسي</option>
-                                <option value="family">فرد من العائلة</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>الاسم الأخير (العائلة)</th>
-                        <td><input type="text" id="familyName" name="familyName" required></td>
-                    </tr>
-                    <tr>
-                        <th>الاسم الأول</th>
-                        <td><input type="text" id="givenNames" name="givenNames" required></td>
-                    </tr>
-                    <tr>
-                        <th>تاريخ الميلاد (YYYY-MM-DD)</th>
-                        <td><input type="date" id="dateOfBirth" name="dateOfBirth" required></td>
-                    </tr>
-                </table>
+        <!-- قسم الجلسات المحفوظة -->
+        <div class="saved-sessions">
+            <div class="session-header">
+                <h2>الجلسات المحفوظة</h2>
+                <button type="button" class="btn" onclick="refreshSessions()">🔄 تحديث</button>
             </div>
-
-            <!-- الجزء أ: الرواية -->
-            <div class="section">
-                <h2>الجزء أ: الرواية</h2>
-                
-                <h3>1. وصف الأحداث</h3>
-                <p>يرجى وصف الأحداث المحددة التي أدت إلى فرارك من بلدك الأصلي بأكبر قدر ممكن من التفاصيل.</p>
-                <textarea id="caseNarrative" name="caseNarrative" required></textarea>
-                
-                <h3>2. تفاصيل المغادرة</h3>
-                <p>أ) صف بالترتيب الزمني متى غادرت أنت وأفراد عائلتك منزلك وما هي الطريق التي سلكتموها.</p>
-                <textarea id="departureDetails" name="departureDetails" required></textarea>
-                
-                <p>ب) هل يمكنك العودة إلى بلدك الأصلي؟ إذا لا، فلماذا؟</p>
-                <textarea id="returnPossibility" name="returnPossibility" required></textarea>
-                
-                <p>ج) منذ وصولك إلى البلد الذي تعيش فيه الآن، هل عدت إلى بلدك الأصلي، حتى لو لفترة وجيزة؟</p>
-                <textarea id="returnHistory" name="returnHistory" required></textarea>
-                
-                <h3>3. الوضع الحالي</h3>
-                <p>أ) في البلد الذي تعيش فيه الآن، هل لديك الحق في العمل أو الذهاب إلى المدرسة أو التحرك بحرية؟</p>
-                <textarea id="currentRights" name="currentRights" required></textarea>
-                
-                <p>ب) منذ وصولك إلى البلد الذي تعيش فيه الآن، كيف قمت بإعالة نفسك وعائلتك (إذا كان ذلك ينطبق)؟</p>
-                <textarea id="supportMeans" name="supportMeans" required></textarea>
-                
-                <h3>4. معلومات أخرى</h3>
-                <p>إذا كان هناك أي معلومات أخرى تعتقد أنها قد تكون ذات صلة بقضيتك، يرجى ذكرها هنا.</p>
-                <textarea id="additionalInfo" name="additionalInfo"></textarea>
-            </div>
-
-            <!-- الجزء ب: وضع الهجرة وقدرات التوطين -->
-            <div class="section">
-                <h2>الجزء ب: وضع الهجرة وقدرات التوطين</h2>
-                
-                <h3>5. طلبات إعادة التوطين السابقة</h3>
-                <p>أ) هل تقدمت مسبقًا بطلب لإعادة التوطين بموجب برنامج إعادة توطين اللاجئين والإغاثة الإنسانية الكندي؟</p>
-                <div class="checkbox-group">
-                    <input type="radio" id="prevApplicationYes" name="prevApplication" value="yes">
-                    <label for="prevApplicationYes">نعم</label>
-                    <input type="radio" id="prevApplicationNo" name="prevApplication" value="no" checked>
-                    <label for="prevApplicationNo">لا</label>
-                </div>
-                
-                <div id="prevApplicationDetails" style="display:none;">
-                    <p>ب) متى وأين تقدمت بالطلب؟ وما كانت النتيجة؟</p>
-                    <textarea id="prevApplicationWhenWhere" name="prevApplicationWhenWhere"></textarea>
-                    
-                    <p>ج) هل تغيرت ظروفك منذ تقديمك السابق؟ إذا كان الأمر كذلك، يرجى描述 كيف.</p>
-                    <textarea id="prevApplicationChanges" name="prevApplicationChanges"></textarea>
-                </div>
-                
-                <h3>6. طلبات اللجوء</h3>
-                <p>أ) هل سبق أن تم رفض منحك وضع اللاجئ من قبل أي دولة بما في ذلك البلد الذي تعيش فيه حالياً؟</p>
-                <div class="checkbox-group">
-                    <input type="radio" id="refusedStatusYes" name="refusedStatus" value="yes">
-                    <label for="refusedStatusYes">نعم</label>
-                    <input type="radio" id="refusedStatusNo" name="refusedStatus" value="no" checked>
-                    <label for="refusedStatusNo">لا</label>
-                </div>
-                
-                <p>ب) بخلاف هذا الطلب، هل لديك حالياً طلب لجوء قيد المعالجة في أي بلد آخر بما في ذلك البلد الذي تعيش فيه حالياً؟</p>
-                <div class="checkbox-group">
-                    <input type="radio" id="currentApplicationYes" name="currentApplication" value="yes">
-                    <label for="currentApplicationYes">نعم</label>
-                    <input type="radio" id="currentApplicationNo" name="currentApplication" value="no" checked>
-                    <label for="currentApplicationNo">لا</label>
-                </div>
-                
-                <div id="refugeeDetails" style="display:none;">
-                    <p>يرجى تقديم أكبر قدر ممكن من التفاصيل، بما في ذلك التواريخ والأماكن ووصف الظروف:</p>
-                    <textarea id="refugeeDetailsText" name="refugeeDetailsText"></textarea>
-                </div>
-                
-                <p>ج) هل سبق أن تقدمت بطلب للحصول على وضع اللاجئ إلى مفوضية الأمم المتحدة السامية لشؤون اللاجئين (UNHCR) في أي بلد؟</p>
-                <div class="checkbox-group">
-                    <input type="radio" id="unhcrApplicationYes" name="unhcrApplication" value="yes">
-                    <input type="radio" id="unhcrApplicationNo" name="unhcrApplication" value="no" checked>
-                    <label for="unhcrApplicationNo">لا</label>
-                </div>
-                
-                <p>د) هل لديك حالياً طلب هجرة قيد المعالجة إلى أي بلد (مثال: لم الشمل العائلي أو الفئات الاقتصادية)؟</p>
-                <textarea id="otherImmigration" name="otherImmigration"></textarea>
-                
-                <h3>7. المعلومات الشخصية</h3>
-                <p>أ) ما هو وضع الهجرة الخاص بك وأفراد عائلتك في بلد إقامتك الحالي؟</p>
-                <textarea id="currentStatus" name="currentStatus" required></textarea>
-                
-                <p>ب) هل تتحدث أو تقرأ أو تكتب أو تفهم الإنجليزية أو الفرنسية؟</p>
-                
-                <h4>الإنجليزية</h4>
-                <table class="language-table">
-                    <tr>
-                        <th></th>
-                        <th>مرتفع</th>
-                        <th>متوسط</th>
-                        <th>منخفض</th>
-                        <th>لا شيء</th>
-                    </tr>
-                    <tr>
-                        <td>التحدث</td>
-                        <td><input type="radio" name="englishSpeak" value="high"></td>
-                        <td><input type="radio" name="englishSpeak" value="moderate"></td>
-                        <td><input type="radio" name="englishSpeak" value="low"></td>
-                        <td><input type="radio" name="englishSpeak" value="none" checked></td>
-                    </tr>
-                    <tr>
-                        <td>القراءة</td>
-                        <td><input type="radio" name="englishRead" value="high"></td>
-                        <td><input type="radio" name="englishRead" value="moderate"></td>
-                        <td><input type="radio" name="englishRead" value="low"></td>
-                        <td><input type="radio" name="englishRead" value="none" checked></td>
-                    </tr>
-                    <tr>
-                        <td>الكتابة</td>
-                        <td><input type="radio" name="englishWrite" value="high"></td>
-                        <td><input type="radio" name="englishWrite" value="moderate"></td>
-                        <td><input type="radio" name="englishWrite" value="low"></td>
-                        <td><input type="radio" name="englishWrite" value="none" checked></td>
-                    </tr>
-                    <tr>
-                        <td>الفهم</td>
-                        <td><input type="radio" name="englishUnderstand" value="high"></td>
-                        <td><input type="radio" name="englishUnderstand" value="moderate"></td>
-                        <td><input type="radio" name="englishUnderstand" value="low"></td>
-                        <td><input type="radio" name="englishUnderstand" value="none" checked></td>
-                    </tr>
-                </table>
-                
-                <h4>الفرنسية</h4>
-                <table class="language-table">
-                    <tr>
-                        <th></th>
-                        <th>مرتفع</th>
-                        <th>متوسط</th>
-                        <th>منخفض</th>
-                        <th>لا شيء</th>
-                    </tr>
-                    <tr>
-                        <td>التحدث</td>
-                        <td><input type="radio" name="frenchSpeak" value="high"></td>
-                        <td><input type="radio" name="frenchSpeak" value="moderate"></td>
-                        <td><input type="radio" name="frenchSpeak" value="low"></td>
-                        <td><input type="radio" name="frenchSpeak" value="none" checked></td>
-                    </tr>
-                    <tr>
-                        <td>القراءة</td>
-                        <td><input type="radio" name="frenchRead" value="high"></td>
-                        <td><input type="radio" name="frenchRead" value="moderate"></td>
-                        <td><input type="radio" name="frenchRead" value="low"></td>
-                        <td><input type="radio" name="frenchRead" value="none" checked></td>
-                    </tr>
-                    <tr>
-                        <td>الكتابة</td>
-                        <td><input type="radio" name="frenchWrite" value="high"></td>
-                        <td><input type="radio" name="frenchWrite" value="moderate"></td>
-                        <td><input type="radio" name="frenchWrite" value="low"></td>
-                        <td><input type="radio" name="frenchWrite" value="none" checked></td>
-                    </tr>
-                    <tr>
-                        <td>الفهم</td>
-                        <td><input type="radio" name="frenchUnderstand" value="high"></td>
-                        <td><input type="radio" name="frenchUnderstand" value="moderate"></td>
-                        <td><input type="radio" name="frenchUnderstand" value="low"></td>
-                        <td><input type="radio" name="frenchUnderstand" value="none" checked></td>
-                    </tr>
-                </table>
-                
-                <p>ج) يرجى الإشارة إلى جميع اللغات التي يمكنك التحدث بها بشكل معتدل أو أفضل.</p>
-                <textarea id="otherLanguages" name="otherLanguages"></textarea>
-                
-                <p>د) اذكر أمثلة على أي خبرة عمل أو مهارات و/أو صفات شخصية من شأنها مساعدتك في التوطين بنجاح في كندا.</p>
-                <textarea id="skills" name="skills"></textarea>
-            </div>
-
-            <!-- الجزء ج: معلومات عائلية إضافية -->
-            <div class="section">
-                <h2>الجزء ج: معلومات عائلية إضافية</h2>
-                
-                <h3>8. المعلومات الشخصية الأساسية</h3>
-                <table>
-                    <tr>
-                        <th>الاسم</th>
-                        <th>العلاقة</th>
-                        <th>تاريخ الميلاد (YYYY-MM-DD)</th>
-                        <th>مدينة وبلد الميلاد</th>
-                        <th>الحالة الاجتماعية</th>
-                        <th>تاريخ الوفاة (إذا متوفي)</th>
-                        <th>العنوان الحالي</th>
-                        <th>البريد الإلكتروني</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="yourselfName"></td>
-                        <td>نفسك</td>
-                        <td><input type="date" name="yourselfDOB"></td>
-                        <td><input type="text" name="yourselfBirthPlace"></td>
-                        <td><input type="text" name="yourselfMaritalStatus"></td>
-                        <td><input type="date" name="yourselfDeathDate"></td>
-                        <td><input type="text" name="yourselfAddress"></td>
-                        <td><input type="email" name="yourselfEmail"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="spouseName"></td>
-                        <td>زوجك/شريكك</td>
-                        <td><input type="date" name="spouseDOB"></td>
-                        <td><input type="text" name="spouseBirthPlace"></td>
-                        <td><input type="text" name="spouseMaritalStatus"></td>
-                        <td><input type="date" name="spouseDeathDate"></td>
-                        <td><input type="text" name="spouseAddress"></td>
-                        <td><input type="email" name="spouseEmail"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="motherName"></td>
-                        <td>الأم</td>
-                        <td><input type="date" name="motherDOB"></td>
-                        <td><input type="text" name="motherBirthPlace"></td>
-                        <td><input type="text" name="motherMaritalStatus"></td>
-                        <td><input type="date" name="motherDeathDate"></td>
-                        <td><input type="text" name="motherAddress"></td>
-                        <td><input type="email" name="motherEmail"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="fatherName"></td>
-                        <td>الأب</td>
-                        <td><input type="date" name="fatherDOB"></td>
-                        <td><input type="text" name="fatherBirthPlace"></td>
-                        <td><input type="text" name="fatherMaritalStatus"></td>
-                        <td><input type="date" name="fatherDeathDate"></td>
-                        <td><input type="text" name="fatherAddress"></td>
-                        <td><input type="email" name="fatherEmail"></td>
-                    </tr>
-                </table>
-                
-                <h3>9. الأطفال</h3>
-                <table id="childrenTable">
-                    <tr>
-                        <th>الاسم</th>
-                        <th>العلاقة</th>
-                        <th>تاريخ الميلاد (YYYY-MM-DD)</th>
-                        <th>مدينة وبلد الميلاد</th>
-                        <th>الحالة الاجتماعية</th>
-                        <th>تاريخ الوفاة (إذا متوفي)</th>
-                        <th>العنوان الحالي</th>
-                        <th>البريد الإلكتروني</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="child1Name"></td>
-                        <td><input type="text" name="child1Relationship"></td>
-                        <td><input type="date" name="child1DOB"></td>
-                        <td><input type="text" name="child1BirthPlace"></td>
-                        <td><input type="text" name="child1MaritalStatus"></td>
-                        <td><input type="date" name="child1DeathDate"></td>
-                        <td><input type="text" name="child1Address"></td>
-                        <td><input type="email" name="child1Email"></td>
-                    </tr>
-                </table>
-                <button type="button" class="btn" onclick="addRow('childrenTable')">+ إضافة طفل</button>
-                
-                <h3>10. الإخوة والأخوات</h3>
-                <table id="siblingsTable">
-                    <tr>
-                        <th>الاسم</th>
-                        <th>العلاقة</th>
-                        <th>تاريخ الميلاد (YYYY-MM-DD)</th>
-                        <th>مدينة وبلد الميلاد</th>
-                        <th>الحالة الاجتماعية</th>
-                        <th>تاريخ الوفاة (إذا متوفي)</th>
-                        <th>العنوان الحالي</th>
-                        <th>البريد الإلكتروني</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="sibling1Name"></td>
-                        <td><input type="text" name="sibling1Relationship"></td>
-                        <td><input type="date" name="sibling1DOB"></td>
-                        <td><input type="text" name="sibling1BirthPlace"></td>
-                        <td><input type="text" name="sibling1MaritalStatus"></td>
-                        <td><input type="date" name="sibling1DeathDate"></td>
-                        <td><input type="text" name="sibling1Address"></td>
-                        <td><input type="email" name="sibling1Email"></td>
-                    </tr>
-                </table>
-                <button type="button" class="btn" onclick="addRow('siblingsTable')">+ إضافة أخ/أخت</button>
-                
-                <h3>11. الأقارب في كندا</h3>
-                <table id="relativesTable">
-                    <tr>
-                        <th>الاسم</th>
-                        <th>العلاقة</th>
-                        <th>رقم الهاتف</th>
-                        <th>المدينة والمقاطعة الحالية</th>
-                        <th>البريد الإلكتروني</th>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="relative1Name"></td>
-                        <td><input type="text" name="relative1Relationship"></td>
-                        <td><input type="text" name="relative1Phone"></td>
-                        <td><input type="text" name="relative1Address"></td>
-                        <td><input type="email" name="relative1Email"></td>
-                    </tr>
-                </table>
-                <button type="button" class="btn" onclick="addRelativeRow()">+ إضافة قريب</button>
-            </div>
-
-            <!-- الجزء د: الموافقة والإقرار -->
-            <div class="section">
-                <h2>الجزء د: الموافقة والإقرار</h2>
-                
-                <h3>12. الموافقة على مشاركة المعلومات</h3>
-                <p>أقر بأن جميع المعلومات الشخصية المقدمة في هذا الطلب سيتم جمعها من قبل الهجرة واللاجئين والمواطنة الكندية (IRCC) بموجب سلطة قانون الهجرة وحماية اللاجئين وستستخدم لغرض تقييم واتخاذ قرار بشأن طلبك للإقامة الدائمة في كندا وفقًا لمتطلبات القانون، وتسهيل توطينك في كندا إذا تم اختيارك.</p>
-                
-                <h3>13. المساعدة في إكمال الطلب</h3>
-                <p>أ) هل تلقيت مساعدة في ملء استمارات الطلب؟</p>
-                <div class="checkbox-group">
-                    <input type="radio" id="assistanceYes" name="assistance" value="yes">
-                    <label for="assistanceYes">نعم</label>
-                    <input type="radio" id="assistanceNo" name="assistance" value="no" checked>
-                    <label for="assistanceNo">لا</label>
-                </div>
-                
-                <div id="assistanceDetails" style="display:none;">
-                    <p>ما هو اسم الشخص أو المنظمة التي ساعدتك؟</p>
-                    <input type="text" id="assistorName" name="assistorName">
-                    
-                    <p>ب) هل دفعت للشخص/المنظمة؟</p>
-                    <div class="checkbox-group">
-                        <input type="radio" id="paidYes" name="paid" value="yes">
-                        <label for="paidYes">نعم</label>
-                        <input type="radio" id="paidNo" name="paid" value="no" checked>
-                        <label for="paidNo">لا</label>
-                    </div>
-                </div>
-                
-                <h3>14. إقرار مقدم الطلب</h3>
-                <p>أقر بأن المعلومات التي قدمتها صحيحة وكاملة وصحيحة.</p>
-                
-                <table>
-                    <tr>
-                        <th>توقيع مقدم الطلب</th>
-                        <td><input type="text" id="signature" name="signature" required></td>
-                    </tr>
-                    <tr>
-                        <th>التاريخ (YYYY-MM-DD)</th>
-                        <td><input type="date" id="signatureDate" name="signatureDate" required></td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- حفظ البيانات -->
-            <div class="save-section">
-                <h2>حفظ البيانات واسترجاعها</h2>
-                <p>لحفظ البيانات، املأ الحقول ثم اضغط على زر "حفظ البيانات".</p>
-                <p>لاسترجاع البيانات المحفوظة سابقاً، اكتب الاسم الأول ثم اضغط على زر "تحميل البيانات".</p>
-                
-                <div>
-                    <input type="text" id="saveHandle" placeholder="الاسم الأول للحفظ/التحميل">
-                    <button type="button" class="btn" onclick="saveData()">حفظ البيانات</button>
-                    <button type="button" class="btn" onclick="loadData()">تحميل البيانات</button>
-                </div>
-                
-                <p id="saveMessage" style="color: green; margin-top: 10px;"></p>
-            </div>
-            
-            <div style="text-align: center; margin-top: 30px;">
-                <button type="button" class="btn" onclick="window.print()">طباعة النموذج</button>
-                <button type="reset" class="btn">مسح النموذج</button>
-            </div>
-        </form>
+            <p>انقر على أي جلسة لتحميلها:</p>
+            <ul id="sessionsList" class="session-list">
+                <!-- سيتم ملء هذا القسم بالجلسات المحفوظة -->
+            </ul>
+        </div>
     </div>
 
     <script>
@@ -611,8 +688,18 @@
                 }
             }
             
-            localStorage.setItem(`schedule2_${handle}`, JSON.stringify(formData));
+            // إضافة معلومات إضافية عن الجلسة
+            const sessionInfo = {
+                data: formData,
+                timestamp: new Date().toISOString(),
+                name: handle
+            };
+            
+            localStorage.setItem(`schedule2_${handle}`, JSON.stringify(sessionInfo));
             document.getElementById('saveMessage').textContent = 'تم حفظ البيانات بنجاح!';
+            
+            // تحديث قائمة الجلسات
+            refreshSessions();
             
             setTimeout(() => {
                 document.getElementById('saveMessage').textContent = '';
@@ -620,20 +707,21 @@
         }
         
         // تحميل البيانات من localStorage
-        function loadData() {
-            const handle = document.getElementById('saveHandle').value.trim();
-            if (!handle) {
+        function loadData(handle = null) {
+            const handleToLoad = handle || document.getElementById('saveHandle').value.trim();
+            if (!handleToLoad) {
                 alert('يرجى إدخال اسم للتحميل');
                 return;
             }
             
-            const savedData = localStorage.getItem(`schedule2_${handle}`);
+            const savedData = localStorage.getItem(`schedule2_${handleToLoad}`);
             if (!savedData) {
                 alert('لا توجد بيانات محفوظة بهذا الاسم');
                 return;
             }
             
-            const formData = JSON.parse(savedData);
+            const sessionInfo = JSON.parse(savedData);
+            const formData = sessionInfo.data;
             const formElements = document.getElementById('schedule2Form').elements;
             
             for (let i = 0; i < formElements.length; i++) {
@@ -668,6 +756,56 @@
                 document.getElementById('saveMessage').textContent = '';
             }, 3000);
         }
+        
+        // عرض الجلسات المحفوظة
+        function refreshSessions() {
+            const sessionsList = document.getElementById('sessionsList');
+            sessionsList.innerHTML = '';
+            
+            let hasSessions = false;
+            
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('schedule2_')) {
+                    hasSessions = true;
+                    const sessionInfo = JSON.parse(localStorage.getItem(key));
+                    const handle = key.replace('schedule2_', '');
+                    
+                    const li = document.createElement('li');
+                    li.className = 'session-item';
+                    
+                    const sessionDate = new Date(sessionInfo.timestamp).toLocaleString('ar-EG');
+                    
+                    li.innerHTML = `
+                        <span class="session-name" onclick="loadData('${handle}')">
+                            ${handle} (${sessionDate})
+                        </span>
+                        <div class="session-actions">
+                            <button class="btn btn-danger" onclick="deleteSession('${handle}')">×</button>
+                        </div>
+                    `;
+                    
+                    sessionsList.appendChild(li);
+                }
+            }
+            
+            if (!hasSessions) {
+                sessionsList.innerHTML = '<li>لا توجد جلسات محفوظة</li>';
+            }
+        }
+        
+        // حذف جلسة
+        function deleteSession(handle) {
+            if (confirm(`هل أنت متأكد من أنك تريد حذف الجلسة "${handle}"؟`)) {
+                localStorage.removeItem(`schedule2_${handle}`);
+                refreshSessions();
+            }
+        }
+        
+        // تحديث قائمة الجلسات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshSessions();
+        });
     </script>
 </body>
 </html>
