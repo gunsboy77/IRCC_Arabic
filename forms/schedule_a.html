@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>النموذج A - الخلفية / الإقرار (IMM 5669) — نسخة عربية</title>
+  <style>
+    body{font-family: "Segoe UI", Tahoma, Arial, sans-serif; padding:20px; background:#f7f7f8; color:#111}
+    .container{max-width:900px;margin:0 auto;background:#fff;padding:18px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.05)}
+    h1{font-size:1.4rem;margin-bottom:6px}
+    label{display:block;margin-top:12px;font-weight:600}
+    input[type="text"], input[type="date"], select, textarea{width:100%;padding:8px;margin-top:6px;border:1px solid #d0d0d3;border-radius:6px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{margin-top:14px;display:flex;gap:8px}
+    button{padding:10px 14px;border:none;border-radius:8px;cursor:pointer}
+    .primary{background:#0b5fff;color:#fff}
+    .muted{background:#eef0f6}
+    .small{font-size:0.9rem}
+    textarea{min-height:80px}
+    .section{border-top:1px dashed #e3e3e6;padding-top:14px;margin-top:14px}
+    .saved-list{max-height:150px;overflow:auto;border:1px dashed #e3e3e6;padding:8px;border-radius:6px}
+    .saved-item{padding:6px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+    .rtl{direction:rtl;text-align:right}
+  </style>
+</head>
+<body>
+  <div class="container rtl">
+    <h1>النموذج A — الخلفية / الإقرار (IMM 5669) — نسخة عربية</h1>
+    <p class="small">هذا ملف HTML مُترجم إلى العربية. الحقول قابلة للتعبئة ويمكن حفظها محليًا لمستخدم واحد أو تنزيلها كـ PDF أو Word.</p>
+
+    <label>هل أنت:</label>
+    <select id="applicantType">
+      <option value="principal">المتقدّم الأساسي</option>
+      <option value="spouse">الزوج/الزوجة أو الشريك/الطفل المعال</option>
+    </select>
+
+    <div class="section">
+      <h2>1. اسمك الكامل</h2>
+      <div class="row">
+        <div>
+          <label>اسم العائلة</label>
+          <input id="familyName" type="text" placeholder="الاسم العائلي">
+        </div>
+        <div>
+          <label>الأسماء</label>
+          <input id="givenNames" type="text" placeholder="الأسماء">
+        </div>
+      </div>
+
+      <label>2. اسمك مكتوب بلغتك الأم أو حروف لغتك</label>
+      <input id="nativeScript" type="text" placeholder="مثال: بالعربية أو غيرها">
+
+      <label>3. تاريخ ميلادك</label>
+      <input id="dob" type="date">
+
+      <h3 class="small" style="margin-top:10px">4. بيانات الأب</h3>
+      <div class="row">
+        <div>
+          <label>اسم العائلة</label>
+          <input id="fatherFamily" type="text">
+        </div>
+        <div>
+          <label>الأسماء</label>
+          <input id="fatherGiven" type="text">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>تاريخ ميلاد الأب</label>
+          <input id="fatherDob" type="date">
+        </div>
+        <div>
+          <label>مدينة/مكان الميلاد</label>
+          <input id="fatherPOB" type="text">
+        </div>
+      </div>
+
+      <h3 class="small" style="margin-top:10px">5. بيانات الأم</h3>
+      <div class="row">
+        <div>
+          <label>اسم العائلة عند الميلاد</label>
+          <input id="motherFamily" type="text">
+        </div>
+        <div>
+          <label>الأسماء</label>
+          <input id="motherGiven" type="text">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>تاريخ ميلاد الأم</label>
+          <input id="motherDob" type="date">
+        </div>
+        <div>
+          <label>مدينة/مكان الميلاد</label>
+          <input id="motherPOB" type="text">
+        </div>
+      </div>
+
+      <h3 class="small" style="margin-top:10px">6. أسئلة عن التاريخ الجنائي / الطبي (نعم/لا)</h3>
+      <div>
+        <label>أ) هل سبق وأن أدينت بجريمة في كندا ولم تُمنحك عفواً؟</label>
+        <select id="q6a"><option value="no">لا</option><option value="yes">نعم</option></select>
+        <label>ب) هل سبق وأن أدنت في بلدان أخرى أو متّهَم الآن؟</label>
+        <select id="q6b"><option value="no">لا</option><option value="yes">نعم</option></select>
+        <label>ج) هل قدّمت طلب حصانة لاجئين سابقاً؟</label>
+        <select id="q6c"><option value="no">لا</option><option value="yes">نعم</option></select>
+        <label>... (يمكن إضافة باقـي الأسئلة بنفس النمط)</label>
+        <textarea id="q6details" placeholder="إذا كانت الإجابة نعم، قدّم تفاصيل هنا"></textarea>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>7. التعليم</h2>
+      <label>عدد سنوات الدراسة الأساسية</label>
+      <input id="yearsPrimary" type="text">
+      <label>عدد سنوات المدرسة الثانوية</label>
+      <input id="yearsSecondary" type="text">
+      <label>تفاصيل التعليم الثانوي وما بعده</label>
+      <textarea id="educationDetails" placeholder="من - إلى، اسم المؤسسة، المدينة، الشهادة، التخصص"></textarea>
+    </div>
+
+    <div class="section">
+      <h2>8. التاريخ الشخصي (منذ سن 18 أو آخر 10 سنوات)</h2>
+      <p class="small">أدخل تسلسل العمل/الدراسة/الحالة بدون فترات فارغة. يمكن إضافة صفوف متعددة.</p>
+      <div id="historyRows"></div>
+      <div style="margin-top:8px">
+        <button class="muted" id="addHistory">+ أضف سجل تاريخي</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>12. العناوين</h2>
+      <p class="small">أدرج جميع العناوين منذ سنّ 18 أو آخر 10 سنوات (لا تستخدم صندوق بريد).</p>
+      <div id="addressRows"></div>
+      <div style="margin-top:8px">
+        <button class="muted" id="addAddress">+ أضف عنوانًا</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>حفظ/تحميل البيانات</h2>
+      <label>معرّف المستخدم (سيُستخدم لحفظ بيانات منفصلة لكل مستخدم)</label>
+      <input id="userId" type="text" placeholder="مثال: mohd123 أو بريدك الإلكتروني">
+      <div class="actions">
+        <button class="primary" id="saveBtn">احفظ بيانات المستخدم</button>
+        <button id="loadBtn" class="muted">تحميل بيانات المستخدم</button>
+        <button id="exportPdf" class="muted">تنزيل كـ PDF</button>
+        <button id="exportDoc" class="muted">تنزيل كـ Word (.doc)</button>
+        <button id="exportJson" class="muted">تنزيل JSON محفوظ</button>
+      </div>
+
+      <div class="section" style="margin-top:12px">
+        <h3 class="small">قائمة الحفظات المحلية</h3>
+        <div id="savedList" class="saved-list"></div>
+        <button id="clearAll" class="muted" style="margin-top:8px">مسح كل الحفظات المحلية</button>
+      </div>
+    </div>
+
+    <p class="small" style="margin-top:12px;color:#555">ملاحظة: هذه الأداة تحفظ البيانات في متصفحك (localStorage). لحفظ مركزي أو مشاركة عبر خادم، يمكنني إضافة وظيفة رفع/تنزيل إلى خادم إذا أردت.</p>
+  </div>
+
+  <script>
+    // ----- dynamic rows helpers -----
+    function makeHistoryRow(id){
+      const div = document.createElement('div');
+      div.className = 'historyRow';
+      div.innerHTML = `\n        <div class="row">\n          <div>\n            <label>من (YYYY-MM)</label>\n            <input data-field="from" type="text" placeholder="YYYY-MM">\n          </div>\n          <div>\n            <label>إلى (YYYY-MM)</label>\n            <input data-field="to" type="text" placeholder="YYYY-MM">\n          </div>\n        </div>\n        <label>النشاط / المسمى الوظيفي</label>\n        <input data-field="activity" type="text">\n        <label>المدينة / البلد</label>\n        <input data-field="location" type="text">\n        <label>اسم جهة العمل / الحالة</label>\n        <input data-field="employer" type="text">\n        <button class="muted" data-action="remove" style="margin-top:6px">حذف هذا السجل</button>\n      `;
+      div.querySelector('[data-action=remove]').addEventListener('click',()=>div.remove());
+      return div;
+    }
+    function makeAddressRow(){
+      const div = document.createElement('div');
+      div.className = 'addressRow';
+      div.innerHTML = `\n        <div class="row">\n          <div>\n            <label>من (YYYY-MM)</label>\n            <input data-field="from" type="text" placeholder="YYYY-MM">\n          </div>\n          <div>\n            <label>إلى (YYYY-MM)</label>\n            <input data-field="to" type="text" placeholder="YYYY-MM">\n          </div>\n        </div>\n        <label>الشارع والرقم</label>\n        <input data-field="street" type="text">\n        <div class="row">\n          <div>\n            <label>المدينة / البلدة</label>\n            <input data-field="city" type="text">\n          </div>\n          <div>\n            <label>المحافظة / الولاية / المقاطعة</label>\n            <input data-field="region" type="text">\n          </div>\n        </div>\n        <label>الرمز البريدي</label>\n        <input data-field="postal" type="text">\n        <label>البلد</label>\n        <input data-field="country" type="text">\n        <button class="muted" data-action="remove" style="margin-top:6px">حذف هذا العنوان</button>\n      `;
+      div.querySelector('[data-action=remove]').addEventListener('click',()=>div.remove());
+      return div;
+    }
+
+    document.getElementById('addHistory').addEventListener('click', (e)=>{
+      e.preventDefault();
+      document.getElementById('historyRows').appendChild(makeHistoryRow());
+    });
+    document.getElementById('addAddress').addEventListener('click', (e)=>{
+      e.preventDefault();
+      document.getElementById('addressRows').appendChild(makeAddressRow());
+    });
+
+    // ----- save/load -----
+    function collectData(){
+      const data = {};
+      const fields = ['applicantType','familyName','givenNames','nativeScript','dob','fatherFamily','fatherGiven','fatherDob','fatherPOB','motherFamily','motherGiven','motherDob','motherPOB','q6a','q6b','q6c','q6details','yearsPrimary','yearsSecondary','educationDetails'];
+      fields.forEach(id=>data[id]=document.getElementById(id)?.value||'');
+
+      // history rows
+      data.history = Array.from(document.querySelectorAll('.historyRow')).map(row=>{
+        return {
+          from: row.querySelector('[data-field=from]').value||'',
+          to: row.querySelector('[data-field=to]').value||'',
+          activity: row.querySelector('[data-field=activity]').value||'',
+          location: row.querySelector('[data-field=location]').value||'',
+          employer: row.querySelector('[data-field=employer]').value||''
+        }
+      });
+      data.addresses = Array.from(document.querySelectorAll('.addressRow')).map(row=>{
+        return {
+          from: row.querySelector('[data-field=from]').value||'',
+          to: row.querySelector('[data-field=to]').value||'',
+          street: row.querySelector('[data-field=street]').value||'',
+          city: row.querySelector('[data-field=city]').value||'',
+          region: row.querySelector('[data-field=region]').value||'',
+          postal: row.querySelector('[data-field=postal]').value||'',
+          country: row.querySelector('[data-field=country]').value||''
+        }
+      });
+      return data;
+    }
+
+    function populateData(data){
+      if(!data) return;
+      const fields = Object.keys(data).filter(k=>typeof data[k]==='string');
+      fields.forEach(k=>{ const el=document.getElementById(k); if(el) el.value=data[k]; });
+      // history
+      document.getElementById('historyRows').innerHTML='';
+      (data.history||[]).forEach(h=>{
+        const row = makeHistoryRow();
+        row.querySelector('[data-field=from]').value=h.from||'';
+        row.querySelector('[data-field=to]').value=h.to||'';
+        row.querySelector('[data-field=activity]').value=h.activity||'';
+        row.querySelector('[data-field=location]').value=h.location||'';
+        row.querySelector('[data-field=employer]').value=h.employer||'';
+        document.getElementById('historyRows').appendChild(row);
+      });
+      // addresses
+      document.getElementById('addressRows').innerHTML='';
+      (data.addresses||[]).forEach(a=>{
+        const row = makeAddressRow();
+        row.querySelector('[data-field=from]').value=a.from||'';
+        row.querySelector('[data-field=to]').value=a.to||'';
+        row.querySelector('[data-field=street]').value=a.street||'';
+        row.querySelector('[data-field=city]').value=a.city||'';
+        row.querySelector('[data-field=region]').value=a.region||'';
+        row.querySelector('[data-field=postal]').value=a.postal||'';
+        row.querySelector('[data-field=country]').value=a.country||'';
+        document.getElementById('addressRows').appendChild(row);
+      });
+    }
+
+    function listSaves(){
+      const list = document.getElementById('savedList'); list.innerHTML='';
+      for(let i=0;i<localStorage.length;i++){
+        const key = localStorage.key(i);
+        if(!key.startsWith('imm5669_')) continue;
+        const mini = JSON.parse(localStorage.getItem(key)||'{}');
+        const div = document.createElement('div'); div.className='saved-item rtl';
+        div.innerHTML = `<div><strong>${key.replace('imm5669_','')}</strong><div class=\"small\">${mini.familyName||mini.givenNames||''}</div></div><div><button data-key=\"${key}\" class=\"muted\">تحميل</button> <button data-del=\"${key}\" class=\"muted\">حذف</button></div>`;
+        div.querySelector('[data-key]').addEventListener('click',()=>{ populateData(JSON.parse(localStorage.getItem(div.querySelector('[data-key]').dataset.key))); document.getElementById('userId').value=div.querySelector('[data-key]').dataset.key.replace('imm5669_',''); });
+        div.querySelector('[data-del]').addEventListener('click',()=>{ if(confirm('حذف نهائي؟')){ localStorage.removeItem(div.querySelector('[data-del]').dataset.del); listSaves(); } });
+        list.appendChild(div);
+      }
+    }
+
+    document.getElementById('saveBtn').addEventListener('click',()=>{
+      const uid = document.getElementById('userId').value.trim();
+      if(!uid){ alert('رجاءً أدخل معرّف المستخدم'); return; }
+      const data = collectData();
+      localStorage.setItem('imm5669_'+uid, JSON.stringify(data));
+      alert('تم حفظ البيانات محليًا تحت معرّف: ' + uid);
+      listSaves();
+    });
+
+    document.getElementById('loadBtn').addEventListener('click',()=>{
+      const uid = document.getElementById('userId').value.trim();
+      if(!uid){ alert('رجاءً أدخل معرّف المستخدم'); return; }
+      const raw = localStorage.getItem('imm5669_'+uid);
+      if(!raw){ alert('لا توجد بيانات محفوظة لهذا المعرّف'); return; }
+      populateData(JSON.parse(raw));
+      alert('تم تحميل البيانات');
+    });
+
+    document.getElementById('clearAll').addEventListener('click',()=>{ if(confirm('مسح كل الحفظات المحلية؟')){ const keys=[]; for(let i=0;i<localStorage.length;i++){ keys.push(localStorage.key(i)); } keys.forEach(k=>{ if(k.startsWith('imm5669_')) localStorage.removeItem(k); }); listSaves(); alert('تم المسح'); } });
+
+    // export JSON
+    document.getElementById('exportJson').addEventListener('click',()=>{
+      const data = collectData();
+      const blob = new Blob([JSON.stringify(data, null, 2)],{type:'application/json'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'imm5669_data.json'; a.click();
+    });
+
+    // Export to Word (.doc) by wrapping HTML
+    document.getElementById('exportDoc').addEventListener('click',()=>{
+      const data = collectData();
+      const html = `<!doctype html><html><head><meta charset=\"utf-8\"><title>IMM5669 - Data</title></head><body>${document.querySelector('.container').innerHTML}</body></html>`;
+      const blob = new Blob([html],{type:'application/msword'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'imm5669_data.doc'; a.click();
+    });
+
+    // Export to PDF using html2pdf (CDN)
+    function loadScript(src){ return new Promise((res,rej)=>{ const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=rej; document.head.appendChild(s); }); }
+    document.getElementById('exportPdf').addEventListener('click', async ()=>{
+      try{
+        if(!window.html2pdf){ await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js'); }
+        const opt = { margin:0.3, filename:'imm5669_data.pdf', image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2}, jsPDF:{unit:'in',format:'a4',orientation:'portrait'} };
+        // clone container to remove controls buttons for clean PDF
+        const node = document.querySelector('.container').cloneNode(true);
+        // hide action buttons in cloned
+        node.querySelectorAll('button').forEach(b=>b.remove());
+        node.style.direction='rtl';
+        document.body.appendChild(node);
+        await html2pdf().set(opt).from(node).save();
+        node.remove();
+      }catch(e){ alert('فشل إنشاء PDF: '+e.message); }
+    });
+
+    // initialize
+    listSaves();
+
+    // If user previously had a single save, auto-populate the first one (optional)
+  </script>
+</body>
+</html>
