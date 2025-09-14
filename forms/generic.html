@@ -1,1 +1,832 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النموذج العام للطلب لكندا</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+        .main-content {
+            flex: 3;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .saved-sessions {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: right;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"], 
+        input[type="date"], 
+        input[type="email"], 
+        textarea, 
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .checkbox-item {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .checkbox-item label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .checkbox-item .subtext {
+            font-size: 0.9em;
+            color: #666;
+            margin: 5px 0;
+        }
+        .required {
+            color: red;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        .btn-success {
+            background-color: #2ecc71;
+        }
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+        .save-section {
+            background-color: #e7f4fe;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .instructions {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ffc107;
+        }
+        .yes-no-group {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+        }
+        .session-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .session-item {
+            padding: 10px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .session-item:hover {
+            background: #e9ecef;
+        }
+        .session-name {
+            cursor: pointer;
+            flex-grow: 1;
+        }
+        .session-actions {
+            display: flex;
+            gap: 5px;
+        }
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        @media print {
+            .save-section, .instructions, button, .saved-sessions {
+                display: none;
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <h1>النموذج العام للطلب لكندا</h1>
+            
+            <div class="instructions">
+                <h3>تعليمات هامة:</h3>
+                <p>1. يجب على مقدم الطلب الرئيسي تعبئة هذا النموذج.</p>
+                <p>2. لحفظ البيانات، املأ الحقول ثم اضغط على زر "حفظ البيانات".</p>
+                <p>3. لاسترجاع البيانات المحفوظة سابقاً، اكتب اسم الجلسة ثم اضغط على زر "تحميل البيانات" أو انقر على الجلسة من القائمة.</p>
+                <p>4. يمكنك طباعة النموذج بعد تعبئته باستخدام أمر الطباعة في متصفحك.</p>
+            </div>
 
+            <form id="genericForm">
+                <!-- المعلومات الأساسية -->
+                <div class="section">
+                    <h2>المعلومات الأساسية</h2>
+                    
+                    <table>
+                        <tr>
+                            <th>اسم مقدم الطلب</th>
+                            <td><input type="text" id="applicantName" name="applicantName" required></td>
+                        </tr>
+                        <tr>
+                            <th>تاريخ الميلاد</th>
+                            <td><input type="date" id="dateOfBirth" name="dateOfBirth" required></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- الحالة الاجتماعية -->
+                <div class="section">
+                    <h2>الحالة الاجتماعية</h2>
+                    
+                    <div class="checkbox-item">
+                        <label>13. أ) حالتك الاجتماعية الحالية</label>
+                        <select id="maritalStatus" name="maritalStatus" required>
+                            <option value="">-- اختر --</option>
+                            <option value="single">أعزب</option>
+                            <option value="married">متزوج</option>
+                            <option value="common-law">شريك عادي</option>
+                            <option value="divorced">مطلق</option>
+                            <option value="widowed">أرمل</option>
+                            <option value="separated">منفصل</option>
+                        </select>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <label>ب) إذا كنت متزوجًا أو في علاقة شائعة القانون! قدم التاريخ الذي تزوجت فيه أو دخلت في العلاقة الشائعة القانون</label>
+                        <input type="date" id="relationshipDate" name="relationshipDate">
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <label>ج) قدم اسم زوجك/شريكك العادي الحالي</label>
+                        <table>
+                            <tr>
+                                <th>اسم العائلة</th>
+                                <td><input type="text" name="spouseFamilyName"></td>
+                            </tr>
+                            <tr>
+                                <th>الاسم الأول (الأسماء)</th>
+                                <td><input type="text" name="spouseGivenNames"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <label>14. أ) هل سبق أن تزوجت أو كنت في علاقة شائعة القانون؟</label>
+                        <div class="yes-no-group">
+                            <input type="radio" id="prevRelationshipNo" name="prevRelationship" value="no" checked>
+                            <label for="prevRelationshipNo">لا</label>
+                            <input type="radio" id="prevRelationshipYes" name="prevRelationship" value="yes">
+                            <label for="prevRelationshipYes">نعم</label>
+                        </div>
+                        
+                        <div id="prevRelationshipDetails" style="display: none;">
+                            <label>ب) قدم التفاصيل التالية لزوجك/شريكك العادي السابق:</label>
+                            <table>
+                                <tr>
+                                    <th>اسم العائلة</th>
+                                    <td><input type="text" name="prevSpouseFamilyName"></td>
+                                </tr>
+                                <tr>
+                                    <th>الاسم الأول (الأسماء)</th>
+                                    <td><input type="text" name="prevSpouseGivenNames"></td>
+                                </tr>
+                                <tr>
+                                    <th>ج) نوع العلاقة</th>
+                                    <td>
+                                        <select name="prevRelationshipType">
+                                            <option value="married">متزوج</option>
+                                            <option value="common-law">شريك عادي</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>د) من</th>
+                                    <td><input type="date" name="prevRelationshipFrom"></td>
+                                </tr>
+                                <tr>
+                                    <th>هـ) إلى</th>
+                                    <td><input type="date" name="prevRelationshipTo"></td>
+                                </tr>
+                                <tr>
+                                    <th>و) تاريخ الميلاد</th>
+                                    <td><input type="date" name="prevSpouseDOB"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- معلومات الاتصال -->
+                <div class="section">
+                    <h2>معلومات الاتصال</h2>
+                    
+                    <div class="checkbox-item">
+                        <h3>1. عنوان البريد الحالي</h3>
+                        <div class="subtext">جميع المراسلات ستذهب إلى هذا العنوان ما لم تشير إلى عنوان بريدك الإلكتروني أدناه.</div>
+                        
+                        <table>
+                            <tr>
+                                <th>صندوق البريد</th>
+                                <td><input type="text" name="poBox"></td>
+                            </tr>
+                            <tr>
+                                <th>الشقة/الوحدة</th>
+                                <td><input type="text" name="apartment"></td>
+                            </tr>
+                            <tr>
+                                <th>رقم الشارع</th>
+                                <td><input type="text" name="streetNumber"></td>
+                            </tr>
+                            <tr>
+                                <th>* اسم الشارع</th>
+                                <td><input type="text" name="streetName" required></td>
+                            </tr>
+                            <tr>
+                                <th>المدينة/البلد</th>
+                                <td><input type="text" name="city" required></td>
+                            </tr>
+                            <tr>
+                                <th>* البلد</th>
+                                <td><input type="text" name="country" required></td>
+                            </tr>
+                            <tr>
+                                <th>المقاطعة/الولاية</th>
+                                <td><input type="text" name="province"></td>
+                            </tr>
+                            <tr>
+                                <th>الرمز البريدي</th>
+                                <td><input type="text" name="postalCode"></td>
+                            </tr>
+                            <tr>
+                                <th>المنطقة</th>
+                                <td><input type="text" name="district"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <h3>2. عنوان السكن</h3>
+                        <div class="yes-no-group">
+                            <label>هل هو نفس عنوان البريد؟</label>
+                            <input type="radio" id="sameAddressYes" name="sameAddress" value="yes" checked>
+                            <label for="sameAddressYes">نعم</label>
+                            <input type="radio" id="sameAddressNo" name="sameAddress" value="no">
+                            <label for="sameAddressNo">لا</label>
+                        </div>
+                        
+                        <div id="residentialAddress" style="display: none;">
+                            <table>
+                                <tr>
+                                    <th>الشقة/الوحدة</th>
+                                    <td><input type="text" name="resApartment"></td>
+                                </tr>
+                                <tr>
+                                    <th>رقم الشارع</th>
+                                    <td><input type="text" name="resStreetNumber"></td>
+                                </tr>
+                                <tr>
+                                    <th>اسم الشارع</th>
+                                    <td><input type="text" name="resStreetName"></td>
+                                </tr>
+                                <tr>
+                                    <th>المدينة/البلد</th>
+                                    <td><input type="text" name="resCity"></td>
+                                </tr>
+                                <tr>
+                                    <th>البلد</th>
+                                    <td><input type="text" name="resCountry"></td>
+                                </tr>
+                                <tr>
+                                    <th>المقاطعة/الولاية</th>
+                                    <td><input type="text" name="resProvince"></td>
+                                </tr>
+                                <tr>
+                                    <th>الرمز البريدي</th>
+                                    <td><input type="text" name="resPostalCode"></td>
+                                </tr>
+                                <tr>
+                                    <th>المنطقة</th>
+                                    <td><input type="text" name="resDistrict"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <h3>3. رقم الهاتف</h3>
+                        <table>
+                            <tr>
+                                <th>النوع</th>
+                                <td>
+                                    <select name="phoneType">
+                                        <option value="home">منزل</option>
+                                        <option value="work">عمل</option>
+                                        <option value="mobile">جوال</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>كود الدولة</th>
+                                <td><input type="text" name="phoneCountryCode"></td>
+                            </tr>
+                            <tr>
+                                <th>الرقم</th>
+                                <td><input type="text" name="phoneNumber"></td>
+                            </tr>
+                            <tr>
+                                <th>التحويلة</th>
+                                <td><input type="text" name="phoneExt"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <h3>4. رقم هاتف بديل</h3>
+                        <table>
+                            <tr>
+                                <th>النوع</th>
+                                <td>
+                                    <select name="altPhoneType">
+                                        <option value="home">منزل</option>
+                                        <option value="work">عمل</option>
+                                        <option value="mobile">جوال</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>كود الدولة</th>
+                                <td><input type="text" name="altPhoneCountryCode"></td>
+                            </tr>
+                            <tr>
+                                <th>الرقم</th>
+                                <td><input type="text" name="altPhoneNumber"></td>
+                            </tr>
+                            <tr>
+                                <th>التحويلة</th>
+                                <td><input type="text" name="altPhoneExt"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <h3>5. رقم الفاكس</h3>
+                        <table>
+                            <tr>
+                                <th>كود الدولة</th>
+                                <td><input type="text" name="faxCountryCode"></td>
+                            </tr>
+                            <tr>
+                                <th>الرقم</th>
+                                <td><input type="text" name="faxNumber"></td>
+                            </tr>
+                            <tr>
+                                <th>التحويلة</th>
+                                <td><input type="text" name="faxExt"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <h3>6. عنوان البريد الإلكتروني</h3>
+                        <input type="email" name="email">
+                    </div>
+                </div>
+
+                <!-- جواز السفر -->
+                <div class="section">
+                    <h2>جواز السفر</h2>
+                    
+                    <div class="checkbox-item">
+                        <label>1. هل لديك جواز سفر/وثيقة سفر سارية؟</label>
+                        <div class="yes-no-group">
+                            <input type="radio" id="hasPassportNo" name="hasPassport" value="no" checked>
+                            <label for="hasPassportNo">لا</label>
+                            <input type="radio" id="hasPassportYes" name="hasPassport" value="yes">
+                            <label for="hasPassportYes">نعم</label>
+                        </div>
+                        
+                        <div id="passportDetails" style="display: none;">
+                            <table>
+                                <tr>
+                                    <th>2. رقم جواز السفر/وثيقة السفر (تمامًا كما هو موضح في جواز سفرك أو وثيقة سفرك)</th>
+                                    <td><input type="text" name="passportNumber"></td>
+                                </tr>
+                                <tr>
+                                    <th>3. بلد الإصدار</th>
+                                    <td><input type="text" name="passportCountry"></td>
+                                </tr>
+                                <tr>
+                                    <th>4. تاريخ الإصدار</th>
+                                    <td><input type="date" name="passportIssueDate"></td>
+                                </tr>
+                                <tr>
+                                    <th>5. تاريخ الانتهاء</th>
+                                    <td><input type="date" name="passportExpiryDate"></td>
+                                </tr>
+                                <tr>
+                                    <th>6. هل ستستخدم لهذه الرحلة جواز سفر صادر عن وزارة الخارجية في تايوان يتضمن رقم تعريفك الشخصي؟</th>
+                                    <td>
+                                        <div class="yes-no-group">
+                                            <input type="radio" id="taiwanPassportNo" name="taiwanPassport" value="no" checked>
+                                            <label for="taiwanPassportNo">لا</label>
+                                            <input type="radio" id="taiwanPassportYes" name="taiwanPassport" value="yes">
+                                            <label for="taiwanPassportYes">نعم</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>7. هل ستستخدم لهذه الرحلة جواز سفر إسرائيلي وطني؟</th>
+                                    <td>
+                                        <div class="yes-no-group">
+                                            <input type="radio" id="israeliPassportNo" name="israeliPassport" value="no" checked>
+                                            <label for="israeliPassportNo">لا</label>
+                                            <input type="radio" id="israeliPassportYes" name="israeliPassport" value="yes">
+                                            <label for="israeliPassportYes">نعم</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- وثيقة الهوية الوطنية -->
+                <div class="section">
+                    <h2>وثيقة الهوية الوطنية</h2>
+                    
+                    <div class="checkbox-item">
+                        <label>1. هل لديك وثيقة هوية وطنية؟</label>
+                        <div class="yes-no-group">
+                            <input type="radio" id="hasNationalIDNo" name="hasNationalID" value="no" checked>
+                            <label for="hasNationalIDNo">لا</label>
+                            <input type="radio" id="hasNationalIDYes" name="hasNationalID" value="yes">
+                            <label for="hasNationalIDYes">نعم</label>
+                        </div>
+                        
+                        <div id="nationalIDDetails" style="display: none;">
+                            <table>
+                                <tr>
+                                    <th>2. رقم الوثيقة</th>
+                                    <td><input type="text" name="nationalIDNumber"></td>
+                                </tr>
+                                <tr>
+                                    <th>3. بلد الإصدار</th>
+                                    <td><input type="text" name="nationalIDCountry"></td>
+                                </tr>
+                                <tr>
+                                    <th>4. تاريخ الإصدار</th>
+                                    <td><input type="date" name="nationalIDIssueDate"></td>
+                                </tr>
+                                <tr>
+                                    <th>5. تاريخ الانتهاء</th>
+                                    <td><input type="date" name="nationalIDExpiryDate"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الموافقة والإقرار -->
+                <div class="section">
+                    <h2>الموافقة والإقرار</h2>
+                    
+                    <div class="checkbox-item">
+                        <label>هل توافق على أن يتم الاتصال بك من قبل CIC، أو منظمة بناءً على طلب CIC، في المستقبل؟</label>
+                        <div class="yes-no-group">
+                            <input type="radio" id="consentContactNo" name="consentContact" value="no" checked>
+                            <label for="consentContactNo">لا</label>
+                            <input type="radio" id="consentContactYes" name="consentContact" value="yes">
+                            <label for="consentContactYes">نعم</label>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <label>الموافقة على الإفصاح عن المعلومات للمقاطعة/الإقليم المقصود للوجهة</label>
+                        <textarea name="consentProvince" placeholder="أنا [الاسم الأول، الاسم الأخير] نيابة عن نفسي وجميع المعالين المدرجين في هذا الطلب، أوافق على أن تقوم الهجرة واللاجئين والمواطنة الكندية بمشاركة المعلومات المجمعة في هذا الطلب وكذلك الوثائق الداعمة مع سلطات المقاطعات والأقاليم المسؤولة عن الهجرة لأغراض قانون الهجرة وحماية اللاجئين."></textarea>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <label>الموافقة على الإفصاح عن المعلومات لأغراض التقييم</label>
+                        <p>أوافق على أن يتم مشاركة المعلومات الواردة في هذا الطلب المتعلقة بمهنتي المقصودة وتعليمي وخبرتي العملية مع أصحاب العمل المحتملين لمساعدتهم في توظيف العمال.</p>
+                        <div class="yes-no-group">
+                            <input type="radio" id="consentEvaluationNo" name="consentEvaluation" value="no" checked>
+                            <label for="consentEvaluationNo">لا</label>
+                            <input type="radio" id="consentEvaluationYes" name="consentEvaluation" value="yes">
+                            <label for="consentEvaluationYes">نعم</label>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <h3>إقرار مقدم الطلب</h3>
+                        <p>أقر بأن المعلومات التي قدمتها صحيحة وكاملة وصحيحة.</p>
+                        
+                        <table>
+                            <tr>
+                                <th>توقيع مقدم الطلب أو الوالد/الوصي القانوني للشخص الذي تقل سنه عن 18 عامًا</th>
+                                <td><input type="text" name="signature" required></td>
+                            </tr>
+                            <tr>
+                                <th>التاريخ (YYYY-MM-DD)</th>
+                                <td><input type="date" name="signatureDate" required></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- حفظ البيانات -->
+                <div class="save-section">
+                    <h2>حفظ البيانات واسترجاعها</h2>
+                    <p>لحفظ البيانات، املأ الحقول ثم اضغط على زر "حفظ البيانات".</p>
+                    <p>لاسترجاع البيانات المحفوظة سابقاً، اكتب اسم الجلسة ثم اضغط على زر "تحميل البيانات" أو انقر على الجلسة من القائمة.</p>
+                    
+                    <div>
+                        <input type="text" id="saveHandle" placeholder="اسم الجلسة للحفظ/التحميل">
+                        <button type="button" class="btn btn-success" onclick="saveData()">حفظ البيانات</button>
+                        <button type="button" class="btn" onclick="loadData()">تحميل البيانات</button>
+                    </div>
+                    
+                    <p id="saveMessage" style="color: green; margin-top: 10px;"></p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="button" class="btn" onclick="window.print()">طباعة النموذج</button>
+                    <button type="reset" class="btn btn-danger">مسح النموذج</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- قسم الجلسات المحفوظة -->
+        <div class="saved-sessions">
+            <div class="session-header">
+                <h2>الجلسات المحفوظة</h2>
+                <button type="button" class="btn" onclick="refreshSessions()">🔄 تحديث</button>
+            </div>
+            <p>انقر على أي جلسة لتحميلها:</p>
+            <ul id="sessionsList" class="session-list">
+                <!-- سيتم ملء هذا القسم بالجلسات المحفوظة -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // إظهار/إخفاء الحقول المشروطة
+        document.getElementById('prevRelationshipYes').addEventListener('change', function() {
+            document.getElementById('prevRelationshipDetails').style.display = this.checked ? 'block' : 'none';
+        });
+        document.getElementById('prevRelationshipNo').addEventListener('change', function() {
+            document.getElementById('prevRelationshipDetails').style.display = this.checked ? 'none' : 'block';
+        });
+        
+        document.getElementById('sameAddressNo').addEventListener('change', function() {
+            document.getElementById('residentialAddress').style.display = this.checked ? 'block' : 'none';
+        });
+        document.getElementById('sameAddressYes').addEventListener('change', function() {
+            document.getElementById('residentialAddress').style.display = this.checked ? 'none' : 'block';
+        });
+        
+        document.getElementById('hasPassportYes').addEventListener('change', function() {
+            document.getElementById('passportDetails').style.display = this.checked ? 'block' : 'none';
+        });
+        document.getElementById('hasPassportNo').addEventListener('change', function() {
+            document.getElementById('passportDetails').style.display = this.checked ? 'none' : 'block';
+        });
+        
+        document.getElementById('hasNationalIDYes').addEventListener('change', function() {
+            document.getElementById('nationalIDDetails').style.display = this.checked ? 'block' : 'none';
+        });
+        document.getElementById('hasNationalIDNo').addEventListener('change', function() {
+            document.getElementById('nationalIDDetails').style.display = this.checked ? 'none' : 'block';
+        });
+        
+        // حفظ البيانات في localStorage
+        function saveData() {
+            const handle = document.getElementById('saveHandle').value.trim();
+            if (!handle) {
+                alert('يرجى إدخال اسم للحفظ');
+                return;
+            }
+            
+            const formData = {};
+            const formElements = document.getElementById('genericForm').elements;
+            
+            for (let i = 0; i < formElements.length; i++) {
+                const element = formElements[i];
+                if (element.name) {
+                    if (element.type === 'radio') {
+                        if (element.checked) {
+                            formData[element.name] = element.value;
+                        }
+                    } else if (element.type === 'checkbox') {
+                        formData[element.name] = element.checked;
+                    } else {
+                        formData[element.name] = element.value;
+                    }
+                }
+            }
+            
+            // إضافة معلومات إضافية عن الجلسة
+            const sessionInfo = {
+                data: formData,
+                timestamp: new Date().toISOString(),
+                name: handle
+            };
+            
+            localStorage.setItem(`genericForm_${handle}`, JSON.stringify(sessionInfo));
+            document.getElementById('saveMessage').textContent = 'تم حفظ البيانات بنجاح!';
+            
+            // تحديث قائمة الجلسات
+            refreshSessions();
+            
+            setTimeout(() => {
+                document.getElementById('saveMessage').textContent = '';
+            }, 3000);
+        }
+        
+        // تحميل البيانات من localStorage
+        function loadData(handle = null) {
+            const handleToLoad = handle || document.getElementById('saveHandle').value.trim();
+            if (!handleToLoad) {
+                alert('يرجى إدخال اسم للتحميل');
+                return;
+            }
+            
+            const savedData = localStorage.getItem(`genericForm_${handleToLoad}`);
+            if (!savedData) {
+                alert('لا توجد بيانات محفوظة بهذا الاسم');
+                return;
+            }
+            
+            const sessionInfo = JSON.parse(savedData);
+            const formData = sessionInfo.data;
+            const formElements = document.getElementById('genericForm').elements;
+            
+            for (let i = 0; i < formElements.length; i++) {
+                const element = formElements[i];
+                if (element.name && formData[element.name] !== undefined) {
+                    if (element.type === 'radio') {
+                        if (element.value === formData[element.name]) {
+                            element.checked = true;
+                        }
+                    } else if (element.type === 'checkbox') {
+                        element.checked = formData[element.name];
+                    } else {
+                        element.value = formData[element.name];
+                    }
+                }
+            }
+            
+            // تحديث الحقول المشروطة بعد التحميل
+            document.getElementById('prevRelationshipDetails').style.display = 
+                document.getElementById('prevRelationshipYes').checked ? 'block' : 'none';
+                
+            document.getElementById('residentialAddress').style.display = 
+                document.getElementById('sameAddressNo').checked ? 'block' : 'none';
+                
+            document.getElementById('passportDetails').style.display = 
+                document.getElementById('hasPassportYes').checked ? 'block' : 'none';
+                
+            document.getElementById('nationalIDDetails').style.display = 
+                document.getElementById('hasNationalIDYes').checked ? 'block' : 'none';
+            
+            document.getElementById('saveMessage').textContent = 'تم تحميل البيانات بنجاح!';
+            
+            setTimeout(() => {
+                document.getElementById('saveMessage').textContent = '';
+            }, 3000);
+        }
+        
+        // عرض الجلسات المحفوظة
+        function refreshSessions() {
+            const sessionsList = document.getElementById('sessionsList');
+            sessionsList.innerHTML = '';
+            
+            let hasSessions = false;
+            
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('genericForm_')) {
+                    hasSessions = true;
+                    const sessionInfo = JSON.parse(localStorage.getItem(key));
+                    const handle = key.replace('genericForm_', '');
+                    
+                    const li = document.createElement('li');
+                    li.className = 'session-item';
+                    
+                    const sessionDate = new Date(sessionInfo.timestamp).toLocaleString('ar-EG');
+                    
+                    li.innerHTML = `
+                        <span class="session-name" onclick="loadData('${handle}')">
+                            ${handle} (${sessionDate})
+                        </span>
+                        <div class="session-actions">
+                            <button class="btn btn-danger" onclick="deleteSession('${handle}')">×</button>
+                        </div>
+                    `;
+                    
+                    sessionsList.appendChild(li);
+                }
+            }
+            
+            if (!hasSessions) {
+                sessionsList.innerHTML = '<li>لا توجد جلسات محفوظة</li>';
+            }
+        }
+        
+        // حذف جلسة
+        function deleteSession(handle) {
+            if (confirm(`هل أنت متأكد من أنك تريد حذف الجلسة "${handle}"؟`)) {
+                localStorage.removeItem(`genericForm_${handle}`);
+                refreshSessions();
+            }
+        }
+        
+        // تحديث قائمة الجلسات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshSessions();
+        });
+    </script>
+</body>
+</html>
