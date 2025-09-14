@@ -81,6 +81,15 @@
         <button class="muted" id="addHistory">+ أضف سجل</button>
       </td>
     </tr>
+    <tr><th>9. الخدمة العسكرية</th>
+      <td>
+        <table id="militaryTable">
+          <tr><th>من</th><th>إلى</th><th>الرتبة</th><th>الوحدة/الفرع</th><th>البلد</th><th>حذف</th></tr>
+        </table>
+        <button class="muted" id="addMilitary">+ أضف خدمة عسكرية</button>
+        <textarea id="militaryDetails" placeholder="تفاصيل إضافية"></textarea>
+      </td>
+    </tr>
     <tr><th>12. العناوين</th>
       <td>
         <table id="addressTable">
@@ -111,6 +120,10 @@ function collectData(){
   document.querySelectorAll('#historyTable tr[data-row]').forEach(tr=>{
     data.history.push({from:tr.querySelector('[name=from]').value,to:tr.querySelector('[name=to]').value,activity:tr.querySelector('[name=activity]').value,loc:tr.querySelector('[name=loc]').value,emp:tr.querySelector('[name=emp]').value});
   });
+  data.military=[];
+  document.querySelectorAll('#militaryTable tr[data-row]').forEach(tr=>{
+    data.military.push({from:tr.querySelector('[name=from]').value,to:tr.querySelector('[name=to]').value,rank:tr.querySelector('[name=rank]').value,unit:tr.querySelector('[name=unit]').value,country:tr.querySelector('[name=country]').value});
+  });
   data.addresses=[];
   document.querySelectorAll('#addressTable tr[data-row]').forEach(tr=>{
     data.addresses.push({from:tr.querySelector('[name=from]').value,to:tr.querySelector('[name=to]').value,street:tr.querySelector('[name=street]').value,city:tr.querySelector('[name=city]').value,region:tr.querySelector('[name=region]').value,postal:tr.querySelector('[name=postal]').value,country:tr.querySelector('[name=country]').value});
@@ -121,6 +134,8 @@ function populateData(data){
   for(const k in data){if(document.getElementById(k))document.getElementById(k).value=data[k];}
   document.querySelectorAll('#historyTable tr[data-row]').forEach(tr=>tr.remove());
   (data.history||[]).forEach(h=>addHistory(h));
+  document.querySelectorAll('#militaryTable tr[data-row]').forEach(tr=>tr.remove());
+  (data.military||[]).forEach(m=>addMilitary(m));
   document.querySelectorAll('#addressTable tr[data-row]').forEach(tr=>tr.remove());
   (data.addresses||[]).forEach(a=>addAddress(a));
 }
@@ -148,12 +163,18 @@ function addHistory(h={}){
   tr.innerHTML=`<td><input name=from value='${h.from||''}'></td><td><input name=to value='${h.to||''}'></td><td><input name=activity value='${h.activity||''}'></td><td><input name=loc value='${h.loc||''}'></td><td><input name=emp value='${h.emp||''}'></td><td><button onclick="this.closest('tr').remove()">×</button></td>`;
   document.getElementById('historyTable').appendChild(tr);
 }
+function addMilitary(m={}){
+  const tr=document.createElement('tr');tr.setAttribute('data-row','1');
+  tr.innerHTML=`<td><input name=from value='${m.from||''}'></td><td><input name=to value='${m.to||''}'></td><td><input name=rank value='${m.rank||''}'></td><td><input name=unit value='${m.unit||''}'></td><td><input name=country value='${m.country||''}'></td><td><button onclick="this.closest('tr').remove()">×</button></td>`;
+  document.getElementById('militaryTable').appendChild(tr);
+}
 function addAddress(a={}){
   const tr=document.createElement('tr');tr.setAttribute('data-row','1');
   tr.innerHTML=`<td><input name=from value='${a.from||''}'></td><td><input name=to value='${a.to||''}'></td><td><input name=street value='${a.street||''}'></td><td><input name=city value='${a.city||''}'></td><td><input name=region value='${a.region||''}'></td><td><input name=postal value='${a.postal||''}'></td><td><input name=country value='${a.country||''}'></td><td><button onclick="this.closest('tr').remove()">×</button></td>`;
   document.getElementById('addressTable').appendChild(tr);
 }
 document.getElementById('addHistory').onclick=()=>addHistory();
+document.getElementById('addMilitary').onclick=()=>addMilitary();
 document.getElementById('addAddress').onclick=()=>addAddress();
 document.getElementById('saveBtn').onclick=save;
 document.getElementById('loadBtn').onclick=load;
