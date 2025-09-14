@@ -190,7 +190,7 @@
 <body>
     <div class="container">
         <div class="main-content">
-            <h1>النموذج العام للطلب لكندا</h1>
+            <h1>النموذج العام للطلب لكندا (IMM 0008)</h1>
             
             <div class="instructions">
                 <h3>تعليمات هامة:</h3>
@@ -201,18 +201,51 @@
             </div>
 
             <form id="genericForm">
-                <!-- المعلومات الأساسية -->
+                <!-- المعلومات الشخصية الأساسية -->
                 <div class="section">
-                    <h2>المعلومات الأساسية</h2>
+                    <h2>المعلومات الشخصية</h2>
                     
                     <table>
                         <tr>
-                            <th>اسم مقدم الطلب</th>
-                            <td><input type="text" id="applicantName" name="applicantName" required></td>
+                            <th>الاسم الكامل (كما في جواز السفر)</th>
+                            <td>
+                                <input type="text" id="familyName" name="familyName" placeholder="اسم العائلة" required>
+                                <input type="text" id="givenNames" name="givenNames" placeholder="الاسم الأول (الأسماء)" required>
+                            </td>
                         </tr>
                         <tr>
-                            <th>تاريخ الميلاد</th>
+                            <th>الاسم الكامل بلغتك الأصلية (إن وجد)</th>
+                            <td><input type="text" id="nativeName" name="nativeName"></td>
+                        </tr>
+                        <tr>
+                            <th>تاريخ الميلاد (YYYY-MM-DD)</th>
                             <td><input type="date" id="dateOfBirth" name="dateOfBirth" required></td>
+                        </tr>
+                        <tr>
+                            <th>مكان الولادة (المدينة/البلد)</th>
+                            <td>
+                                <input type="text" id="cityOfBirth" name="cityOfBirth" required>
+                                <input type="text" id="countryOfBirth" name="countryOfBirth" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>الجنس</th>
+                            <td>
+                                <select id="gender" name="gender" required>
+                                    <option value="">-- اختر --</option>
+                                    <option value="male">ذكر</option>
+                                    <option value="female">أنثى</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>الجنسية الحالية</th>
+                            <td><input type="text" id="nationality" name="nationality" required></td>
+                        </tr>
+                        <tr>
+                            <th>الجنسية عند الولادة (إذا مختلفة)</th>
+                            <td><input type="text" id="nationalityAtBirth" name="nationalityAtBirth"></td>
                         </tr>
                     </table>
                 </div>
@@ -222,7 +255,7 @@
                     <h2>الحالة الاجتماعية</h2>
                     
                     <div class="checkbox-item">
-                        <label>13. أ) حالتك الاجتماعية الحالية</label>
+                        <label>الحالة الاجتماعية الحالية</label>
                         <select id="maritalStatus" name="maritalStatus" required>
                             <option value="">-- اختر --</option>
                             <option value="single">أعزب</option>
@@ -234,27 +267,33 @@
                         </select>
                     </div>
                     
-                    <div class="checkbox-item">
-                        <label>ب) إذا كنت متزوجًا أو في علاقة شائعة القانون! قدم التاريخ الذي تزوجت فيه أو دخلت في العلاقة الشائعة القانون</label>
-                        <input type="date" id="relationshipDate" name="relationshipDate">
+                    <div id="currentRelationshipDetails" style="display: none;">
+                        <div class="checkbox-item">
+                            <label>تاريخ الزواج أو بدء العلاقة (YYYY-MM-DD)</label>
+                            <input type="date" id="relationshipDate" name="relationshipDate">
+                        </div>
+                        
+                        <div class="checkbox-item">
+                            <label>اسم الزوج/الشريك الحالي</label>
+                            <table>
+                                <tr>
+                                    <th>اسم العائلة</th>
+                                    <td><input type="text" name="spouseFamilyName"></td>
+                                </tr>
+                                <tr>
+                                    <th>الاسم الأول (الأسماء)</th>
+                                    <td><input type="text" name="spouseGivenNames"></td>
+                                </tr>
+                                <tr>
+                                    <th>تاريخ الميلاد (YYYY-MM-DD)</th>
+                                    <td><input type="date" name="spouseDateOfBirth"></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                     
                     <div class="checkbox-item">
-                        <label>ج) قدم اسم زوجك/شريكك العادي الحالي</label>
-                        <table>
-                            <tr>
-                                <th>اسم العائلة</th>
-                                <td><input type="text" name="spouseFamilyName"></td>
-                            </tr>
-                            <tr>
-                                <th>الاسم الأول (الأسماء)</th>
-                                <td><input type="text" name="spouseGivenNames"></td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <label>14. أ) هل سبق أن تزوجت أو كنت في علاقة شائعة القانون؟</label>
+                        <label>هل سبق أن تزوجت أو كنت في علاقة شائعة القانون؟</label>
                         <div class="yes-no-group">
                             <input type="radio" id="prevRelationshipNo" name="prevRelationship" value="no" checked>
                             <label for="prevRelationshipNo">لا</label>
@@ -263,7 +302,6 @@
                         </div>
                         
                         <div id="prevRelationshipDetails" style="display: none;">
-                            <label>ب) قدم التفاصيل التالية لزوجك/شريكك العادي السابق:</label>
                             <table>
                                 <tr>
                                     <th>اسم العائلة</th>
@@ -274,7 +312,7 @@
                                     <td><input type="text" name="prevSpouseGivenNames"></td>
                                 </tr>
                                 <tr>
-                                    <th>ج) نوع العلاقة</th>
+                                    <th>نوع العلاقة</th>
                                     <td>
                                         <select name="prevRelationshipType">
                                             <option value="married">متزوج</option>
@@ -283,16 +321,23 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>د) من</th>
+                                    <th>من (YYYY-MM-DD)</th>
                                     <td><input type="date" name="prevRelationshipFrom"></td>
                                 </tr>
                                 <tr>
-                                    <th>هـ) إلى</th>
+                                    <th>إلى (YYYY-MM-DD)</th>
                                     <td><input type="date" name="prevRelationshipTo"></td>
                                 </tr>
                                 <tr>
-                                    <th>و) تاريخ الميلاد</th>
-                                    <td><input type="date" name="prevSpouseDOB"></td>
+                                    <th>سبب الانتهاء</th>
+                                    <td>
+                                        <select name="prevRelationshipEndReason">
+                                            <option value="divorce">طلاق</option>
+                                            <option value="death">وفاة</option>
+                                            <option value="annulment">إبطال</option>
+                                            <option value="separation">انفصال</option>
+                                        </select>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -304,7 +349,7 @@
                     <h2>معلومات الاتصال</h2>
                     
                     <div class="checkbox-item">
-                        <h3>1. عنوان البريد الحالي</h3>
+                        <h3>عنوان البريد الحالي</h3>
                         <div class="subtext">جميع المراسلات ستذهب إلى هذا العنوان ما لم تشير إلى عنوان بريدك الإلكتروني أدناه.</div>
                         
                         <table>
@@ -321,7 +366,7 @@
                                 <td><input type="text" name="streetNumber"></td>
                             </tr>
                             <tr>
-                                <th>* اسم الشارع</th>
+                                <th>اسم الشارع</th>
                                 <td><input type="text" name="streetName" required></td>
                             </tr>
                             <tr>
@@ -329,7 +374,7 @@
                                 <td><input type="text" name="city" required></td>
                             </tr>
                             <tr>
-                                <th>* البلد</th>
+                                <th>البلد</th>
                                 <td><input type="text" name="country" required></td>
                             </tr>
                             <tr>
@@ -340,15 +385,11 @@
                                 <th>الرمز البريدي</th>
                                 <td><input type="text" name="postalCode"></td>
                             </tr>
-                            <tr>
-                                <th>المنطقة</th>
-                                <td><input type="text" name="district"></td>
-                            </tr>
                         </table>
                     </div>
                     
                     <div class="checkbox-item">
-                        <h3>2. عنوان السكن</h3>
+                        <h3>عنوان السكن</h3>
                         <div class="yes-no-group">
                             <label>هل هو نفس عنوان البريد؟</label>
                             <input type="radio" id="sameAddressYes" name="sameAddress" value="yes" checked>
@@ -387,100 +428,49 @@
                                     <th>الرمز البريدي</th>
                                     <td><input type="text" name="resPostalCode"></td>
                                 </tr>
-                                <tr>
-                                    <th>المنطقة</th>
-                                    <td><input type="text" name="resDistrict"></td>
-                                </tr>
                             </table>
                         </div>
                     </div>
                     
                     <div class="checkbox-item">
-                        <h3>3. رقم الهاتف</h3>
+                        <h3>أرقام الهاتف</h3>
                         <table>
                             <tr>
-                                <th>النوع</th>
+                                <th>الهاتف الرئيسي</th>
                                 <td>
-                                    <select name="phoneType">
-                                        <option value="home">منزل</option>
-                                        <option value="work">عمل</option>
-                                        <option value="mobile">جوال</option>
-                                    </select>
+                                    <input type="text" name="phoneNumber" placeholder="رقم الهاتف">
+                                    <input type="text" name="phoneCountryCode" placeholder="رمز الدولة">
                                 </td>
                             </tr>
                             <tr>
-                                <th>كود الدولة</th>
-                                <td><input type="text" name="phoneCountryCode"></td>
-                            </tr>
-                            <tr>
-                                <th>الرقم</th>
-                                <td><input type="text" name="phoneNumber"></td>
-                            </tr>
-                            <tr>
-                                <th>التحويلة</th>
-                                <td><input type="text" name="phoneExt"></td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <h3>4. رقم هاتف بديل</h3>
-                        <table>
-                            <tr>
-                                <th>النوع</th>
+                                <th>هاتف بديل</th>
                                 <td>
-                                    <select name="altPhoneType">
-                                        <option value="home">منزل</option>
-                                        <option value="work">عمل</option>
-                                        <option value="mobile">جوال</option>
-                                    </select>
+                                    <input type="text" name="altPhoneNumber" placeholder="رقم الهاتف">
+                                    <input type="text" name="altPhoneCountryCode" placeholder="رمز الدولة">
                                 </td>
                             </tr>
                             <tr>
-                                <th>كود الدولة</th>
-                                <td><input type="text" name="altPhoneCountryCode"></td>
-                            </tr>
-                            <tr>
-                                <th>الرقم</th>
-                                <td><input type="text" name="altPhoneNumber"></td>
-                            </tr>
-                            <tr>
-                                <th>التحويلة</th>
-                                <td><input type="text" name="altPhoneExt"></td>
+                                <th>الفاكس</th>
+                                <td>
+                                    <input type="text" name="faxNumber" placeholder="رقم الفاكس">
+                                    <input type="text" name="faxCountryCode" placeholder="رمز الدولة">
+                                </td>
                             </tr>
                         </table>
                     </div>
                     
                     <div class="checkbox-item">
-                        <h3>5. رقم الفاكس</h3>
-                        <table>
-                            <tr>
-                                <th>كود الدولة</th>
-                                <td><input type="text" name="faxCountryCode"></td>
-                            </tr>
-                            <tr>
-                                <th>الرقم</th>
-                                <td><input type="text" name="faxNumber"></td>
-                            </tr>
-                            <tr>
-                                <th>التحويلة</th>
-                                <td><input type="text" name="faxExt"></td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <h3>6. عنوان البريد الإلكتروني</h3>
+                        <h3>البريد الإلكتروني</h3>
                         <input type="email" name="email">
                     </div>
                 </div>
 
                 <!-- جواز السفر -->
                 <div class="section">
-                    <h2>جواز السفر</h2>
+                    <h2>معلومات جواز السفر</h2>
                     
                     <div class="checkbox-item">
-                        <label>1. هل لديك جواز سفر/وثيقة سفر سارية؟</label>
+                        <label>هل لديك جواز سفر ساري المفعول؟</label>
                         <div class="yes-no-group">
                             <input type="radio" id="hasPassportNo" name="hasPassport" value="no" checked>
                             <label for="hasPassportNo">لا</label>
@@ -491,42 +481,20 @@
                         <div id="passportDetails" style="display: none;">
                             <table>
                                 <tr>
-                                    <th>2. رقم جواز السفر/وثيقة السفر (تمامًا كما هو موضح في جواز سفرك أو وثيقة سفرك)</th>
+                                    <th>رقم جواز السفر</th>
                                     <td><input type="text" name="passportNumber"></td>
                                 </tr>
                                 <tr>
-                                    <th>3. بلد الإصدار</th>
+                                    <th>بلد الإصدار</th>
                                     <td><input type="text" name="passportCountry"></td>
                                 </tr>
                                 <tr>
-                                    <th>4. تاريخ الإصدار</th>
+                                    <th>تاريخ الإصدار</th>
                                     <td><input type="date" name="passportIssueDate"></td>
                                 </tr>
                                 <tr>
-                                    <th>5. تاريخ الانتهاء</th>
+                                    <th>تاريخ الانتهاء</th>
                                     <td><input type="date" name="passportExpiryDate"></td>
-                                </tr>
-                                <tr>
-                                    <th>6. هل ستستخدم لهذه الرحلة جواز سفر صادر عن وزارة الخارجية في تايوان يتضمن رقم تعريفك الشخصي؟</th>
-                                    <td>
-                                        <div class="yes-no-group">
-                                            <input type="radio" id="taiwanPassportNo" name="taiwanPassport" value="no" checked>
-                                            <label for="taiwanPassportNo">لا</label>
-                                            <input type="radio" id="taiwanPassportYes" name="taiwanPassport" value="yes">
-                                            <label for="taiwanPassportYes">نعم</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>7. هل ستستخدم لهذه الرحلة جواز سفر إسرائيلي وطني؟</th>
-                                    <td>
-                                        <div class="yes-no-group">
-                                            <input type="radio" id="israeliPassportNo" name="israeliPassport" value="no" checked>
-                                            <label for="israeliPassportNo">لا</label>
-                                            <input type="radio" id="israeliPassportYes" name="israeliPassport" value="yes">
-                                            <label for="israeliPassportYes">نعم</label>
-                                        </div>
-                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -538,7 +506,7 @@
                     <h2>وثيقة الهوية الوطنية</h2>
                     
                     <div class="checkbox-item">
-                        <label>1. هل لديك وثيقة هوية وطنية؟</label>
+                        <label>هل لديك وثيقة هوية وطنية؟</label>
                         <div class="yes-no-group">
                             <input type="radio" id="hasNationalIDNo" name="hasNationalID" value="no" checked>
                             <label for="hasNationalIDNo">لا</label>
@@ -549,22 +517,94 @@
                         <div id="nationalIDDetails" style="display: none;">
                             <table>
                                 <tr>
-                                    <th>2. رقم الوثيقة</th>
+                                    <th>رقم الوثيقة</th>
                                     <td><input type="text" name="nationalIDNumber"></td>
                                 </tr>
                                 <tr>
-                                    <th>3. بلد الإصدار</th>
+                                    <th>بلد الإصدار</th>
                                     <td><input type="text" name="nationalIDCountry"></td>
                                 </tr>
                                 <tr>
-                                    <th>4. تاريخ الإصدار</th>
+                                    <th>تاريخ الإصدار</th>
                                     <td><input type="date" name="nationalIDIssueDate"></td>
                                 </tr>
                                 <tr>
-                                    <th>5. تاريخ الانتهاء</th>
+                                    <th>تاريخ الانتهاء</th>
                                     <td><input type="date" name="nationalIDExpiryDate"></td>
                                 </tr>
                             </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- التعليم والخبرة العملية -->
+                <div class="section">
+                    <h2>التعليم والخبرة العملية</h2>
+                    
+                    <div class="checkbox-item">
+                        <label>أعلى مستوى تعليمي</label>
+                        <select name="educationLevel">
+                            <option value="">-- اختر --</option>
+                            <option value="none">لا شيء</option>
+                            <option value="primary">ابتدائي</option>
+                            <option value="secondary">ثانوي</option>
+                            <option value="diploma">دبلوم</option>
+                            <option value="bachelor">بكالوريوس</option>
+                            <option value="master">ماجستير</option>
+                            <option value="phd">دكتوراه</option>
+                        </select>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <label>المهنة الحالية</label>
+                        <input type="text" name="currentOccupation">
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <label>سنوات الخبرة العملية</label>
+                        <input type="number" name="yearsOfExperience" min="0">
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <label>المهارات الخاصة</label>
+                        <textarea name="specialSkills"></textarea>
+                    </div>
+                </div>
+
+                <!-- المعلومات العائلية -->
+                <div class="section">
+                    <h2>المعلومات العائلية</h2>
+                    
+                    <div class="checkbox-item">
+                        <label>هل لديك أطفال؟</label>
+                        <div class="yes-no-group">
+                            <input type="radio" id="hasChildrenNo" name="hasChildren" value="no" checked>
+                            <label for="hasChildrenNo">لا</label>
+                            <input type="radio" id="hasChildrenYes" name="hasChildren" value="yes">
+                            <label for="hasChildrenYes">نعم</label>
+                        </div>
+                        
+                        <div id="childrenDetails" style="display: none;">
+                            <table id="childrenTable">
+                                <tr>
+                                    <th>الاسم</th>
+                                    <th>تاريخ الميلاد</th>
+                                    <th>مكان الولادة</th>
+                                    <th>الجنس</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" name="child1Name"></td>
+                                    <td><input type="date" name="child1DOB"></td>
+                                    <td><input type="text" name="child1BirthPlace"></td>
+                                    <td>
+                                        <select name="child1Gender">
+                                            <option value="male">ذكر</option>
+                                            <option value="female">أنثى</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button type="button" class="btn" onclick="addChildRow()">+ إضافة طفل</button>
                         </div>
                     </div>
                 </div>
@@ -574,7 +614,7 @@
                     <h2>الموافقة والإقرار</h2>
                     
                     <div class="checkbox-item">
-                        <label>هل توافق على أن يتم الاتصال بك من قبل CIC، أو منظمة بناءً على طلب CIC، في المستقبل؟</label>
+                        <label>هل توافق على أن يتم الاتصال بك من قبل الهجرة واللاجئين والمواطنة الكندية (IRCC)؟</label>
                         <div class="yes-no-group">
                             <input type="radio" id="consentContactNo" name="consentContact" value="no" checked>
                             <label for="consentContactNo">لا</label>
@@ -584,28 +624,12 @@
                     </div>
                     
                     <div class="checkbox-item">
-                        <label>الموافقة على الإفصاح عن المعلومات للمقاطعة/الإقليم المقصود للوجهة</label>
-                        <textarea name="consentProvince" placeholder="أنا [الاسم الأول، الاسم الأخير] نيابة عن نفسي وجميع المعالين المدرجين في هذا الطلب، أوافق على أن تقوم الهجرة واللاجئين والمواطنة الكندية بمشاركة المعلومات المجمعة في هذا الطلب وكذلك الوثائق الداعمة مع سلطات المقاطعات والأقاليم المسؤولة عن الهجرة لأغراض قانون الهجرة وحماية اللاجئين."></textarea>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <label>الموافقة على الإفصاح عن المعلومات لأغراض التقييم</label>
-                        <p>أوافق على أن يتم مشاركة المعلومات الواردة في هذا الطلب المتعلقة بمهنتي المقصودة وتعليمي وخبرتي العملية مع أصحاب العمل المحتملين لمساعدتهم في توظيف العمال.</p>
-                        <div class="yes-no-group">
-                            <input type="radio" id="consentEvaluationNo" name="consentEvaluation" value="no" checked>
-                            <label for="consentEvaluationNo">لا</label>
-                            <input type="radio" id="consentEvaluationYes" name="consentEvaluation" value="yes">
-                            <label for="consentEvaluationYes">نعم</label>
-                        </div>
-                    </div>
-                    
-                    <div class="checkbox-item">
                         <h3>إقرار مقدم الطلب</h3>
                         <p>أقر بأن المعلومات التي قدمتها صحيحة وكاملة وصحيحة.</p>
                         
                         <table>
                             <tr>
-                                <th>توقيع مقدم الطلب أو الوالد/الوصي القانوني للشخص الذي تقل سنه عن 18 عامًا</th>
+                                <th>التوقيع</th>
                                 <td><input type="text" name="signature" required></td>
                             </tr>
                             <tr>
@@ -653,6 +677,11 @@
 
     <script>
         // إظهار/إخفاء الحقول المشروطة
+        document.getElementById('maritalStatus').addEventListener('change', function() {
+            const showDetails = this.value === 'married' || this.value === 'common-law';
+            document.getElementById('currentRelationshipDetails').style.display = showDetails ? 'block' : 'none';
+        });
+        
         document.getElementById('prevRelationshipYes').addEventListener('change', function() {
             document.getElementById('prevRelationshipDetails').style.display = this.checked ? 'block' : 'none';
         });
@@ -680,6 +709,32 @@
         document.getElementById('hasNationalIDNo').addEventListener('change', function() {
             document.getElementById('nationalIDDetails').style.display = this.checked ? 'none' : 'block';
         });
+        
+        document.getElementById('hasChildrenYes').addEventListener('change', function() {
+            document.getElementById('childrenDetails').style.display = this.checked ? 'block' : 'none';
+        });
+        document.getElementById('hasChildrenNo').addEventListener('change', function() {
+            document.getElementById('childrenDetails').style.display = this.checked ? 'none' : 'block';
+        });
+        
+        // إضافة صف للأطفال
+        let childCount = 1;
+        function addChildRow() {
+            childCount++;
+            const table = document.getElementById('childrenTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" name="child${childCount}Name"></td>
+                <td><input type="date" name="child${childCount}DOB"></td>
+                <td><input type="text" name="child${childCount}BirthPlace"></td>
+                <td>
+                    <select name="child${childCount}Gender">
+                        <option value="male">ذكر</option>
+                        <option value="female">أنثى</option>
+                    </select>
+                </td>
+            `;
+        }
         
         // حفظ البيانات في localStorage
         function saveData() {
@@ -759,6 +814,10 @@
             }
             
             // تحديث الحقول المشروطة بعد التحميل
+            document.getElementById('currentRelationshipDetails').style.display = 
+                (document.getElementById('maritalStatus').value === 'married' || 
+                 document.getElementById('maritalStatus').value === 'common-law') ? 'block' : 'none';
+                
             document.getElementById('prevRelationshipDetails').style.display = 
                 document.getElementById('prevRelationshipYes').checked ? 'block' : 'none';
                 
@@ -770,6 +829,9 @@
                 
             document.getElementById('nationalIDDetails').style.display = 
                 document.getElementById('hasNationalIDYes').checked ? 'block' : 'none';
+                
+            document.getElementById('childrenDetails').style.display = 
+                document.getElementById('hasChildrenYes').checked ? 'block' : 'none';
             
             document.getElementById('saveMessage').textContent = 'تم تحميل البيانات بنجاح!';
             
