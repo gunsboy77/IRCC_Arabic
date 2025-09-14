@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قائمة المستندات المطلوبة - الزوج (بما في ذلك الأطفال المعالين)</title>
+    <title>الجدول (أ) - الخلفية / الإقرار</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -139,6 +139,11 @@
             margin-bottom: 20px;
             border-left: 4px solid #ffc107;
         }
+        .yes-no-group {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+        }
         .session-list {
             list-style-type: none;
             padding: 0;
@@ -185,287 +190,292 @@
 <body>
     <div class="container">
         <div class="main-content">
-            <h1>قائمة المستندات المطلوبة - الزوج (بما في ذلك الأطفال المعالين)</h1>
+            <h1>الجدول (أ) - الخلفية / الإقرار</h1>
             
             <div class="instructions">
                 <h3>تعليمات هامة:</h3>
-                <p>1. يجب على مقدم الطلب والكفيل تعبئة النموذج بالمعلومات المطلوبة.</p>
+                <p>1. يجب على مقدم الطلب الرئيسي والزوج/الشريك والأطفال المعالين الذين تبلغ أعمارهم 18 سنة أو أكثر تعبئة هذا النموذج.</p>
                 <p>2. لحفظ البيانات، املأ الحقول ثم اضغط على زر "حفظ البيانات".</p>
                 <p>3. لاسترجاع البيانات المحفوظة سابقاً، اكتب اسم الجلسة ثم اضغط على زر "تحميل البيانات" أو انقر على الجلسة من القائمة.</p>
                 <p>4. يمكنك طباعة النموذج بعد تعبئته باستخدام أمر الطباعة في متصفحك.</p>
             </div>
 
-            <form id="documentChecklistForm">
+            <form id="scheduleAForm">
                 <!-- المعلومات الأساسية -->
                 <div class="section">
-                    <h2>معلومات حول الفحص السابق (ليتم تعبئتها من قبل الكفيل)</h2>
-                    <p>الشخص الذي أقوم بكفالته تم الإعلان عنه كزوج أو شريك وكان قد تم فحصه كمعال غير مرافق عندما تقدمت بطلب للحصول على تأشيرة الإقامة الدائمة، ولم يحصل على تأشيرة مهاجر.</p>
+                    <h2>المعلومات الأساسية</h2>
+                    
                     <div>
-                        <input type="radio" id="previousExaminationNo" name="previousExamination" value="no" checked>
-                        <label for="previousExaminationNo">لا</label>
-                        <input type="radio" id="previousExaminationYes" name="previousExamination" value="yes">
-                        <label for="previousExaminationYes">نعم</label>
+                        <input type="radio" id="principalApplicant" name="applicantType" value="principal" checked>
+                        <label for="principalApplicant">مقدم الطلب الرئيسي</label>
+                        <input type="radio" id="familyMember" name="applicantType" value="family">
+                        <label for="familyMember">الزوج/الشريك أو الطفل المعال الذي يبلغ 18 سنة أو أكثر</label>
                     </div>
+                    
+                    <table>
+                        <tr>
+                            <th>1. الاسم الكامل</th>
+                            <td>
+                                <input type="text" id="familyName" name="familyName" placeholder="اسم العائلة" required>
+                                <input type="text" id="givenNames" name="givenNames" placeholder="الاسم الأول (الأسماء)" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>2. الاسم الكامل بلغتك الأصلية أو كتابتك</th>
+                            <td><input type="text" id="nativeName" name="nativeName"></td>
+                        </tr>
+                        <tr>
+                            <th>3. تاريخ الميلاد (YYYY-MM-DD)</th>
+                            <td><input type="date" id="dateOfBirth" name="dateOfBirth" required></td>
+                        </tr>
+                    </table>
+                    
+                    <h3>4. التفاصيل الشخصية لأبيك</h3>
+                    <table>
+                        <tr>
+                            <th>اسم العائلة</th>
+                            <th>الاسم الأول (الأسماء)</th>
+                            <th>تاريخ الميلاد (YYYY-MM-DD)</th>
+                            <th>مدينة الميلاد</th>
+                            <th>بلد الميلاد</th>
+                            <th>تاريخ الوفاة إذا متوفي (YYYY-MM-DD)</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="fatherFamilyName"></td>
+                            <td><input type="text" name="fatherGivenNames"></td>
+                            <td><input type="date" name="fatherDOB"></td>
+                            <td><input type="text" name="fatherBirthCity"></td>
+                            <td><input type="text" name="fatherBirthCountry"></td>
+                            <td><input type="date" name="fatherDeathDate"></td>
+                        </tr>
+                    </table>
+                    
+                    <h3>5. التفاصيل الشخصية لأمك</h3>
+                    <table>
+                        <tr>
+                            <th>اسم العائلة عند الولادة</th>
+                            <th>الاسم الأول (الأسماء)</th>
+                            <th>تاريخ الميلاد (YYYY-MM-DD)</th>
+                            <th>مدينة الميلاد</th>
+                            <th>بلد الميلاد</th>
+                            <th>تاريخ الوفاة إذا متوفي (YYYY-MM-DD)</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="motherFamilyName"></td>
+                            <td><input type="text" name="motherGivenNames"></td>
+                            <td><input type="date" name="motherDOB"></td>
+                            <td><input type="text" name="motherBirthCity"></td>
+                            <td><input type="text" name="motherBirthCountry"></td>
+                            <td><input type="date" name="motherDeathDate"></td>
+                        </tr>
+                    </table>
                 </div>
 
-                <!-- الجزء أ: النماذج المطلوبة -->
+                <!-- الأسئلة -->
                 <div class="section">
-                    <h2>الجزء أ: النماذج المطلوبة</h2>
+                    <h2>6. هل سبق لك، أو إذا كنت مقدم الطلب الرئيسي، أي من أفراد أسرتك المدرجين في طلبك للإقامة الدائمة في كندا، أن:</h2>
                     
-                    <h3>قائمة المستندات للكفيل ومقدم الطلب الرئيسي</h3>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="checklist" name="checklist">
-                        <label for="checklist">1. قائمة المستندات - الزوج (بما في ذلك الأطفال المعالين) (IMM 5533)</label>
-                        <div class="subtext">يجب تحميل هذه القائمة مع طلبك.</div>
-                    </div>
-                    
-                    <h3>الكفيل</h3>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="imm1344" name="imm1344">
-                        <label for="imm1344">2. طلب الكفالة، اتفاقية الكفالة والالتزام (IMM 1344)</label>
-                        <div class="subtext">يجب تعبئتها وتوقيعها من قبلك (الكفيل) والشخص الذي تكفله.</div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="fees" name="fees">
-                        <label for="fees">3. رسوم الطلب</label>
-                        <div class="subtext">إرفاق إيصال واحد برسوم الكفالة ورسوم الطلب ورسوم القياسات الحيوية.</div>
-                        
-                        <div>
-                            <input type="checkbox" id="rprf" name="rprf">
-                            <label for="rprf">رسوم الحق في الإقامة الدائمة (RPRF):</label>
-                            <div class="subtext">حدد هذا المربع إذا كنت تدفع هذه الرسوم الآن.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="imm1283" name="imm1283">
-                        <label for="imm1283">4. التقييم المالي (IMM 1283)</label>
-                        <div class="subtext">فقط إذا كان الشخص الذي تكفله (زوجك) لديه طفل معال واحد أو أكثر.</div>
-                    </div>
-                    
-                    <h3>الأشخاص المكفولين (مقدم الطلب الرئيسي وأفراد الأسرة)</h3>
-                    
-                    <div class="checkbox-item">
-                        <h4>5. فئة الطلب</h4>
-                        <div>
-                            <input type="radio" id="inCanadaClass" name="applicationClass" value="inCanada">
-                            <label for="inCanadaClass">أنا أعيش حالياً في كندا مع كفيلي، وأتقدم بطلب تحت فئة الزوج أو الشريك العادي في كندا.</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="familyClassOutside" name="applicationClass" value="familyOutside">
-                            <label for="familyClassOutside">أنا أعيش حالياً خارج كندا، وأتقدم بطلب تحت فئة الأسرة.</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="familyClassInside" name="applicationClass" value="familyInside">
-                            <label for="familyClassInside">أنا أعيش حالياً في كندا، وأتقدم بطلب تحت فئة الأسرة (وليس تحت فئة الزوج أو الشريك العادي في كندا).</label>
-                        </div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="imm0008" name="imm0008">
-                        <label for="imm0008">6. النموذج العام للطلب لكندا (IMM 0008)</label>
-                        <div class="subtext">يجب على مقدم الطلب الرئيسي تعبئة هذا النموذج لنفسه ولمعاليه.</div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="countryRequirements" name="countryRequirements">
-                        <label for="countryRequirements">7. متطلبات خاصة بالبلد</label>
-                        <div class="subtext">يجب التحقق من المتطلبات الخاصة بالبلد لتأكيد ما إذا كانت هناك نماذج إضافية مطلوبة.</div>
-                        <textarea id="additionalForms" name="additionalForms" placeholder="اذكر أي نماذج إضافية تقدمها هنا (ابدأ برقم النموذج IMM)، أو اكتب N/A إذا لم يكن لديك نماذج إضافية"></textarea>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="imm5406" name="imm5406">
-                        <label for="imm5406">8. معلومات عائلية إضافية (IMM 5406)</label>
-                        <div class="subtext">يجب على مقدم الطلب الرئيسي وأي من أفراد أسرته الذين تبلغ أعمارهم 18 سنة أو أكثر تعبئة هذا النموذج.</div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="imm5669" name="imm5669">
-                        <label for="imm5669">9. الجدول الزمني أ - الخلفية / الإقرار (IMM 5669)</label>
-                        <div class="subtext">يجب على مقدم الطلب الرئيسي وأي من أفراد أسرته الذين تبلغ أعمارهم 18 سنة أو أكثر تعبئة هذا النموذج.</div>
-                    </div>
-                    
-                    <h3>كلا الكفيل ومقدم الطلب الرئيسي</h3>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="imm5532" name="imm5532">
-                        <label for="imm5532">10. معلومات العلاقة وتقييم الكفالة (IMM 5532)</label>
-                        <div class="subtext">يجب على الكفيل ومقدم الطلب الرئيسي تعبئة النموذج والتوقيع حيثما هو مبين.</div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <h4>11. استخدام الممثل (IMM 5476)</h4>
-                        <div>
-                            <input type="radio" id="noRepresentative" name="representative" value="no" checked>
-                            <label for="noRepresentative">أنا لا أعين ممثلاً.</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="withRepresentative" name="representative" value="yes">
-                            <label for="withRepresentative">أنا أعين ممثلاً. يجب تعبئة نموذج IMM 5476 - استخدام الممثل</label>
-                        </div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <h4>12. التفويض بالإفصاح عن المعلومات الشخصية إلى فرد معين (IMM 5475)</h4>
-                        <div>
-                            <input type="radio" id="noReleaseAuth" name="releaseAuth" value="no" checked>
-                            <label for="noReleaseAuth">لا ينطبق. الانتقال إلى الجزء ب من القائمة.</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="withReleaseAuth" name="releaseAuth" value="yes">
-                            <label for="withReleaseAuth">أريد تفويض IRCC بالإفصاح عن المعلومات الشخصية إلى فرد معين. يجب تعبئة نموذج IMM 5475</label>
-                        </div>
-                    </div>
+                    <table>
+                        <tr>
+                            <th>السؤال</th>
+                            <th>نعم</th>
+                            <th>لا</th>
+                            <th>التفاصيل (إذا كانت الإجابة نعم)</th>
+                        </tr>
+                        <!-- سيتم إنشاء الأسئلة ديناميكيًا باستخدام JavaScript -->
+                    </table>
                 </div>
 
-                <!-- الجزء ب: المستندات الداعمة المطلوبة -->
+                <!-- التعليم -->
                 <div class="section">
-                    <h2>الجزء ب: المستندات الداعمة المطلوبة</h2>
+                    <h2>7. التعليم</h2>
                     
-                    <h3>مستندات داعمة للكفيل</h3>
+                    <h3>أعط عدد سنوات الدراسة التي أكملتها بنجاح لكل من مستويات التعليم التالية:</h3>
+                    <table>
+                        <tr>
+                            <th>المدرسة الابتدائية/الأساسية</th>
+                            <th>المدرسة الثانوية</th>
+                            <th>الجامعة/الكلية</th>
+                            <th>مدرسة مهنية أو أي مدرسة ما بعد الثانوية أخرى</th>
+                        </tr>
+                        <tr>
+                            <td><input type="number" name="elementaryYears" min="0"></td>
+                            <td><input type="number" name="secondaryYears" min="0"></td>
+                            <td><input type="number" name="universityYears" min="0"></td>
+                            <td><input type="number" name="tradeYears" min="0"></td>
+                        </tr>
+                    </table>
                     
-                    <div class="checkbox-item">
-                        <h4>1. الوضع في كندا</h4>
-                        <div>
-                            <input type="radio" id="prStatus" name="canadaStatus" value="pr">
-                            <label for="prStatus">أنا مقيم دائم في كندا:</label>
-                            <div class="subtext">يجب تقديم صورة عن بطاقة الإقامة الدائمة (كلا الجانبين) أو تأكيد الإقامة الدائمة.</div>
-                        </div>
-                        <div>
-                            <input type="radio" id="citizenStatus" name="canadaStatus" value="citizen">
-                            <label for="citizenStatus">أنا مواطن كندي:</label>
-                            <div class="subtext">تقديم صورة عن واحدة من الوثائق الأربعة التالية.</div>
-                        </div>
-                        <div>
-                            <input type="radio" id="indianStatus" name="canadaStatus" value="indian">
-                            <label for="indianStatus">أنا من الهنود:</label>
-                            <div class="subtext">تقديم نسخة من بطاقة وضع الهندي.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="livingOutsideCanada" name="livingOutsideCanada">
-                        <label for="livingOutsideCanada">2. هل أنت (الكفيل) مواطن كندي تعيش خارج كندا؟</label>
-                        <div class="subtext">إذا أجبت بنعم، قدم دليلاً على أنك ستعيش في كندا مع زوجك.</div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="canadianChild" name="canadianChild">
-                        <label for="canadianChild">3. هل لديك أنت (الكفيل) والشخص الذي تكفله طفل(أطفال) معاً قد يكون لهم حق في الجنسية الكندية؟</label>
-                        <div class="subtext">إذا أجبت بنعم، يرجى إرفاق نسخة من إحدى الوثائق التالية لكل طفل.</div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <h4>4. العلاقات السابقة</h4>
-                        <div>
-                            <input type="checkbox" id="currentlyMarried" name="currentlyMarried">
-                            <label for="currentlyMarried">هل أنت (الكفيل) متزوج حالياً من أي شخص آخر غير الشخص الذي تكفله؟</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="previouslySponsored" name="previouslySponsored">
-                            <label for="previouslySponsored">هل سبق أن تمت كفالتك بنفسك للحصول على الإقامة الدائمة؟</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="previouslyMarried" name="previouslyMarried">
-                            <label for="previouslyMarried">هل سبق أن تزوجت من قبل؟</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="previouslyCommonLaw" name="previouslyCommonLaw">
-                            <label for="previouslyCommonLaw">هل سبق أن كنت في علاقة شائعة القانون؟</label>
-                        </div>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="employment" name="employment">
-                        <label for="employment">5. التوظيف/مصدر الدخل</label>
-                        <div class="subtext">لا تكمل هذا القسم إذا كنت مقيمًا في كيبيك.</div>
-                    </div>
-                    
-                    <h3>مستندات داعمة للأشخاص المكفولين (مقدم الطلب الرئيسي وجميع أفراد الأسرة)</h3>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="identityDocs" name="identityDocs">
-                        <label for="identityDocs">1. وثائق الهوية، وثائق السفر وجوازات السفر</label>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="civilStatus" name="civilStatus">
-                        <label for="civilStatus">2. وثائق الحالة المدنية</label>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="childrenInfo" name="childrenInfo">
-                        <label for="childrenInfo">3. معلومات إضافية عن الطفل(الأطفال)</label>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="policeCerts" name="policeCerts">
-                        <label for="policeCerts">4. شهادات الشرطة والتخليص</label>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="photos" name="photos">
-                        <label for="photos">5. الصور</label>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="medical" name="medical">
-                        <label for="medical">6. الفحص الطبي</label>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="relationshipProof" name="relationshipProof">
-                        <label for="relationshipProof">7. إثبات العلاقة مع الكفيل</label>
-                    </div>
+                    <h3>أعط تفاصيل كاملة عن جميع التعليم الثانوي وما بعد الثانوي (بما في ذلك الجامعة والكلية والتدريب المهني) الذي حصلت عليه:</h3>
+                    <table id="educationTable">
+                        <tr>
+                            <th>من (YYYY-MM)</th>
+                            <th>إلى (YYYY-MM)</th>
+                            <th>اسم المؤسسة</th>
+                            <th>المدينة والبلد</th>
+                            <th>نوع الشهادة أو الدبلوم الممنوح</th>
+                            <th>مجال الدراسة</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="eduFrom1"></td>
+                            <td><input type="text" name="eduTo1"></td>
+                            <td><input type="text" name="eduInstitution1"></td>
+                            <td><input type="text" name="eduLocation1"></td>
+                            <td><input type="text" name="eduCertificate1"></td>
+                            <td><input type="text" name="eduField1"></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn" onclick="addEducationRow()">+ إضافة صف</button>
                 </div>
 
-                <!-- التوقيعات -->
+                <!-- التاريخ الشخصي -->
                 <div class="section">
-                    <h2>التوقيعات</h2>
+                    <h2>8. التاريخ الشخصي</h2>
+                    <p>قدم تفاصيل تاريخك الشخصي منذ سن 18، أو السنوات العشر الماضية، أيهما أحدث. ابدأ بأحدث المعلومات.</p>
                     
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="signature1" name="signature1">
-                        <label for="signature1">1. طلب الكفالة، اتفاقية الكفالة والالتزام (IMM 1344)</label>
-                        <div class="subtext">يجب التوقيع من قبل: الكفيل ومقدم الطلب الرئيسي</div>
-                    </div>
+                    <table id="personalHistoryTable">
+                        <tr>
+                            <th>من (YYYY-MM)</th>
+                            <th>إلى (YYYY-MM)</th>
+                            <th>النشاط</th>
+                            <th>المدينة والبلد</th>
+                            <th>الحالة في البلد</th>
+                            <th>اسم الشركة، صاحب العمل، المدرسة، المنشأة، حسب الاقتضاء</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="historyFrom1"></td>
+                            <td><input type="text" name="historyTo1"></td>
+                            <td><input type="text" name="historyActivity1"></td>
+                            <td><input type="text" name="historyLocation1"></td>
+                            <td><input type="text" name="historyStatus1"></td>
+                            <td><input type="text" name="historyEntity1"></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn" onclick="addPersonalHistoryRow()">+ إضافة صف</button>
+                </div>
+
+                <!-- العضوية في المنظمات -->
+                <div class="section">
+                    <h2>9. العضوية أو الارتباط بالمنظمات</h2>
+                    <p>ما هي المنظمات التي دعمتها، أو كنت عضوًا فيها، أو ارتبطت بها؟ قم بتضمين أي منظمة سياسية، اجتماعية، شبابية أو طلابية، نقابات عمالية وجمعيات مهنية.</p>
                     
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="signature2" name="signature2">
-                        <label for="signature2">2. النموذج العام للطلب لكندا (IMM 0008)</label>
-                        <div class="subtext">يجب التوقيع من قبل: مقدم الطلب الرئيسي</div>
-                    </div>
+                    <table id="organizationsTable">
+                        <tr>
+                            <th>من (YYYY-MM)</th>
+                            <th>إلى (YYYY-MM)</th>
+                            <th>اسم المنظمة</th>
+                            <th>نوع المنظمة</th>
+                            <th>الأنشطة و/أو المناصب التي شغلتها داخل المنظمة</th>
+                            <th>المدينة والبلد</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="orgFrom1"></td>
+                            <td><input type="text" name="orgTo1"></td>
+                            <td><input type="text" name="orgName1"></td>
+                            <td><input type="text" name="orgType1"></td>
+                            <td><input type="text" name="orgActivities1"></td>
+                            <td><input type="text" name="orgLocation1"></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn" onclick="addOrganizationRow()">+ إضافة صف</button>
+                </div>
+
+                <!-- المناصب الحكومية -->
+                <div class="section">
+                    <h2>10. المناصب الحكومية</h2>
+                    <p>اذكر أي مناصب حكومية شغلتها (مثل موظف حكومي، قاض، ضابط شرطة، موظف في منظمة أمنية).</p>
                     
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="signature3" name="signature3">
-                        <label for="signature3">3. معلومات العلاقة وتقييم الكفالة (IMM 5532)</label>
-                        <div class="subtext">يجب التوقيع من قبل: الكفيل ومقدم الطلب الرئيسي</div>
-                    </div>
+                    <table id="governmentTable">
+                        <tr>
+                            <th>من (YYYY-MM)</th>
+                            <th>إلى (YYYY-MM)</th>
+                            <th>البلد ومستوى الولاية القضائية (مثل وطني، إقليمي، بلدي)</th>
+                            <th>القسم/الفرع</th>
+                            <th>الأنشطة و/أو المناصب التي شغلتها</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="govFrom1"></td>
+                            <td><input type="text" name="govTo1"></td>
+                            <td><input type="text" name="govJurisdiction1"></td>
+                            <td><input type="text" name="govDepartment1"></td>
+                            <td><input type="text" name="govActivities1"></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn" onclick="addGovernmentRow()">+ إضافة صف</button>
+                </div>
+
+                <!-- الخدمة العسكرية -->
+                <div class="section">
+                    <h2>11. الخدمة العسكرية و/أو شبه العسكرية</h2>
+                    <p>قدم أدناه تفاصيل كاملة عن الخدمة العسكرية و/أو شبه العسكرية لكل من البلدان التي خدمت في قواتها المسلحة.</p>
                     
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="signature4" name="signature4">
-                        <label for="signature4">4. معلومات عائلية إضافية (IMM 5406)</label>
-                        <div class="subtext">يجب التوقيع من قبل: مقدم الطلب الرئيسي وجميع أفراد الأسرة الآخرين</div>
+                    <div id="militaryService">
+                        <h3>اسم البلد</h3>
+                        <table>
+                            <tr>
+                                <th>من (YYYY-MM)</th>
+                                <th>إلى (YYYY-MM)</th>
+                                <th>فرع الخدمة، أرقام الوحدات وأسماء ضباطك القادة</th>
+                                <th>الرتب</th>
+                                <th>تواريخ وأماكن أي قتال نشط</th>
+                                <th>سبب انتهاء الخدمة</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="milFrom1"></td>
+                                <td><input type="text" name="milTo1"></td>
+                                <td><input type="text" name="milBranch1"></td>
+                                <td><input type="text" name="milRank1"></td>
+                                <td><input type="text" name="milCombat1"></td>
+                                <td><input type="text" name="milEndReason1"></td>
+                            </tr>
+                        </table>
                     </div>
+                    <button type="button" class="btn" onclick="addMilitaryService()">+ إضافة خدمة عسكرية</button>
+                </div>
+
+                <!-- العناوين -->
+                <div class="section">
+                    <h2>12. العناوين</h2>
+                    <p>اذكر جميع العناوين التي عشت فيها منذ عيد ميلادك الثامن عشر أو السنوات العشر الماضية، أيهما أحدث. لا تستخدم عناوين صندوق البريد.</p>
                     
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="signature5" name="signature5">
-                        <label for="signature5">5. الجدول الزمني أ - الخلفية / الإقرار (IMM 5669)</label>
-                        <div class="subtext">يجب التوقيع من قبل: مقدم الطلب الرئيسي وجميع أفراد الأسرة الذين تبلغ أعمارهم 18 سنة أو أكثر</div>
-                    </div>
+                    <table id="addressesTable">
+                        <tr>
+                            <th>من (YYYY-MM)</th>
+                            <th>إلى (YYYY-MM)</th>
+                            <th>الشارع والرقم</th>
+                            <th>المدينة</th>
+                            <th>المقاطعة، الولاية أو المنطقة</th>
+                            <th>الرمز البريدي</th>
+                            <th>البلد</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="addrFrom1"></td>
+                            <td><input type="text" name="addrTo1"></td>
+                            <td><input type="text" name="addrStreet1"></td>
+                            <td><input type="text" name="addrCity1"></td>
+                            <td><input type="text" name="addrProvince1"></td>
+                            <td><input type="text" name="addrPostalCode1"></td>
+                            <td><input type="text" name="addrCountry1"></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn" onclick="addAddressRow()">+ إضافة عنوان</button>
+                </div>
+
+                <!-- الإقرار -->
+                <div class="section">
+                    <h2>الإقرار</h2>
+                    <p>أقر بأن المعلومات التي قدمتها صحيحة وكاملة وصحيحة.</p>
                     
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="signature6" name="signature6">
-                        <label for="signature6">6. نموذج استخدام الممثل (IMM 5476) - إذا كان ينطبق</label>
-                    </div>
-                    
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="signature7" name="signature7">
-                        <label for="signature7">7. التفويض بالإفصاح عن المعلومات الشخصية إلى فرد معين (IMM 5475) - إذا كان ينطبق</label>
-                    </div>
+                    <table>
+                        <tr>
+                            <th>التوقيع</th>
+                            <td><input type="text" id="signature" name="signature" required></td>
+                        </tr>
+                        <tr>
+                            <th>التاريخ (YYYY-MM-DD)</th>
+                            <td><input type="date" id="signatureDate" name="signatureDate" required></td>
+                        </tr>
+                    </table>
                 </div>
 
                 <!-- حفظ البيانات -->
@@ -504,6 +514,142 @@
     </div>
 
     <script>
+        // الأسئلة للقسم 6
+        const questions = [
+            "أ) تم إدانتك بجريمة أو مخالفة في كندا لم يتم منحك عفو عنها بموجب قانون السجلات الجنائية الكندي؟",
+            "ب) تم إدانتك، أو هل أنت حالياً متهم، أو قيد المحاكمة، أو طرف في جريمة أو مخالفة، أو موضوع أي إجراءات جنائية في أي بلد أو إقليم آخر؟",
+            "ج) قدمت مطالبات سابقة للحماية كلاجئ في كندا أو في مكتب تأشيرات كندي في الخارج، في أي بلد (بلدان) أو إقليم (أقاليم) أخرى، أو مع مفوضية الأمم المتحدة السامية لشؤون اللاجئين (UNHCR)؟",
+            "د) تم رفض منحك وضع لاجئ، أو تأشيرة مهاجر أو مقيم دائم (بما في ذلك شهادة الاختيار في كيبيك (CSQ) أو طلب لبرنامج المرشح الإقليمي) أو تأشيرة زائر أو مقيم مؤقت، إلى كندا أو أي بلد أو إقليم آخر؟",
+            "هـ) تم رفض دخولك، أو أمرتك السلطات بمغادرة كندا أو أي بلد أو إقليم آخر؟",
+            "و) شاركت في فعل إبادة جماعية، أو جريمة حرب، أو في ارتكاب جريمة ضد الإنسانية؟",
+            "ز) استخدمت، خططت، أو دافعت عن استخدام الكفاح المسلح أو العنف لتحقيق أهداف سياسية أو دينية أو اجتماعية؟",
+            "ح) ارتبطت بمجموعة استخدمت، أو تستخدم، أو دافعت، أو تدافع عن استخدام الكفاح المسلح أو العنف لتحقيق أهداف سياسية أو دينية أو اجتماعية؟",
+            "ط) كنت عضوًا في منظمة تشارك أو كانت تشارك في نشاط يشكل جزءًا من نمط النشاط الإجرامي؟",
+            "ي) تم احتجازك، أو سجنك، أو وضعك في السجن؟",
+            "ك) أصبت بأي مرض خطير أو اضطراب جسدي أو عقلي؟"
+        ];
+
+        // إنشاء جدول الأسئلة ديناميكيًا
+        document.addEventListener('DOMContentLoaded', function() {
+            const questionsTable = document.querySelector('.section:nth-child(2) table');
+            
+            questions.forEach((question, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${question}</td>
+                    <td><input type="radio" name="q${index}" value="yes"></td>
+                    <td><input type="radio" name="q${index}" value="no" checked></td>
+                    <td><textarea name="q${index}Details"></textarea></td>
+                `;
+                questionsTable.appendChild(row);
+            });
+        });
+
+        // وظائف إضافة الصفوف للجداول
+        let educationCount = 1;
+        function addEducationRow() {
+            educationCount++;
+            const table = document.getElementById('educationTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" name="eduFrom${educationCount}"></td>
+                <td><input type="text" name="eduTo${educationCount}"></td>
+                <td><input type="text" name="eduInstitution${educationCount}"></td>
+                <td><input type="text" name="eduLocation${educationCount}"></td>
+                <td><input type="text" name="eduCertificate${educationCount}"></td>
+                <td><input type="text" name="eduField${educationCount}"></td>
+            `;
+        }
+
+        let historyCount = 1;
+        function addPersonalHistoryRow() {
+            historyCount++;
+            const table = document.getElementById('personalHistoryTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" name="historyFrom${historyCount}"></td>
+                <td><input type="text" name="historyTo${historyCount}"></td>
+                <td><input type="text" name="historyActivity${historyCount}"></td>
+                <td><input type="text" name="historyLocation${historyCount}"></td>
+                <td><input type="text" name="historyStatus${historyCount}"></td>
+                <td><input type="text" name="historyEntity${historyCount}"></td>
+            `;
+        }
+
+        let orgCount = 1;
+        function addOrganizationRow() {
+            orgCount++;
+            const table = document.getElementById('organizationsTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" name="orgFrom${orgCount}"></td>
+                <td><input type="text" name="orgTo${orgCount}"></td>
+                <td><input type="text" name="orgName${orgCount}"></td>
+                <td><input type="text" name="orgType${orgCount}"></td>
+                <td><input type="text" name="orgActivities${orgCount}"></td>
+                <td><input type="text" name="orgLocation${orgCount}"></td>
+            `;
+        }
+
+        let govCount = 1;
+        function addGovernmentRow() {
+            govCount++;
+            const table = document.getElementById('governmentTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" name="govFrom${govCount}"></td>
+                <td><input type="text" name="govTo${govCount}"></td>
+                <td><input type="text" name="govJurisdiction${govCount}"></td>
+                <td><input type="text" name="govDepartment${govCount}"></td>
+                <td><input type="text" name="govActivities${govCount}"></td>
+            `;
+        }
+
+        let militaryCount = 1;
+        function addMilitaryService() {
+            militaryCount++;
+            const div = document.getElementById('militaryService');
+            const newService = document.createElement('div');
+            newService.innerHTML = `
+                <h3>اسم البلد</h3>
+                <table>
+                    <tr>
+                        <th>من (YYYY-MM)</th>
+                        <th>إلى (YYYY-MM)</th>
+                        <th>فرع الخدمة، أرقام الوحدات وأسماء ضباطك القادة</th>
+                        <th>الرتب</th>
+                        <th>تواريخ وأماكن أي قتال نشط</th>
+                        <th>سبب انتهاء الخدمة</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="milFrom${militaryCount}"></td>
+                        <td><input type="text" name="milTo${militaryCount}"></td>
+                        <td><input type="text" name="milBranch${militaryCount}"></td>
+                        <td><input type="text" name="milRank${militaryCount}"></td>
+                        <td><input type="text" name="milCombat${militaryCount}"></td>
+                        <td><input type="text" name="milEndReason${militaryCount}"></td>
+                    </tr>
+                </table>
+            `;
+            div.parentNode.insertBefore(newService, div.nextSibling);
+        }
+
+        let addrCount = 1;
+        function addAddressRow() {
+            addrCount++;
+            const table = document.getElementById('addressesTable');
+            const row = table.insertRow();
+            row.innerHTML = `
+                <td><input type="text" name="addrFrom${addrCount}"></td>
+                <td><input type="text" name="addrTo${addrCount}"></td>
+                <td><input type="text" name="addrStreet${addrCount}"></td>
+                <td><input type="text" name="addrCity${addrCount}"></td>
+                <td><input type="text" name="addrProvince${addrCount}"></td>
+                <td><input type="text" name="addrPostalCode${addrCount}"></td>
+                <td><input type="text" name="addrCountry${addrCount}"></td>
+            `;
+        }
+
         // حفظ البيانات في localStorage
         function saveData() {
             const handle = document.getElementById('saveHandle').value.trim();
@@ -513,13 +659,17 @@
             }
             
             const formData = {};
-            const formElements = document.getElementById('documentChecklistForm').elements;
+            const formElements = document.getElementById('scheduleAForm').elements;
             
             for (let i = 0; i < formElements.length; i++) {
                 const element = formElements[i];
                 if (element.name) {
-                    if (element.type === 'radio' || element.type === 'checkbox') {
-                        formData[element.name] = element.checked ? element.value : '';
+                    if (element.type === 'radio') {
+                        if (element.checked) {
+                            formData[element.name] = element.value;
+                        }
+                    } else if (element.type === 'checkbox') {
+                        formData[element.name] = element.checked;
                     } else {
                         formData[element.name] = element.value;
                     }
@@ -533,7 +683,7 @@
                 name: handle
             };
             
-            localStorage.setItem(`documentChecklist_${handle}`, JSON.stringify(sessionInfo));
+            localStorage.setItem(`scheduleA_${handle}`, JSON.stringify(sessionInfo));
             document.getElementById('saveMessage').textContent = 'تم حفظ البيانات بنجاح!';
             
             // تحديث قائمة الجلسات
@@ -552,7 +702,7 @@
                 return;
             }
             
-            const savedData = localStorage.getItem(`documentChecklist_${handleToLoad}`);
+            const savedData = localStorage.getItem(`scheduleA_${handleToLoad}`);
             if (!savedData) {
                 alert('لا توجد بيانات محفوظة بهذا الاسم');
                 return;
@@ -560,7 +710,7 @@
             
             const sessionInfo = JSON.parse(savedData);
             const formData = sessionInfo.data;
-            const formElements = document.getElementById('documentChecklistForm').elements;
+            const formElements = document.getElementById('scheduleAForm').elements;
             
             for (let i = 0; i < formElements.length; i++) {
                 const element = formElements[i];
@@ -570,7 +720,7 @@
                             element.checked = true;
                         }
                     } else if (element.type === 'checkbox') {
-                        element.checked = !!formData[element.name];
+                        element.checked = formData[element.name];
                     } else {
                         element.value = formData[element.name];
                     }
@@ -593,10 +743,10 @@
             
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
-                if (key.startsWith('documentChecklist_')) {
+                if (key.startsWith('scheduleA_')) {
                     hasSessions = true;
                     const sessionInfo = JSON.parse(localStorage.getItem(key));
-                    const handle = key.replace('documentChecklist_', '');
+                    const handle = key.replace('scheduleA_', '');
                     
                     const li = document.createElement('li');
                     li.className = 'session-item';
@@ -624,7 +774,7 @@
         // حذف جلسة
         function deleteSession(handle) {
             if (confirm(`هل أنت متأكد من أنك تريد حذف الجلسة "${handle}"؟`)) {
-                localStorage.removeItem(`documentChecklist_${handle}`);
+                localStorage.removeItem(`scheduleA_${handle}`);
                 refreshSessions();
             }
         }
