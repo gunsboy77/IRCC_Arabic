@@ -67,6 +67,7 @@
         input[type="text"], 
         input[type="date"], 
         input[type="email"], 
+        input[type="number"],
         textarea, 
         select {
             width: 100%;
@@ -229,6 +230,25 @@
                             </td>
                         </tr>
                         <tr>
+                            <th>لون العينين</th>
+                            <td>
+                                <select id="eyeColor" name="eyeColor" required>
+                                    <option value="">-- اختر --</option>
+                                    <option value="black">أسود</option>
+                                    <option value="brown">بني</option>
+                                    <option value="blue">أزرق</option>
+                                    <option value="green">أخضر</option>
+                                    <option value="hazel">عسلي</option>
+                                    <option value="gray">رمادي</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>الطول (سم)</th>
+                            <td><input type="number" id="height" name="height" min="0" required></td>
+                        </tr>
+                        <tr>
                             <th>الجنس</th>
                             <td>
                                 <select id="gender" name="gender" required>
@@ -287,6 +307,32 @@
                                 <tr>
                                     <th>تاريخ الميلاد (YYYY-MM-DD)</th>
                                     <td><input type="date" name="spouseDateOfBirth"></td>
+                                </tr>
+                                <tr>
+                                    <th>مكان الولادة (المدينة/البلد)</th>
+                                    <td>
+                                        <input type="text" name="spouseCityOfBirth" placeholder="المدينة">
+                                        <input type="text" name="spouseCountryOfBirth" placeholder="البلد">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>لون العينين</th>
+                                    <td>
+                                        <select name="spouseEyeColor">
+                                            <option value="">-- اختر --</option>
+                                            <option value="black">أسود</option>
+                                            <option value="brown">بني</option>
+                                            <option value="blue">أزرق</option>
+                                            <option value="green">أخضر</option>
+                                            <option value="hazel">عسلي</option>
+                                            <option value="gray">رمادي</option>
+                                            <option value="other">أخرى</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>الطول (سم)</th>
+                                    <td><input type="number" name="spouseHeight" min="0"></td>
                                 </tr>
                             </table>
                         </div>
@@ -586,23 +632,44 @@
                         
                         <div id="childrenDetails" style="display: none;">
                             <table id="childrenTable">
-                                <tr>
-                                    <th>الاسم</th>
-                                    <th>تاريخ الميلاد</th>
-                                    <th>مكان الولادة</th>
-                                    <th>الجنس</th>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" name="child1Name"></td>
-                                    <td><input type="date" name="child1DOB"></td>
-                                    <td><input type="text" name="child1BirthPlace"></td>
-                                    <td>
-                                        <select name="child1Gender">
-                                            <option value="male">ذكر</option>
-                                            <option value="female">أنثى</option>
-                                        </select>
-                                    </td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th>الاسم</th>
+                                        <th>تاريخ الميلاد</th>
+                                        <th>مكان الولادة (المدينة)</th>
+                                        <th>مكان الولادة (البلد)</th>
+                                        <th>الجنس</th>
+                                        <th>لون العينين</th>
+                                        <th>الطول (سم)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" name="child1Name"></td>
+                                        <td><input type="date" name="child1DOB"></td>
+                                        <td><input type="text" name="child1BirthCity"></td>
+                                        <td><input type="text" name="child1BirthCountry"></td>
+                                        <td>
+                                            <select name="child1Gender">
+                                                <option value="male">ذكر</option>
+                                                <option value="female">أنثى</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select name="child1EyeColor">
+                                                <option value="">-- اختر --</option>
+                                                <option value="black">أسود</option>
+                                                <option value="brown">بني</option>
+                                                <option value="blue">أزرق</option>
+                                                <option value="green">أخضر</option>
+                                                <option value="hazel">عسلي</option>
+                                                <option value="gray">رمادي</option>
+                                                <option value="other">أخرى</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" name="child1Height" min="0"></td>
+                                    </tr>
+                                </tbody>
                             </table>
                             <button type="button" class="btn" onclick="addChildRow()">+ إضافة طفل</button>
                         </div>
@@ -722,17 +789,32 @@
         function addChildRow() {
             childCount++;
             const table = document.getElementById('childrenTable');
-            const row = table.insertRow();
+            const tbody = table.querySelector('tbody');
+            const row = tbody.insertRow();
             row.innerHTML = `
                 <td><input type="text" name="child${childCount}Name"></td>
                 <td><input type="date" name="child${childCount}DOB"></td>
-                <td><input type="text" name="child${childCount}BirthPlace"></td>
+                <td><input type="text" name="child${childCount}BirthCity"></td>
+                <td><input type="text" name="child${childCount}BirthCountry"></td>
                 <td>
                     <select name="child${childCount}Gender">
                         <option value="male">ذكر</option>
                         <option value="female">أنثى</option>
                     </select>
                 </td>
+                <td>
+                    <select name="child${childCount}EyeColor">
+                        <option value="">-- اختر --</option>
+                        <option value="black">أسود</option>
+                        <option value="brown">بني</option>
+                        <option value="blue">أزرق</option>
+                        <option value="green">أخضر</option>
+                        <option value="hazel">عسلي</option>
+                        <option value="gray">رمادي</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </td>
+                <td><input type="number" name="child${childCount}Height" min="0"></td>
             `;
         }
         
