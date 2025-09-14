@@ -1,1 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية - نماذج التسجيل</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Noto Sans Arabic', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 50px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #718096;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .links-container {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .link-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .link-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .card-instructions {
+            background: #e6fffa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-right: 4px solid #38b2ac;
+        }
+
+        .instructions-text {
+            font-size: 0.95rem;
+            color: #234e52;
+            font-weight: 500;
+        }
+
+        .age-requirement {
+            background: #fff5f5;
+            color: #c53030;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .age-requirement.all-ages {
+            background: #f0fff4;
+            color: #38a169;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a67d8, #6b46c1);
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">مرحباً بك في نماذج التسجيل</h1>
+            <p class="subtitle">اختر النموذج المناسب لك من الخيارات التالية</p>
+        </div>
+
+        <div class="links-container">
+            <!-- Generic Form -->
+            <div class="link-card">
+                <div class="card-content">
+                    <h2 class="card-title">النموذج العام</h2>
+                    <div class="age-requirement all-ages">✓ مناسب لجميع الأعمار</div>
+                    <p class="card-description">
+                        نموذج عام يمكن لأي شخص ملؤه بغض النظر عن العمر. لجميع أفراد العائلة.
+                    </p>
+                    <a href="generic.html" class="btn">املأ النموذج العام</a>
+                </div>
+            </div>
+
+            <!-- Schedule A Form -->
+            <div class="link-card">
+                <div class="card-content">
+                    <h2 class="card-title">نموذج الجدول أ</h2>
+                    <div class="age-requirement">⚠️ لأفراد العائلة (18+ سنة)</div>
+                    <p class="card-description">
+                        نموذج خاص بالجدول الزمني "أ" - مخصص للأشخاص البالغين الذين تزيد أعمارهم عن 18 سنة.
+                    </p>
+                    <a href="schedule_a.html" class="btn">املأ نموذج الجدول أ</a>
+                </div>
+            </div>
+
+            <!-- Schedule 2 Form -->
+            <div class="link-card">
+                <div class="card-content">
+                    <h2 class="card-title">نموذج الجدول 2</h2>
+                    <div class="age-requirement">⚠️ للبالغين فقط (18+ سنة)</div>
+                    <p class="card-description">
+                        نموذج خاص بالجدول الزمني "2" - مخصص أيضاً للأشخاص البالغين الذين تزيد أعمارهم عن 18 سنة.
+                    </p>
+                    <a href="schedule_2.html" class="btn">املأ نموذج الجدول 2</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>للمساعدة أو الاستفسارات، يرجى التواصل مع فريق الدعم</p>
+        </div>
+    </div>
+</body>
+</html>
