@@ -3,60 +3,59 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>النموذج A - الخلفية / الإقرار (IMM 5669) — نسخة عربية محدثة</title>
+  <title>النموذج A - الخلفية / الإقرار (IMM 5669) — نسخة عربية نهائية</title>
   <style>
     body{font-family:"Segoe UI",Tahoma,Arial,sans-serif;padding:20px;background:#f7f7f8;color:#111}
     .container{max-width:1000px;margin:0 auto;background:#fff;padding:18px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.05)}
     h1{font-size:1.4rem;margin-bottom:6px}
     table{width:100%;border-collapse:collapse;margin-top:10px}
-    th,td{border:1px solid #d0d0d3;padding:8px;vertical-align:top}
+    th,td{border:1px solid #d0d0d3;padding:6px;vertical-align:top}
     th{background:#eef0f6;text-align:right}
     input,select,textarea{width:100%;border:none;padding:6px}
     textarea{min-height:60px}
-    .actions{margin-top:14px;display:flex;gap:8px}
-    button{padding:10px 14px;border:none;border-radius:6px;cursor:pointer}
+    .actions{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+    button{padding:8px 12px;border:none;border-radius:6px;cursor:pointer}
     .primary{background:#0b5fff;color:#fff}
     .muted{background:#eef0f6}
-    .saved-list{max-height:180px;overflow:auto;border:1px dashed #e3e3e6;padding:8px;border-radius:6px}
-    .saved-item{padding:6px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
-    .rtl{direction:rtl;text-align:right}
+    .saved-list{margin-top:10px;max-height:200px;overflow:auto;border:1px dashed #ccc;padding:6px;border-radius:6px}
+    .saved-item{padding:4px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
   </style>
 </head>
 <body>
-<div class="container rtl">
+<div class="container rtl" id="formContainer">
   <h1>النموذج A — الخلفية / الإقرار (IMM 5669) — نسخة عربية</h1>
 
   <table>
     <tr><th>هل أنت:</th>
       <td>
-        <select id="applicantType" name="applicantType">
+        <select id="applicantType">
           <option value="principal">المتقدّم الأساسي</option>
           <option value="spouse">الزوج/الزوجة أو الشريك/الطفل المعال</option>
         </select>
       </td>
     </tr>
-    <tr><th>1. اسمك الكامل</th>
+    <tr><th>1. الاسم الكامل</th>
       <td>
-        <input id="familyName" name="familyName" placeholder="اسم العائلة">
-        <input id="givenNames" name="givenNames" placeholder="الأسماء">
+        <input id="familyName" placeholder="اسم العائلة">
+        <input id="givenNames" placeholder="الأسماء">
       </td>
     </tr>
-    <tr><th>2. اسمك بلغتك الأم</th><td><input id="nativeScript" name="nativeScript"></td></tr>
-    <tr><th>3. تاريخ الميلاد</th><td><input id="dob" name="dob" type="date"></td></tr>
+    <tr><th>2. اسمك بلغتك الأم</th><td><input id="nativeScript"></td></tr>
+    <tr><th>3. تاريخ الميلاد</th><td><input id="dob" type="date"></td></tr>
     <tr><th>4. بيانات الأب</th>
       <td>
-        <input id="fatherFamily" name="fatherFamily" placeholder="اسم العائلة">
-        <input id="fatherGiven" name="fatherGiven" placeholder="الأسماء">
-        <input id="fatherDob" name="fatherDob" type="date" placeholder="تاريخ الميلاد">
-        <input id="fatherPOB" name="fatherPOB" placeholder="مكان الميلاد">
+        <input id="fatherFamily" placeholder="اسم العائلة">
+        <input id="fatherGiven" placeholder="الأسماء">
+        <input id="fatherDob" type="date" placeholder="تاريخ الميلاد">
+        <input id="fatherPOB" placeholder="مكان الميلاد">
       </td>
     </tr>
     <tr><th>5. بيانات الأم</th>
       <td>
-        <input id="motherFamily" name="motherFamily" placeholder="اسم العائلة عند الميلاد">
-        <input id="motherGiven" name="motherGiven" placeholder="الأسماء">
-        <input id="motherDob" name="motherDob" type="date">
-        <input id="motherPOB" name="motherPOB" placeholder="مكان الميلاد">
+        <input id="motherFamily" placeholder="اسم العائلة عند الميلاد">
+        <input id="motherGiven" placeholder="الأسماء">
+        <input id="motherDob" type="date">
+        <input id="motherPOB" placeholder="مكان الميلاد">
       </td>
     </tr>
     <tr><th>6. أسئلة (نعم/لا)</th>
@@ -77,7 +76,7 @@
     <tr><th>8. التاريخ الشخصي</th>
       <td>
         <table id="historyTable">
-          <tr><th>من</th><th>إلى</th><th>النشاط/الوظيفة</th><th>المدينة/البلد</th><th>جهة العمل</th><th>حذف</th></tr>
+          <tr><th>من</th><th>إلى</th><th>النشاط</th><th>المدينة/البلد</th><th>الجهة</th><th>حذف</th></tr>
         </table>
         <button class="muted" id="addHistory">+ أضف سجل</button>
       </td>
@@ -98,6 +97,7 @@
     <button class="muted" id="loadBtn">تحميل</button>
     <button class="muted" id="exportPdf">PDF</button>
     <button class="muted" id="exportDoc">Word</button>
+    <button class="muted" id="exportJson">JSON</button>
   </div>
   <div id="savedList" class="saved-list"></div>
 </div>
@@ -106,7 +106,7 @@
 function collectData(){
   const inputs=document.querySelectorAll('input,select,textarea');
   const data={};
-  inputs.forEach(el=>{data[el.id]=el.value});
+  inputs.forEach(el=>{if(el.id)data[el.id]=el.value});
   data.history=[];
   document.querySelectorAll('#historyTable tr[data-row]').forEach(tr=>{
     data.history.push({from:tr.querySelector('[name=from]').value,to:tr.querySelector('[name=to]').value,activity:tr.querySelector('[name=activity]').value,loc:tr.querySelector('[name=loc]').value,emp:tr.querySelector('[name=emp]').value});
@@ -118,9 +118,7 @@ function collectData(){
   return data;
 }
 function populateData(data){
-  for(const k in data){
-    if(document.getElementById(k)) document.getElementById(k).value=data[k];
-  }
+  for(const k in data){if(document.getElementById(k))document.getElementById(k).value=data[k];}
   document.querySelectorAll('#historyTable tr[data-row]').forEach(tr=>tr.remove());
   (data.history||[]).forEach(h=>addHistory(h));
   document.querySelectorAll('#addressTable tr[data-row]').forEach(tr=>tr.remove());
@@ -130,18 +128,19 @@ function save(){
   const uid=document.getElementById('userId').value.trim();
   if(!uid){alert('ادخل المعرّف');return;}
   localStorage.setItem('imm5669_'+uid,JSON.stringify(collectData()));
+  alert('تم الحفظ');
   listSaves();
 }
 function load(){
   const uid=document.getElementById('userId').value.trim();
   const raw=localStorage.getItem('imm5669_'+uid);
-  if(raw) populateData(JSON.parse(raw)); else alert('لا بيانات');
+  if(raw)populateData(JSON.parse(raw)); else alert('لا بيانات');
 }
 function listSaves(){
   const div=document.getElementById('savedList');div.innerHTML='';
   Object.keys(localStorage).filter(k=>k.startsWith('imm5669_')).forEach(k=>{
-    const b=document.createElement('button');b.textContent='تحميل '+k.replace('imm5669_','');b.onclick=()=>populateData(JSON.parse(localStorage.getItem(k)));
-    div.appendChild(b);
+    const btn=document.createElement('button');btn.textContent='تحميل '+k.replace('imm5669_','');btn.onclick=()=>populateData(JSON.parse(localStorage.getItem(k)));
+    div.appendChild(btn);
   });
 }
 function addHistory(h={}){
@@ -159,6 +158,30 @@ document.getElementById('addAddress').onclick=()=>addAddress();
 document.getElementById('saveBtn').onclick=save;
 document.getElementById('loadBtn').onclick=load;
 listSaves();
+
+// PDF and Word export
+function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+
+document.getElementById('exportPdf').onclick=async()=>{
+  if(!window.html2pdf){await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js');}
+  const node=document.getElementById('formContainer').cloneNode(true);
+  node.querySelectorAll('button,#userId').forEach(el=>el.remove());
+  await html2pdf().set({margin:0.3,filename:'imm5669.pdf',image:{type:'jpeg',quality:0.98},html2canvas:{scale:2},jsPDF:{unit:'in',format:'a4',orientation:'portrait'}}).from(node).save();
+};
+
+document.getElementById('exportDoc').onclick=()=>{
+  const node=document.getElementById('formContainer').cloneNode(true);
+  node.querySelectorAll('button,#userId').forEach(el=>el.remove());
+  const html='<!doctype html><html><head><meta charset="utf-8"></head><body>'+node.innerHTML+'</body></html>';
+  const blob=new Blob([html],{type:'application/msword'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='imm5669.doc';a.click();
+};
+
+document.getElementById('exportJson').onclick=()=>{
+  const data=collectData();
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='imm5669.json';a.click();
+};
 </script>
 </body>
 </html>
