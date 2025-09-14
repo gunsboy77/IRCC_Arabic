@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>نموذج (نسخة عربية)</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, 'Noto Naskh Arabic', 'Arial', sans-serif; background:#f6f9fc; color:#0b2545; padding:20px; }
+  .card { max-width:900px; margin:10px auto; background:white; border-radius:12px; box-shadow: 0 6px 18px rgba(11,37,69,0.08); padding:22px; }
+  h1 { font-size:22px; margin-bottom:8px; }
+  p.instructions { color:#27496d; margin-top:0; margin-bottom:18px; }
+  table.form-table { width:100%; border-collapse:collapse; }
+  td { vertical-align:top; }
+  .actions { display:flex; gap:8px; margin-top:16px; justify-content:flex-start; }
+  button { padding:10px 14px; border-radius:8px; border:0; font-weight:600; cursor:pointer; }
+  button.save { background:#0b6ef6; color:white; }
+  button.load { background:#22c55e; color:white; }
+  button.clear { background:#f97316; color:white; }
+  .small { font-size:13px; color:#3b4b66; }
+  .handle-input { width:220px; padding:8px; border-radius:8px; border:1px solid #d1d9e6; }
+  .note { margin-top:12px; padding:10px; background:#f0f7ff; border-left:4px solid #0b6ef6; border-radius:8px; }
+  @media (max-width:600px){ .card{ padding:14px; } h1{font-size:18px} }
+</style>
+</head>
+<body>
+<div class="card" role="main" aria-labelledby="title">
+  <h1 id="title">نموذج (نسخة عربية) — حفظ البيانات محليًا</h1>
+  <p class="instructions">أدخل المعلومات في الحقول ثم اضغط "حفظ". سيُخزَّن السجل محليًا في متصفحك باستخدام اسم المعرف (مثال: اسم الشخص الأول). في أي وقت يمكنك: تحميل ملف PDF بسيط أو استخراج كملف Word (docx) أو تحميل البيانات كملف JSON.</p>
+  <div class="note small">تعليمات سريعة: اكتب اسم المعرف (مثلاً اسم الشخص الأول) في حقل "معرف الحفظ" ثم اضغط حفظ. لاحقاً يمكنك كتابة نفس المعرف ثم الضغط "تحميل" لاسترجاع البيانات.</div>
+  <table class="form-table" role="table" aria-label="نموذج">
+    <tr><td style="padding:10px; font-weight:600; width:35%;">الاسم الكامل</td><td style="padding:10px;"><input dir="rtl" id="field_0" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">اسم الأول</td><td style="padding:10px;"><input dir="rtl" id="field_1" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">اسم العائلة</td><td style="padding:10px;"><input dir="rtl" id="field_2" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">تاريخ الميلاد</td><td style="padding:10px;"><input dir="rtl" id="field_3" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">مكان الميلاد</td><td style="padding:10px;"><input dir="rtl" id="field_4" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">الجنسية</td><td style="padding:10px;"><input dir="rtl" id="field_5" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">العنوان</td><td style="padding:10px;"><input dir="rtl" id="field_6" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">رقم الهاتف</td><td style="padding:10px;"><input dir="rtl" id="field_7" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">البريد الإلكتروني</td><td style="padding:10px;"><input dir="rtl" id="field_8" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">حالة الخدمة العسكرية</td><td style="padding:10px;"><input dir="rtl" id="field_9" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">تفاصيل إضافية</td><td style="padding:10px;"><input dir="rtl" id="field_10" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr><tr><td style="padding:10px; font-weight:600; width:35%;">توقيع</td><td style="padding:10px;"><input dir="rtl" id="field_11" class="field" style="width:95%; padding:8px; font-size:16px; border-radius:6px; border:1px solid #ccc;" value=""></td></tr>
+  </table>
+
+  <div style="margin-top:12px;">
+    <label class="small">معرف الحفظ (مثال: اسم الشخص الأول)</label><br>
+    <input id="handle" class="handle-input" placeholder="مثلاً: Mohammad" dir="ltr">
+    <div class="actions" style="margin-top:10px;">
+      <button class="save" id="saveBtn">💾 حفظ</button>
+      <button class="load" id="loadBtn">📥 تحميل</button>
+      <button class="clear" id="clearBtn">🗑 مسح</button>
+      <button id="exportPDF" style="background:#6b21a8; color:white;">📄 تنزيل PDF</button>
+      <button id="exportJSON" style="background:#0f766e; color:white;">🧾 تنزيل JSON</button>
+    </div>
+    <p class="small" style="margin-top:8px;">ملاحظات: التخزين محلي على المتصفح فقط — لا يتم إرسال أي بيانات إلى الإنترنت. حذف بيانات المتصفح أو فتح المتصفح في وضع التصفح الخفي سيؤدي إلى فقدان البيانات.</p>
+  </div>
+</div>
+
+<script>
+function getFields(){
+  const els = document.querySelectorAll('.field');
+  const data = Array.from(els).map(e=>e.value||"");
+  return data;
+}
+function setFields(arr){
+  const els = document.querySelectorAll('.field');
+  els.forEach((e,i)=> e.value = arr[i] || "");
+}
+document.getElementById('saveBtn').addEventListener('click', ()=>{
+  const handle = (document.getElementById('handle').value||'').trim();
+  if(!handle){ alert('ادخل معرف الحفظ (مثلاً اسم الشخص الأول)'); return; }
+  const data = getFields();
+  localStorage.setItem('form_ar_' + handle, JSON.stringify(data));
+  alert('تم الحفظ محليًا تحت المعرف: ' + handle);
+});
+document.getElementById('loadBtn').addEventListener('click', ()=>{
+  const handle = (document.getElementById('handle').value||'').trim();
+  if(!handle){ alert('ادخل معرف الحفظ'); return; }
+  const raw = localStorage.getItem('form_ar_' + handle);
+  if(!raw){ alert('لم يتم العثور على بيانات لهذا المعرف'); return; }
+  try{ const arr = JSON.parse(raw); setFields(arr); alert('تم تحميل البيانات من المعرف: ' + handle); } catch(e){ alert('خطأ في قراءة البيانات'); }
+});
+document.getElementById('clearBtn').addEventListener('click', ()=>{
+  if(!confirm('هل تريد مسح الحقول؟')) return;
+  document.querySelectorAll('.field').forEach(e=>e.value='');
+});
+
+// export JSON
+document.getElementById('exportJSON').addEventListener('click', ()=>{
+  const handle = (document.getElementById('handle').value||'').trim() || 'export';
+  const data = getFields();
+  const blob = new Blob([JSON.stringify({handle, data}, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href=url; a.download = handle + '.json'; a.click();
+  URL.revokeObjectURL(url);
+});
+
+// export simple PDF using browser print (user-friendly)
+document.getElementById('exportPDF').addEventListener('click', ()=>{
+  window.print();
+});
+
+</script>
+</body>
+</html>
