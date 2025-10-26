@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل التقديم الشامل على وثيقة سفر اللاجئ - كندا</title>
+    <style>
+        :root {
+            --primary: #d70015;
+            --primary-light: #ff6b6b;
+            --secondary: #005ea5;
+            --dark: #333;
+            --light: #f5f5f5;
+            --warning: #fff3cd;
+            --success: #d4edda;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            background-color: var(--light);
+            color: var(--dark);
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            background: white;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            border-right: 6px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #eee;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 1.8rem 0 1.2rem 0;
+            font-size: 1.4rem;
+        }
+        
+        h4 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.2rem;
+        }
+        
+        .step {
+            background: #f8f9fa;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            border-right: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        
+        .document-list, .requirements-list, .steps-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .document-list li, .requirements-list li, .steps-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-right: 2rem;
+        }
+        
+        .document-list li:before, .requirements-list li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: 0.8rem;
+        }
+        
+        .steps-list li {
+            padding-right: 3rem;
+            counter-increment: step-counter;
+        }
+        
+        .steps-list li:before {
+            content: counter(step-counter);
+            color: white;
+            background: var(--secondary);
+            font-weight: bold;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 0;
+            top: 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .form-section {
+            background: #e8f4f8;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            border: 1px solid #bee5eb;
+        }
+        
+        .form-field {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .form-field:last-child {
+            border-bottom: none;
+        }
+        
+        .form-field strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .warning {
+            background: var(--warning);
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-right: 5px solid #ffc107;
+        }
+        
+        .tip {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            color: #004085;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-right: 5px solid var(--secondary);
+        }
+        
+        .contact-info {
+            background: var(--success);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2.5rem;
+            border: 1px solid #c3e6cb;
+            border-right: 5px solid #28a745;
+        }
+        
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .fees-table th, .fees-table td {
+            padding: 1.2rem;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .fees-table th {
+            background-color: var(--secondary);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .fees-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .fees-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid #ddd;
+            color: #666;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            margin: 2rem 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-date {
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            font-weight: bold;
+            min-width: 120px;
+            text-align: center;
+            margin-left: 1.5rem;
+            height: fit-content;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex-grow: 1;
+            border-right: 4px solid var(--secondary);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 1.8rem;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                margin-left: 0;
+                margin-bottom: 1rem;
+                width: fit-content;
+            }
+            
+            .fees-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+        
+        .nav-tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+        
+        .nav-tab {
+            padding: 1rem 1.5rem;
+            background: #f8f9fa;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+        
+        .nav-tab.active {
+            background: white;
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>دليل التقديم الشامل على وثيقة سفر اللاجئ</h1>
+            <p class="subtitle">نموذج IMM 5529 - كل ما تحتاج معرفته للتقديم على وثيقة سفر اللاجئ الكندية</p>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="openTab('tab1')">نظرة عامة</button>
+            <button class="nav-tab" onclick="openTab('tab2')">المستندات المطلوبة</button>
+            <button class="nav-tab" onclick="openTab('tab3')">خطوات التقديم</button>
+            <button class="nav-tab" onclick="openTab('tab4')">الرسوم والمواعيد</button>
+            <button class="nav-tab" onclick="openTab('tab5')">تفاصيل النموذج</button>
+        </div>
+
+        <div id="tab1" class="tab-content active">
+            <div class="section">
+                <h2>مقدمة عن وثيقة سفر اللاجئ</h2>
+                <p>وثيقة سفر اللاجئ الكندية (الكتاب الأزرق) هي وثيقة سفر رسمية تسمح للأشخاص المحميين (اللاجئين) بالسفر دولياً عندما لا يمكنهم الحصول على جواز سفر من بلدهم الأصلي.</p>
+                
+                <div class="warning">
+                    <h4>⚠️ تحذير هام</h4>
+                    <p>استخدام جواز سفر من بلد اللجوء قد يعتبر إعادة التمتع بحماية ذلك البلد، مما قد يعرض وضعك في كندا للخطر. وثيقة سفر اللاجئ هي البديل الآمن للسفر الدولي.</p>
+                </div>
+                
+                <h3>من يمكنه التقديم؟</h3>
+                <ul class="requirements-list">
+                    <li>الأشخاص المحميون (لاجئو الاتفاقية أو الأشخاص المحتاجون للحماية)</li>
+                    <li>المقيمون الدائمون في كندا من فئة اللاجئين</li>
+                    <li>الأشخاص الذين لديهم طلب إقامة دائمة قيد المعالجة بناء على وضع اللجوء</li>
+                    <li>الأشخاص الذين لا يمكنهم الحصول على جواز سفر من بلدهم الأصلي</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="section">
+                <h2>المستندات المطلوبة للتقديم</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>المستندات الأساسية الإلزامية</h3>
+                    <ul class="document-list">
+                        <li><strong>نموذج IMM 5529</strong> مكتمل وموقع - طلب وثيقة سفر اللاجئ</li>
+                        <li><strong>قائمة المستندات IMM 5530</strong> مكتملة وموقعة</li>
+                        <li><strong>صورة من بطاقة الإقامة الدائمة</strong> (الوجهين) أو إثبات وضع الحماية</li>
+                        <li><strong>صورتان شخصيتان</strong> مطابقتان للمواصفات الكندية الدقيقة</li>
+                        <li><strong>إثبات دفع الرسوم</strong> - إيصال الدفع الإلكتروني (120 دولار كندي)</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>المستندات الإضافية المطلوبة</h3>
+                    <ul class="document-list">
+                        <li><strong>أي وثيقة سفر كندية سابقة</strong> (إذا كانت لديك)</li>
+                        <li><strong>إثبات خطط السفر</strong> (حجوزات طيران، دعوة، إلخ) - موصى به</li>
+                        <li><strong>إثبات الهوية الإضافي</strong> (رخصة قيادة، بطاقة صحية)</li>
+                        <li><strong>إثبات الإقامة في كندا</strong> (فاتورة خدمات، عقد إيجار)</li>
+                    </ul>
+                </div>
+                
+                <div class="tip">
+                    <h4>💡 نصائح للمستندات</h4>
+                    <p>• احفظ نسخاً من جميع المستندات قبل إرسالها<br>
+                    • الصور الشخصية يجب أن تكون حديثة وتتبع المواصفات بدقة<br>
+                    • تأكد من أن جميع المستندات المترجمة مصحوبة بنسخة أصلية وشهادة ترجمة معتمدة</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="section">
+                <h2>الخطوات التفصيلية للتقديم</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>التحضير المبدئي</h3>
+                    <ul class="steps-list">
+                        <li>تأكد من استيفائك لشروط الأهلية</li>
+                        <li>اجمع جميع المستندات المطلوبة مسبقاً</li>
+                        <li>التقط صوراً شخصية تفي بالمواصفات الكندية</li>
+                        <li>قم بدفع الرسوم عبر الإنترنت واحفظ الإيصال</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>ملء النموذج الرئيسي IMM 5529</h3>
+                    <ul class="steps-list">
+                        <li>املأ النموذج إلكترونياً لتوليد الباركود (لا تملأه يدوياً)</li>
+                        <li>أجب على جميع الأسئلة بدقة وصدق</li>
+                        <li>اطبع النموذج ووقعه يدوياً في القسم المخصص</li>
+                        <li>راجع المعلومات للتأكد من صحتها وكمالها</li>
+                    </ul>
+                    
+                    <div class="warning">
+                        <h4>❌ أخطاء شائعة يجب تجنبها</h4>
+                        <p>• عدم توقيع النموذج<br>
+                        • صور شخصية غير مطابقة للمواصفات<br>
+                        • عدم تضمين جميع المستندات المطلوبة<br>
+                        • معلومات غير متطابقة مع وثائق الهوية الرسمية</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>تجميع الطلب وإرساله</h3>
+                    <ul class="steps-list">
+                        <li>رتب المستندات حسب قائمة التدقيق IMM 5530</li>
+                        <li>ضع قائمة التدقيق في الأعلى ثم النموذج الرئيسي</li>
+                        <li>أضف بقية المستندات بالترتيب المطلوب</li>
+                        <li>أرسل الطلب بالبريد المسجل إلى العنوان المحدد</li>
+                    </ul>
+                    
+                    <div class="tip">
+                        <h4>📍 عنوان الإرسال</h4>
+                        <p>Case Processing Centre – Ottawa<br>
+                        Refugee Travel Document<br>
+                        PO Box 8783<br>
+                        Ottawa, Ontario K1G 5G4<br>
+                        <strong>للبريد السريع:</strong> 365 Laurier Ave. West, Ottawa, ON K1A 1L1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab4" class="tab-content">
+            <div class="section">
+                <h2>الرسوم ومواعيد المعالجة</h2>
+                
+                <h3>الرسوم الرسمية</h3>
+                <table class="fees-table">
+                    <thead>
+                        <tr>
+                            <th>نوع الخدمة</th>
+                            <th>القيمة بالدولار الكندي</th>
+                            <th>ملاحظات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>رسوم معالجة وثيقة سفر اللاجئ</td>
+                            <td>120 $</td>
+                            <td>غير قابلة للاسترداد</td>
+                        </tr>
+                        <tr>
+                            <td>رسوم الخدمات الحيوية (إذا طلبت)</td>
+                            <td>85 $</td>
+                            <td>للمتقدمين من فئة معينة</td>
+                        </tr>
+                        <tr>
+                            <td>رسوم البريد السريع (اختياري)</td>
+                            <td>يتغير حسب الخدمة</td>
+                            <td>لإرجاع المستندات</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="tip">
+                    <h4>💳 طريقة الدفع</h4>
+                    <p>يجب دفع الرسوم <strong>إلكترونياً فقط</strong> عبر موقع IRCC الرسمي. لا تقبل المدفوعات النقدية أو الشيكات.</p>
+                </div>
+                
+                <h3>مواعيد المعالجة</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">أسبوعان</div>
+                        <div class="timeline-content">
+                            <h4>إشعار الاستلام</h4>
+                            <p>استلام تأكيد من IRCC بتسلم الطلب (قد يتأخر أحياناً)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">20-30 يوم</div>
+                        <div class="timeline-content">
+                            <h4>طلب المقاييس الحيوية</h4>
+                            <p>إذا تطلب الأمر، ستتلقى خطاباً لتقديم المقاييس الحيوية (بصمات الأصابع وصورة)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">20-45 يوم</div>
+                        <div class="timeline-content">
+                            <h4>المعالجة</h4>
+                            <p>فترة المراجعة والتحقق من المستندات والمعلومات</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">45-60 يوم</div>
+                        <div class="timeline-content">
+                            <h4>القرار والإرسال</h4>
+                            <p>إصدار القرار وإرسال وثيقة السفر عبر البريد المسجل</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="warning">
+                    <p>ملاحظة: هذه المواعيد تقديرية وقد تختلف حسب حجم العمل في المركز واكتمال طلبك. الطلبات غير المكتملة تتطلب وقتاً أطول.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab5" class="tab-content">
+            <div class="section">
+                <h2>تفاصيل نموذج IMM 5529</h2>
+                <p>دليل تفصيلي لملء كل قسم من النموذج الرئيسي لطلب وثيقة سفر اللاجئ</p>
+                
+                <div class="form-section">
+                    <div class="form-field">
+                        <strong>القسم 1: المعلومات الشخصية <span class="badge">إلزامي</span></strong>
+                        <p>• الاسم الكامل (كما هو في وثائق الهوية الرسمية)<br>
+                        • الجنس وتاريخ الميلاد<br>
+                        • مكان الولادة (المدينة والدولة)<br>
+                        • الحالة الاجتماعية (متزوج، أعزب، مطلق، أرمل)<br>
+                        • معلومات الوالدين (الأسماء الكاملة، وتواريخ الميلاد، وأماكن الولادة)</p>
+                    </div>
+                    
+                    <div class="form-field">
+                        <strong>القسم 2: معلومات الجنسية <span class="badge">إلزامي</span></strong>
+                        <p>• الجنسية الحالية (البلد)<br>
+                        • الجنسيات السابقة (إن وجدت)<br>
+                        • كيفية الحصول على الجنسية (الميلاد، التجنيس، الزواج، إلخ)<br>
+                        • معلومات جواز السفر الحالي (إن وجد)</p>
+                    </div>
+                    
+                    <div class="form-field">
+                        <strong>القسم 3: معلومات الإقامة الدائمة في كندا <span class="badge">إلزامي</span></strong>
+                        <p>• رقم ملف الهجرة (UCI)<br>
+                        • تاريخ أصبحت مقيم دائم<br>
+                        • فئة الهجرة (لاجئ، إلخ)<br>
+                        • عنوان السكن الحالي في كندا</p>
+                    </div>
+                    
+                    <div class="form-field">
+                        <strong>القسم 4: معلومات وثيقة السفر <span class="badge">إلزامي</span></strong>
+                        <p>• هل تمتلك وثيقة سفر كندية سابقة؟ (نعم/لا)<br>
+                        • نوع الوثيقة المطلوبة (لاجئ)<br>
+                        • سبب الطلب (سفر، تجديد، إلخ)<br>
+                        • معلومات عن وثائق السفر السابقة</p>
+                    </div>
+                    
+                    <div class="form-field">
+                        <strong>القسم 5: معلومات السفر <span class="badge">إلزامي</span></strong>
+                        <p>• دول المقصد المخطط زيارتها<br>
+                        • تواريخ السفر المتوقعة (من - إلى)<br>
+                        • سبب السفر (سياحة، زيارة عائلة، علاج، عمل)<br>
+                        • معلومات عن المرافقين (إن وجدوا)</p>
+                    </div>
+                    
+                    <div class="form-field">
+                        <strong>القسم 6: التاريخ الشخصي <span class="badge">إلزامي</span></strong>
+                        <p>• عنوان السكن لمدة السنوات الـ5 الماضية<br>
+                        • تاريخ الهجرة إلى كندا<br>
+                        • معلومات عن أفراد العائلة في كندا<br>
+                        • معلومات عن العمل/الدراسة</p>
+                    </div>
+                    
+                    <div class="form-field">
+                        <strong>القسم 7: الإعلان والتوقيع <span class="badge">إلزامي</span></strong>
+                        <p>• التوقيع (يجب أن يكون يدوياً بعد الطباعة)<br>
+                        • التاريخ (يوم/شهر/سنة)<br>
+                        • معلومات المراجع (شخص يمكنه التحقق من هويتك)<br>
+                        • توقيع المراجع (في حالة الطلبات الأولى)</p>
+                    </div>
+                </div>
+                
+                <div class="tip">
+                    <h4>📝 نصائح لملء النموذج</h4>
+                    <p>• استخدم أحرف كبيرة (كابيتال) عند كتابة الاسم<br>
+                    • لا تترك أي حقول فارغة - استخدم "N/A" إذا لم يكن السؤال ينطبق<br>
+                    • تأكد من تطابق المعلومات مع وثائقك الرسمية<br>
+                    • احتفظ بنسخة من النموذج بعد ملئه للتأكد من المعلومات</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>نصائح مهمة بعد التقديم</h2>
+            
+            <div class="step">
+                <h3>بعد إرسال الطلب</h3>
+                <ul class="document-list">
+                    <li>احتفظ بصورة من جميع المستندات المرسلة وإيصال البريد</li>
+                    <li>تتبع حالة طلبك عبر الإنترنت باستخدام رقم التتبع</li>
+                    <li>قد يُطلب منك تقديم معلومات إضافية - استجب فوراً</li>
+                    <li>إذا تغيرت معلومات الاتصال، أبلغ IRCC فوراً</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <h3>بعد استلام وثيقة السفر</h3>
+                <ul class="document-list">
+                    <li>تحقق من صحة جميع المعلومات في الوثيقة</li>
+                    <li>قم بتوقيع الوثيقة في الصفحة 3</li>
+                    <li>تحقق من متطلبات التأشيرة لدول المقصد قبل السفر</li>
+                    <li>احتفظ بصورة من الوثيقة في مكان منفصل أثناء السفر</li>
+                </ul>
+            </div>
+            
+            <div class="warning">
+                <h4>🛑 تحذيرات أمنية</h4>
+                <p>• وثيقة سفر اللاجئ وثيقة رسمية قيّمة - احفظها في مكان آمن<br>
+                • لا تحاول تزوير أو تعديل أي معلومات في الوثيقة<br>
+                • الإبلاغ عن فقدان أو سرقة الوثيقة فوراً للسلطات الكندية</p>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h2>معلومات الاتصال والمساعدة</h2>
+            <p>للمزيد من المعلومات أو المساعدة في عملية التقديم، يرجى التواصل مع:</p>
+            
+            <div class="step">
+                <h3>الموقع الإلكتروني الرسمي</h3>
+                <p>www.canada.ca/immigration-refugees-citizenship</p>
+                
+                <h3>مركز الاتصال المركزي</h3>
+                <p>الهاتف: 1-888-242-2100 (داخل كندا فقط)<br>
+                خارج كندا: 1-613-944-4000</p>
+                
+                <h3>خدمات المقاييس الحيوية</h3>
+                <p>الهاتف: 1-855-307-2422 (داخل كندا والولايات المتحدة)<br>
+                خارج أمريكا الشمالية: 1-613-944-4000</p>
+            </div>
+            
+            <div class="tip">
+                <p>⏰ ساعات العمل: من الاثنين إلى الجمعة، 8 صباحاً حتى 4 مساءً (بتوقيت المنطقة الشرقية)<br>
+                يوصى بالاتصال في الصباح الباكر لتجنب أوقات الانتظار الطويلة</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 دليل وثيقة سفر اللاجئ - كندا. هذه المعلومات لأغراض إرشادية فقط.</p>
+            <p>يرجى الرجوع دائماً إلى الموقع الرسمي لوزارة الهجرة واللاجئين والمواطنة الكندية (IRCC) للحصول على أحدث المعلومات والتعليمات.</p>
+            <p>تم تحديث هذا الدليل في: يناير 2024</p>
+        </footer>
+    </div>
+
+    <script>
+        function openTab(tabId) {
+            // إخفاء جميع محتويات التبويبات
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // إزالة النشاط من جميع أزرار التبويبات
+            var tabButtons = document.getElementsByClassName('nav-tab');
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // إظهار محتوى التبويب المحدد وإضافة النشاط للزر
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // إضافة تأثير التمرير السلس للروابط الداخلية
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
